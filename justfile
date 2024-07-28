@@ -5,6 +5,7 @@ setup:
     ./dev/scripts/setup.sh
 
 serve:
+    killall mdbook
     mdbook serve
 
 build:
