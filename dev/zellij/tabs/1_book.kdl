@@ -1,0 +1,11 @@
+layout {
+	tab name="book" {
+		pane size=1 borderless=true {
+			plugin location="compact-bar"
+		}
+		pane {
+			command "just"
+			args "serve"
+		}
+	}
+}
