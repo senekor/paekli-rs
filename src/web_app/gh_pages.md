@@ -64,7 +64,7 @@ The rest is basically just bash scripting:
           rustup target add wasm32-unknown-unknown
           cd final_project/paekli-web
           wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.19.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
-          ./trunk build --release --public-url /rust-workshop
+          ./trunk build --release --public-url /rust-exercises
           mv dist ../../docs
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "bot@invalid.local"
@@ -80,8 +80,8 @@ Let's explain a couple things that might not be obvious:
 
 - `wasm32-unknown-unknown` is needed to compile Rust to WebAssembly.
 - The `wget` command downloads a binary of `trunk` into the current directory.
-- The `--public-url /rust-workshop` is necessary because our website is not located at the root path of the domain.
-- We move the `dist` folder to `rust-workshop/docs` because that's where GitHub Pages expects our website to be located for deployment.
+- The `--public-url /rust-exercises` is necessary because our website is not located at the root path of the domain.
+- We move the `dist` folder to `rust-exercises/docs` because that's where GitHub Pages expects our website to be located for deployment.
 - The git configuration of username and email is irrelevant, these commits will be overwritten regularly.
 - Lastly, we force push the built website to a branch called `gh-pages`.
   More on that next.
@@ -99,5 +99,5 @@ And that should be it!
 With this configuration, GitHub Pages will look inside the `/docs` directory of your repository on the `gh-actions` branch for a website to deploy.
 
 ```admonish success
-Go to `YOUR_GH_USERNAME.github.io/rust-workshop` to enjoy the fruit of your labor!
+Go to `YOUR_GH_USERNAME.github.io/rust-exercises` to enjoy the fruit of your labor!
 ```
