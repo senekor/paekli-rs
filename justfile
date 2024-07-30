@@ -5,7 +5,7 @@ setup:
     ./dev/scripts/setup.sh
 
 serve:
-    killall mdbook
+    killall mdbook || true
     mdbook serve
 
 build:
