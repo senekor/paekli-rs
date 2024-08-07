@@ -9,7 +9,7 @@
 This is a guide for an exercise project in Rust.
 It is intended as the next thing to do after reading [The Rust Programming Language](https://doc.rust-lang.org/book/).
 
-The focus is on bridging the gap between _the book_ and production-ready code, emphasizing among other things:
+The aim of paekli-rs is to bridge the gap between _the book_ and production-ready code, emphasizing among other things:
 - library usage
 - inter-process communication
 - integration in a polyglot environment

@@ -1,6 +1,7 @@
 # Summary
 
 [Introduction](./introduction.md)
+[Project Setup](./setup.md)
 
 # Clients
 
