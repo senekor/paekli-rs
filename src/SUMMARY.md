@@ -26,8 +26,6 @@
   - [Additional Features](web_app/additional_features.md)
   - [Where to Go Next](web_app/where_next.md)
   - [Making it Pretty]()
-- [TUI]()
-- [Native GUI]()
 
 # Servers
 
@@ -41,14 +39,12 @@
   - [Hello World](websocket/hello_world.md)
   - [Notifications](websocket/notifications.md)
   - [Individual Recipients](websocket/individual_recipients.md)
-- [gRPC]()
 
 # Storage Backends
 
 - [File System Storage](file_system.md)
 - [SQL Database](sql_database.md)
 - [HTTP Client](http_client.md)
-- [gRPC Client]()
 
 # Miscellaneous
 
