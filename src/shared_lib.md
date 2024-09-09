@@ -5,7 +5,7 @@ Luckily this is very simple.
 Let's start by initializing a new _library_ package:
 
 ```sh
-cd rust-exerices/final_project
+cd rust-exercises/final_project
 cargo new --lib paekli-core
 ```
 
