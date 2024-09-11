@@ -1,6 +1,7 @@
+use codee::string::FromToStringCodec;
 use gloo::{dialogs::alert, net::http::Request};
 use leptos::*;
-use leptos_use::UseWebsocketReturn;
+use leptos_use::UseWebSocketReturn;
 use paekli_core::http_api::{ReceiveResponse, SendRequest};
 
 fn main() {
@@ -70,8 +71,9 @@ fn main() {
 
 #[component]
 fn NotificationListener(recipient: String) -> impl IntoView {
-    let url = format!("ws://localhost:4200/notifications/{recipient}");
-    let UseWebsocketReturn { message, .. } = leptos_use::use_websocket(&url);
+    let url = format!("ws://paekli.buenzli.dev/notifications/{recipient}");
+    let UseWebSocketReturn { message, .. } =
+        leptos_use::use_websocket::<String, String, FromToStringCodec>(&url);
 
     create_effect(move |_| {
         if let Some(message) = message.get() {
