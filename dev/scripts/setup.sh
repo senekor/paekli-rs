@@ -1,7 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-cargo binstall -y mdbook mdbook-admonish mdbook-catppuccin
+cargo binstall -y mdbook mdbook-admonish
 
 mdbook-admonish install
-mdbook-catppuccin install
