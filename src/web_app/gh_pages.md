@@ -62,7 +62,7 @@ The rest is basically just bash scripting:
       - uses: Swatinem/rust-cache@v2
       - run: |
           rustup target add wasm32-unknown-unknown
-          cd final_project/paekli-web
+          cd paekli-rs/paekli-web
           wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.19.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
           ./trunk build --release --public-url /rust-exercises
           mv dist ../../docs

@@ -5,7 +5,7 @@ Luckily this is very simple.
 Let's start by initializing a new _library_ package:
 
 ```sh
-cd rust-exercises/final_project
+cd paekli-rs
 cargo new --lib paekli-core
 ```
 
@@ -13,7 +13,7 @@ This new library can be used in any of our other packages by adding it as a depe
 Note that we need the `--path` flag for a local library, as opposed to ones from crates.io.
 
 ```sh
-cd final_project/paekli-cli
+cd paekli-rs/paekli-cli
 cargo add --path ../paekli-core
 ```
 

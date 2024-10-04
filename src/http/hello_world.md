@@ -5,7 +5,7 @@
 Just like for the CLI, we'll work with a new binary crate `paekli-http`.
 
 ```sh
-cd rust-exercises/final_project
+cd paekli-rs
 cargo new paekli-cli
 ```
 

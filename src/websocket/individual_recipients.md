@@ -76,7 +76,7 @@ You might have to adjust some details, especially if you designed your HTTP API 
 
 ```sh
 # Terminal 1: run HTTP & WebSocket server
-cd final_project/paekli-http
+cd paekli-rs/paekli-http
 cargo run
 ```
 

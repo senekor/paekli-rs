@@ -8,7 +8,7 @@ Sweet!
 Let's start by initializing a new package, sticking closely to PyO3's own guide.
 
 ```sh
-cd final_project
+cd paekli-rs
 mkdir paekli-py
 cd paekli-py
 python -m venv .venv

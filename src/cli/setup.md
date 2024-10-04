@@ -2,11 +2,11 @@
 
 ## Initializing a new package
 
-We're going to keep our CLI in the directory `rust-exercises/final_project/`.
+We're going to keep our CLI in the directory `paekli-rs/`.
 Here are the commands to let cargo bootstrap it:
 
 ```sh
-cd rust-exercises/final_project
+cd paekli-rs
 cargo new paekli-cli
 ```
 
@@ -20,7 +20,7 @@ Also note that the `members` key of the top-level `Cargo.toml` should have been 
 
 ```toml
 # rust-exercises/Cargo.toml
-members = ["day_?/*", "final_project/paekli-cli"]
+members = ["day_?/*", "paekli-rs/paekli-cli"]
 ```
 
 That's perfectly fine.
