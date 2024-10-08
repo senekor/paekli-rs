@@ -1,7 +1,6 @@
 # CLI
 
-Oh, hi there!
-I'm happy you came by ❤️ I guess that means you want to write a `paekli-cli` with me?
+Ready to write a `paekli-cli`?
 Here's what the final product might look like:
 
 ```

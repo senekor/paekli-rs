@@ -12,22 +12,12 @@ The aim of paekli-rs is to bridge the gap between _the book_ and production-read
 
 ## The Topic
 
-We humans learn best when we're having fun, so the application will be themed as a simulation of a postal service.
+In order to have a little bit of fun, the application will be themed as a simulation of a postal service.
 In practice, that's just a messaging application.
 This topic was chosen because its feature set is very flexible and can adapt to what and how much **you** want to do.
 
 Our postal service could be sending "packages" around, but that word has another meaning in the software world.
-So, we'll be using the less ambiguous and more fun term ✨ **paekli** ✨ to refer to deliverables in our business domain.
-
-```admonish info title="Etymology" collapsible=true
-Päkli is [Swiss German](https://en.wikipedia.org/wiki/Swiss_German) and derives from Paket, the German word for package.
-
-A notable difference is that Päkli is a [diminutive](https://en.wikipedia.org/wiki/Diminutive).
-Swiss German uses the diminutive form much more generously than standard German, which makes the entire language a little less serious and a little more cute.
-
-Whenever it's impossible or inconvenient to use proper [diaeresis](https://en.wikipedia.org/wiki/Diaeresis_(diacritic)), Germans will replace ä, ö, ü with ae, oe, ue.
-As this book is not targeted to Germans specifically, that's exactly what we'll do.
-```
+So, we'll be using the less ambiguous term **paekli** to refer to deliverables in our business domain.
 
 ## Choose your own components
 
@@ -36,18 +26,14 @@ You can choose to implement almost any combination of them in almost any order.
 In its simplest form, the application can be a single component, e.g. a CLI app, without any integrations with other components.
 If you choose to go the extra mile, the application can grow into a diverse set of interacting clients and servers.
 
-For example, a python script might call into a Rust library and send a paekli to an http server which live-updates a wasm-based browser app over websocket!
-So cool! 🤩
+For example, a python script might call into a Rust library that sends a paekli to an http server which live-updates a wasm-based browser app over websocket!
+Very cool!
 
 As you can see in the sidebar, the components are loosely categorized into **clients**, **servers** and **storage backends**.
 - Clients can be stand-alone and may use servers and storage backends.
 - Servers can be stand-alone, but are probably difficult to use without a client.
   They may also use storage backends.
 - Storage backends can't be stand-alone, as their only purpose is to be used by clients and servers.
-
-Unless you have a strong desire to do something else, I recommend to **start with the [CLI](cli.md)**.
-It is the easiest component to implement and its guide is the most detailed.
-The other guides are still self-contained, but they provide fewer explanations of steps that are identical or similar for all components.
 
 ```admonish tip title="Choose your own difficulty"
 The guides are supposed to be at moderate to low difficulty, although there is some variability.

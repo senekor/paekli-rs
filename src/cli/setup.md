@@ -19,13 +19,11 @@ You should now have two new files:
 Also note that the `members` key of the top-level `Cargo.toml` should have been modified automatically to include your new package:
 
 ```toml
-# rust-exercises/Cargo.toml
-members = ["day_?/*", "paekli-rs/paekli-cli"]
+members = ["paekli-cli"]
 ```
 
-That's perfectly fine.
-We didn't worry much about _cargo workspaces_ in this workshop, which is what that top-level `Cargo.toml` defines.
-They simply give you some quality-of-life improvements for managing multiple packages in a single project / repository.
+It may look different if you already have other packages in your repo and or `paekli-cli` is in a subdirectory.
+That's fine, as long as it is present somehow.
 
 ## Shipping the first version
 
