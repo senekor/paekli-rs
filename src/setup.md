@@ -11,16 +11,17 @@ For the automation part, we'll be using [GitHub Actions](https://docs.github.com
 This is unfortunately a proprietary automation platform by GitHub, which is owned by Microsoft.
 However, it is provided for free and many developers have experience with it, so it is the most pragmatic choice for now.
 I'm keeping my eyes open for more FOSS-friendly alternatives.
-So, you specifically need a repository on GitHub for the purposes of this project.
 
-If you already have a suitable repository, e.g. a [rust-exercises](https://github.com/senekor/rust-exercises) repo, you can simply add all paekli-rs related things in a subdirectory called `paekli-rs/`.
-Otherwise, [create a new repository](https://github.com/new) on GitHub.
-You may name it whatever you like, but this book assumes you named it `peakli-rs`.
+[Create a new repository on GitHub](https://github.com/new?name=paekli-rs).
+It must be called `paekli-rs`, since some of the automation & tooling relies on that name.
+Making it generic would be overly complex and the error messages are bad, so do yourself a favor and stick to the name `paekli-rs`.
+Also, don't add your code for this project to a subdirectory of a different repository where you might be storing other Rust exercises already.
+This will cause unnecessary headaches with mismatched paths in scripts.
 
-You should also create a [cargo workspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) in your new repo.
+You also need to create a [cargo workspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html) in your new repo.
 We will be adding multiple crates during the project, a workspace makes it easier to manage them.
 Some of our project automation also relies on its presence.
-Make sure there is a file called `Cargo.toml` at the root of your repository with the following content:
+Add a file called `Cargo.toml` at the root of your repository with the following content:
 
 ```toml
 [workspace]
@@ -28,15 +29,12 @@ resolver = "2"
 members = []
 
 [workspace.package]
-repository = "https://github.com/<YOUR_USER_NAME>/<YOUR_REPO_NAME>"
+repository = "https://github.com/<YOUR_USERNAME>/paekli-rs"
 ```
 
-The `members` list doesn't have to be empty, in case you're using an existing repo.
-Replace the `repository` key with the correct url, it's needed for the project automation later.
+Fill in your username in the `repository` url, it's needed for the project automation later.
 
 ## CI/CD
-
-If you already have GitHub Actions set up to automatically test and compile your code, you can skip this section.
 
 In order to facilitate a "continuous integration" workflow, we need to make sure that coding standards are uphelp and tests pass on the main branch.
 GitHub Actions provides this automation.
@@ -81,7 +79,7 @@ cargo add paekli-cli
 This command should automatically add the new package to your cargo workspace, so the `members` list in the top-level `Cargo.toml` should contain the string `"paekli-cli"`.
 It it doesn't, something in your workspace manifest is probably misconfigured.
 
-Change the code in `paekli-cli/src/main.rs` as follows:
+Change the code in `paekli-cli/src/main.rs` to the following:
 
 ```rust
 fn main() {
@@ -95,12 +93,12 @@ fn paekli_llc_is_closed() {
 }
 ```
 
-That's a decent enough stub, we even have a test for our continuous integration workflow to run.
+That's a good enough stub, we even have a test for our continuous integration workflow to run.
 
 Next, install `cargo-dist` and initialize it.
 During initialization, you will be prompted about which platforms you want to build for, which installers to generate and maybe more.
 It mostly doesn't matter for the purpose of this project.
-Just make sure you enable at least one installer that's applicable to you so you can test the results.
+Just make sure you enable at least one installer that's applicable to you so you can easily test the results.
 `shell` should be enough.
 
 ```sh
@@ -108,27 +106,28 @@ cargo install cargo-dist
 cargo dist init
 ```
 
-You may receive the following or a similar error:
+````admonish error title="Github CI support requires you to specify the URL of your repository" collapsible=true
 
-```txt
-× Github CI support requires you to specify the URL of your repository
+If you're getting that error, there is something wrong with your `Cargo.toml` files.
+
+First, make sure your top-level `Cargo.toml` contains the url to your repository
+You have to replace your GitHub username in the url!
+```toml
+[workspace.package]
+repository = "https://github.com/<YOUR_USERNAME>/paekli-rs"
 ```
 
-If you do, make sure your workspace manifest (`Cargo.toml` at the root of your repository) contains the url to your repository and the package manifest (`Cargo.toml` in the `paekli-cli` directory) references it:
+Next, make sure the `Cargo.toml` in the `paekli-cli` directory contains a reference to the url in the workspace:
 
 ```toml
-# Cargo.toml
-[workspace.package]
-repository = "https://github.com/<YOUR_USER_NAME>/<YOUR_REPO_NAME>"
-# paekli-cli/Cargo.toml
 [package]
-name = "paekli-cli"
-version = "0.1.0"
-edition = "2021"
+# ... other keys like name, version, edition ...
 repository.workspace = true
 ```
 
-Run `cargo dist` again until you receive no errors.
+Continue once you can run `cargo dist init` without errors.
+````
+
 At this point, you should have a generated file at `.github/workflows/release.yml`.
 
 To enjoy the fruits of your labor, trigger your first release workflow as such:

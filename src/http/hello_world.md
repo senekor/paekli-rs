@@ -5,8 +5,7 @@
 Just like for the CLI, we'll work with a new binary crate `paekli-http`.
 
 ```sh
-cd paekli-rs
-cargo new paekli-cli
+cargo new paekli-http
 ```
 
 ## Axum
@@ -18,6 +17,7 @@ But I'm the one writing this book, so I get to decide.
 You can't go wrong with it!
 
 ```sh
+# cd paekli-http
 cargo add axum --features macros
 ```
 

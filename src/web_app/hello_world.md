@@ -21,7 +21,6 @@ cargo install --locked trunk
 Let's initialize a new package for the web app:
 
 ```sh
-cd paekli-rs
 cargo new paekli-web
 ```
 

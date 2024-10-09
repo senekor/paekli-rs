@@ -62,14 +62,14 @@ The rest is basically just bash scripting:
       - uses: Swatinem/rust-cache@v2
       - run: |
           rustup target add wasm32-unknown-unknown
-          cd paekli-rs/paekli-web
+          cd paekli-web
           wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.19.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
-          ./trunk build --release --public-url /rust-exercises
-          mv dist ../../docs
+          ./trunk build --release --public-url /paekli-rs
+          mv dist ../docs
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "bot@invalid.local"
           git checkout -b gh-pages
-          git add ../../docs
+          git add ../docs
           git commit --message "GitHub Pages Deployment"
           git push --force --set-upstream origin gh-pages
 ```
