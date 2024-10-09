@@ -4,7 +4,7 @@ use std::{
 };
 
 use axum::{
-    extract::{Path, State, WebSocketUpgrade},
+    extract::{ws::Message, Path, State, WebSocketUpgrade},
     http::StatusCode,
     routing::{delete, get, post},
     Json,
@@ -121,7 +121,7 @@ async fn subscribe_to_notifications(
         while let Ok(recipient_2) = receiver.recv().await {
             if recipient_2 == recipient {
                 socket
-                    .send(axum::extract::ws::Message::Text("Hello, world!".into()))
+                    .send(Message::Text(format!("Hey {recipient}, you've got mail!")))
                     .await
                     .unwrap();
             }
