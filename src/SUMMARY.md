@@ -6,7 +6,6 @@
 # Clients
 
 - [CLI](cli.md)
-  - [Setup](cli/setup.md)
   - [Argument Parsing](cli/arg_parse.md)
   - [Sending and Receiving](cli/send_receive.md)
   - [Content and Storage](cli/content_storage.md)

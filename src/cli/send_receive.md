@@ -10,7 +10,7 @@ For example: `add`, `commit` and `push` are subcommands of `git`.
 The code snippets in this guide will become less complete as we go along.
 It is your responsibility to make sure the things you copy-paste integrate correctly with the rest of your code.
 This is also because you are encouraged to add, modify and experiment with things according to your whim and curiosity.
-It is **your** final project after all! 😃
+It's **your** project after all! 😃
 ```
 
 Subcommands represent a choice out of a finite set of alternatives, that's a perfect fit for an `enum`.

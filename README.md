@@ -13,7 +13,7 @@ The aim of paekli-rs is to bridge the gap between _the book_ and production-read
 - library usage
 - inter-process communication
 - integration in a polyglot environment
-- automated testing and deployment (CI/CD)
+- automated testing and delivery (CI/CD)
 - having lots of fun! 😃
 
 The guide is deployed at 👉 https://senekor.github.io/paekli-rs/
