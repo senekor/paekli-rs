@@ -73,7 +73,7 @@ That's exactly what we need!
 Create a stub for the CLI component so you have an actual Rust package that can be compiled:
 
 ```sh
-cargo add paekli-cli
+cargo new paekli-cli
 ```
 
 This command should automatically add the new package to your cargo workspace, so the `members` list in the top-level `Cargo.toml` should contain the string `"paekli-cli"`.
