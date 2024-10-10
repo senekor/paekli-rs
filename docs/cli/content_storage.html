@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Content and Storage - paekli-rs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item affix "><a href="../setup.html">Project Setup</a></li><li class="chapter-item affix "><li class="part-title">Clients</li><li class="chapter-item expanded "><a href="../cli.html"><strong aria-hidden="true">1.</strong> CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cli/arg_parse.html"><strong aria-hidden="true">1.1.</strong> Argument Parsing</a></li><li class="chapter-item "><a href="../cli/send_receive.html"><strong aria-hidden="true">1.2.</strong> Sending and Receiving</a></li><li class="chapter-item expanded "><a href="../cli/content_storage.html" class="active"><strong aria-hidden="true">1.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../cli/additional_features.html"><strong aria-hidden="true">1.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../cli/where_next.html"><strong aria-hidden="true">1.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../python_module.html"><strong aria-hidden="true">2.</strong> Python Module</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python_module/hello_world.html"><strong aria-hidden="true">2.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../python_module/send_receive.html"><strong aria-hidden="true">2.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../python_module/content_storage.html"><strong aria-hidden="true">2.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../python_module/additional_features.html"><strong aria-hidden="true">2.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../python_module/where_next.html"><strong aria-hidden="true">2.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../web_app.html"><strong aria-hidden="true">3.</strong> Web App</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../web_app/hello_world.html"><strong aria-hidden="true">3.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../web_app/gh_pages.html"><strong aria-hidden="true">3.2.</strong> GitHub Pages</a></li><li class="chapter-item "><a href="../web_app/send_receive.html"><strong aria-hidden="true">3.3.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../web_app/content_storage.html"><strong aria-hidden="true">3.4.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../web_app/additional_features.html"><strong aria-hidden="true">3.5.</strong> Additional Features</a></li><li class="chapter-item "><a href="../web_app/where_next.html"><strong aria-hidden="true">3.6.</strong> Where to Go Next</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Making it Pretty</div></li></ol></li><li class="chapter-item "><li class="part-title">Servers</li><li class="chapter-item "><a href="../http.html"><strong aria-hidden="true">4.</strong> HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../http/hello_world.html"><strong aria-hidden="true">4.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../http/send_receive.html"><strong aria-hidden="true">4.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../http/content_storage.html"><strong aria-hidden="true">4.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../http/additional_features.html"><strong aria-hidden="true">4.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../http/where_next.html"><strong aria-hidden="true">4.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../websocket.html"><strong aria-hidden="true">5.</strong> WebSocket</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../websocket/hello_world.html"><strong aria-hidden="true">5.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../websocket/notifications.html"><strong aria-hidden="true">5.2.</strong> Notifications</a></li><li class="chapter-item "><a href="../websocket/individual_recipients.html"><strong aria-hidden="true">5.3.</strong> Individual Recipients</a></li></ol></li><li class="chapter-item "><li class="part-title">Storage Backends</li><li class="chapter-item "><a href="../file_system.html"><strong aria-hidden="true">6.</strong> File System Storage</a></li><li class="chapter-item "><a href="../sql_database.html"><strong aria-hidden="true">7.</strong> SQL Database</a></li><li class="chapter-item "><a href="../http_client.html"><strong aria-hidden="true">8.</strong> HTTP Client</a></li><li class="chapter-item affix "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../shared_lib.html"><strong aria-hidden="true">9.</strong> Shared Library</a></li><li class="chapter-item "><a href="../storage_backend.html"><strong aria-hidden="true">10.</strong> Storage Backend</a></li><li class="chapter-item "><a href="../web_app_http.html"><strong aria-hidden="true">11.</strong> Web App and HTTP</a></li><li class="chapter-item "><a href="../web_app_websocket.html"><strong aria-hidden="true">12.</strong> Web App and WebSocket</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">paekli-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs/edit/main/src/cli/content_storage.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="content-and-storage"><a class="header" href="#content-and-storage">Content and Storage</a></h1>
+<p>At this point, our users can send and receive paekli.
+However, they probably want to send paekli with some content and they want <em>that content to be received</em>.
+Silly users with their unrealistic feature requests!</p>
+<p>But let's try to make them happy.</p>
+<h2 id="sending-paekli-with-content"><a class="header" href="#sending-paekli-with-content">Sending paekli with content</a></h2>
+<p>The content of a paekli will be another CLI argument.
+Since we only expect content when <em>sending</em> a paekli, we will add the argument to that subcommand.
+Specifying the content of a paekli you're receiving doesn't make sense.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Command {
+    Send { content: String },
+    Receive,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>We will also need to adjust the match-expression to ignore the content in our main function:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>Command::Send { content: _ } =&gt; println!("{SEND_MESSAGE}"),
+<span class="boring">}</span></code></pre></pre>
+<p>Now, try to send a paekli without content and see how the error message helps the user figure out how to use the CLI correctly.</p>
+<h2 id="storing-paekli-for-delivery"><a class="header" href="#storing-paekli-for-delivery">Storing paekli for delivery</a></h2>
+<p>Applications are expected to store their data in different locations depending on the operating system.
+We might be tempted to tell our users to just install Linux when they're bugging us about supporting their platform.
+Instead, let's use the <a href="https://docs.rs/directories">directories</a> crate to not have to worry about it at all.</p>
+<p>Here's the code we'll need to add:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let project_dir = directories::ProjectDirs::from("dev", "buenzli", "paekli")
+    .expect("the user's home directory seems to be corrupt");
+let storage_dir = project_dir.data_dir();
+std::fs::create_dir_all(storage_dir).expect("failed to create storage directory");
+
+Command::Send { content } =&gt; {
+    std::fs::write(storage_dir.join("content"), content)
+        .expect("failed to store paekli");
+}
+<span class="boring">}</span></code></pre></pre>
+<p>On Linux, you can confirm that a paekli was sent correctly with:</p>
+<pre><code class="language-sh">cat ~/.local/share/paekli/content
+</code></pre>
+<p>On Mac OS, find the paekli in Application Support:</p>
+<pre><code class="language-sh">cat ~/Library/Application\ Support/dev.buenzli.paekli/content
+</code></pre>
+<h2 id="less-than-terrible-error-handling"><a class="header" href="#less-than-terrible-error-handling">Less than terrible error handling</a></h2>
+<p>We now have a few calls to <code>.expect()</code> in our code.
+This is great for whipping up a quick program that works, but it immediately crashes our program in case of an error.
+There are libraries for more scaleable error handling with great usability.
+The most popular one for applications (as opposed to libraries) is <a href="https://docs.rs/anyhow">anyhow</a>, so let's use that.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() -&gt; anyhow::Result&lt;()&gt; {
+    // --snip --
+
+    Ok(())
+}</code></pre></pre>
+<p><code>anyhow::Result</code> is a different type than <code>Result</code> from the standard library.
+It only takes one type parameter for the <code>Ok</code> case.
+The <code>Err</code> case always holds a value of type <code>anyhow::Error</code>.
+This makes it easy to bubble up errors when they're all the same type.
+Here we are returning <code>Result&lt;()&gt;</code>, because we don't return any value in the success case.
+That means we now need to return <code>Ok(())</code> at the end of main.</p>
+<details id="admonition-returning-result-from-main" class="admonition admonish-note" role="note" aria-labelledby="admonition-returning-result-from-main-title">
+<summary class="admonition-title">
+<div id="admonition-returning-result-from-main-title">
+<p>returning Result from main</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-returning-result-from-main"></a>
+</summary>
+<div>
+<p>You may not have known that the main function can actually return regular values.
+This is mostly useful for returning <code>Result</code>s, so you can do normal Rust-style error handling in the main function.
+However, <code>main</code> can technically return any type that implements the <a href="https://doc.rust-lang.org/stable/std/process/trait.Termination.html">Termination</a> trait.</p>
+</div>
+</details>
+<p>So, how do we refactor our <code>.expect()</code> calls to return <code>anyhow::Result</code> instead?
+It's simple, first we import the trait <code>anyhow::Context</code>.
+This attaches a new method <code>.context()</code> to any <code>Result</code> or <code>Option</code> to convert them into an <code>anyhow::Result</code>.
+Recall that this pattern is sometimes called an "extension trait".
+Lastly, we append the question mark operator <code>?</code> to the call of <code>.context()</code> in order to <em>return early</em> in case of an error.</p>
+<p>visually:</p>
+<pre><code>                               use anyhow::Context;
+value.expect("error msg")  -&gt;  value.context("error msg")?
+</code></pre>
+<p>The practical difference is not that big yet, but future-you will probably thank us for starting early with good error handling.</p>
+<div id="admonition-preventing-data-loss" class="admonition admonish-question" role="note" aria-labelledby="admonition-preventing-data-loss-title">
+<div class="admonition-title">
+<div id="admonition-preventing-data-loss-title">
+<p>Preventing data loss</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-preventing-data-loss"></a>
+</div>
+<div>
+<p>Currently, our app overwrites existing paekli with new ones.
+Here's a task you can do on your own:
+Check if the file already exists, and if it does, do not overwrite it and notify the user that our storage is full.
+To create an ad-hoc error using anyhow, you can use the macro <code>anyhow::anyhow!</code>.</p>
+</div>
+</div>
+<h3 id="delivering-paekli"><a class="header" href="#delivering-paekli">Delivering paekli</a></h3>
+<p>I'll leave it up to you to deliver the paekli.
+Simply read from the file system and print the content to stdout.
+Remember to remove the file, otherwise a paekli could be delivered twice!</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-release"></a>
+</div>
+<div>
+<p>Contratulations!
+We now have a fully-functioning minimum viable product (MVP).
+The basic functions of sending and receiving work as expected.</p>
+<p>Pat yourself on the back and cut a new release! 🥳</p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../cli/send_receive.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../cli/additional_features.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../cli/send_receive.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../cli/additional_features.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

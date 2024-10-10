@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Storage Backend - paekli-rs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/catppuccin.css">
+        <link rel="stylesheet" href="./theme/catppuccin-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item affix "><a href="setup.html">Project Setup</a></li><li class="chapter-item affix "><li class="part-title">Clients</li><li class="chapter-item "><a href="cli.html"><strong aria-hidden="true">1.</strong> CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cli/arg_parse.html"><strong aria-hidden="true">1.1.</strong> Argument Parsing</a></li><li class="chapter-item "><a href="cli/send_receive.html"><strong aria-hidden="true">1.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="cli/content_storage.html"><strong aria-hidden="true">1.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="cli/additional_features.html"><strong aria-hidden="true">1.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="cli/where_next.html"><strong aria-hidden="true">1.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="python_module.html"><strong aria-hidden="true">2.</strong> Python Module</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python_module/hello_world.html"><strong aria-hidden="true">2.1.</strong> Hello World</a></li><li class="chapter-item "><a href="python_module/send_receive.html"><strong aria-hidden="true">2.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="python_module/content_storage.html"><strong aria-hidden="true">2.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="python_module/additional_features.html"><strong aria-hidden="true">2.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="python_module/where_next.html"><strong aria-hidden="true">2.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="web_app.html"><strong aria-hidden="true">3.</strong> Web App</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web_app/hello_world.html"><strong aria-hidden="true">3.1.</strong> Hello World</a></li><li class="chapter-item "><a href="web_app/gh_pages.html"><strong aria-hidden="true">3.2.</strong> GitHub Pages</a></li><li class="chapter-item "><a href="web_app/send_receive.html"><strong aria-hidden="true">3.3.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="web_app/content_storage.html"><strong aria-hidden="true">3.4.</strong> Content and Storage</a></li><li class="chapter-item "><a href="web_app/additional_features.html"><strong aria-hidden="true">3.5.</strong> Additional Features</a></li><li class="chapter-item "><a href="web_app/where_next.html"><strong aria-hidden="true">3.6.</strong> Where to Go Next</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Making it Pretty</div></li></ol></li><li class="chapter-item "><li class="part-title">Servers</li><li class="chapter-item "><a href="http.html"><strong aria-hidden="true">4.</strong> HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="http/hello_world.html"><strong aria-hidden="true">4.1.</strong> Hello World</a></li><li class="chapter-item "><a href="http/send_receive.html"><strong aria-hidden="true">4.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="http/content_storage.html"><strong aria-hidden="true">4.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="http/additional_features.html"><strong aria-hidden="true">4.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="http/where_next.html"><strong aria-hidden="true">4.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="websocket.html"><strong aria-hidden="true">5.</strong> WebSocket</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="websocket/hello_world.html"><strong aria-hidden="true">5.1.</strong> Hello World</a></li><li class="chapter-item "><a href="websocket/notifications.html"><strong aria-hidden="true">5.2.</strong> Notifications</a></li><li class="chapter-item "><a href="websocket/individual_recipients.html"><strong aria-hidden="true">5.3.</strong> Individual Recipients</a></li></ol></li><li class="chapter-item "><li class="part-title">Storage Backends</li><li class="chapter-item "><a href="file_system.html"><strong aria-hidden="true">6.</strong> File System Storage</a></li><li class="chapter-item "><a href="sql_database.html"><strong aria-hidden="true">7.</strong> SQL Database</a></li><li class="chapter-item "><a href="http_client.html"><strong aria-hidden="true">8.</strong> HTTP Client</a></li><li class="chapter-item affix "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="shared_lib.html"><strong aria-hidden="true">9.</strong> Shared Library</a></li><li class="chapter-item expanded "><a href="storage_backend.html" class="active"><strong aria-hidden="true">10.</strong> Storage Backend</a></li><li class="chapter-item "><a href="web_app_http.html"><strong aria-hidden="true">11.</strong> Web App and HTTP</a></li><li class="chapter-item "><a href="web_app_websocket.html"><strong aria-hidden="true">12.</strong> Web App and WebSocket</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">paekli-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs/edit/main/src/storage_backend.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="storage-backend"><a class="header" href="#storage-backend">Storage Backend</a></h1>
+<p>Most of the components use identical methods to store paekli, but the method itself may be configurable.
+For example, both the CLI and the python module might store paekli in the file system, an SQL database or delegate storage to the HTTP server.
+The server itself may use the file system, a database <em>or</em> just keep it in-memory... you get the point.</p>
+<p>This is the perfect place to introduce an abstraction.
+We can program a component to work independently of how paekli are stored.
+Different storage methods can then be swapped out easily.</p>
+<p>If we think about a postal service, we might make the analogy of a distribution center.
+The postal office doesn't need to know how the distribution center works, it only cares about the functionality it provides.</p>
+<p>This is a perfect use case for a <code>trait</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait DistributionCenter {
+    fn store();
+    fn retrieve();
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The fundamental operations <code>store</code> and <code>retrieve</code> are obvious, but I'll let you decide what the parameters and return types should be.
+Don't worry about getting it right immediately, you can always refactor the interface as the need arises.
+Rust's strong type system will help you correctly change all the places where the interface is already used.</p>
+<p>Since this <code>DistributionCenter</code> will be used by most of the components, it needs to go into our <code>paekli-core</code>.
+Read the instructions for <a href="shared_lib.html">creating a shared library</a> if you haven't already.</p>
+<div id="admonition-the-first-implementation" class="admonition admonish-note" role="note" aria-labelledby="admonition-the-first-implementation-title">
+<div class="admonition-title">
+<div id="admonition-the-first-implementation-title">
+<p>The first implementation</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-the-first-implementation"></a>
+</div>
+<div>
+<p>Since you probably already implemented file system storage for the CLI component, it makes sense to turn that into your <a href="file_system.html">first implementation of the trait</a>.</p>
+<p>For the next section to make sense, make sure you have at least one implementation.</p>
+</div>
+</div>
+<h2 id="using-the-trait"><a class="header" href="#using-the-trait">Using the trait</a></h2>
+<p>The first time you're reading this, you will only have one storage backend.
+It would be simple to just use that directly.
+To future proof for additional storage backends, let's assume we already have two:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// paekli-core/src/storage.rs
+trait DistributionCenter {}
+
+struct FileSystemStorage;
+impl DistributionCenter for FileSystemStorage {}
+
+struct HttpClient;
+impl DistributionCenter for HttpClient {}
+<span class="boring">}</span></code></pre></pre>
+<p>Let's try to write a simple function for creating a <code>DistributionCenter</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn new_distribution_center(local: bool) -&gt; ? {
+    if local {
+        FileSystemStorage
+    } else {
+        HttpClient
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Hm, this doesn't quite work.
+There is no way for us to write a correct return type for this function, because the two possible values have different types.</p>
+<p>What we need is <em>dynamic dispatch</em>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn new_distribution_center(local: bool) -&gt; Box&lt;dyn DistributionCenter&gt; {
+    if local {
+        Box::new(FileSystemStorage)
+    } else {
+        Box::new(HttpClient)
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<details id="admonition-how-dynamic-dispatch-works" class="admonition admonish-info" role="note" aria-labelledby="admonition-how-dynamic-dispatch-works-title">
+<summary class="admonition-title">
+<div id="admonition-how-dynamic-dispatch-works-title">
+<p>How dynamic dispatch works</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-how-dynamic-dispatch-works"></a>
+</summary>
+<div>
+<p>The full explanation of dynamic dispatch can be found in <a href="https://doc.rust-lang.org/book/ch17-02-trait-objects.html">chapter 17 of the Rust book</a>.
+Here's a condensed version:</p>
+<p>The <code>dyn</code> keyword generates a table of function pointers (<strong>vtable</strong>) for each type that implements a certain trait.
+The vtable contains pointers to all methods of the trait and the <code>drop</code> method (destructor).</p>
+<p>A pointer to this vtable is then stored <em>alongside</em> a pointer to the actual value.
+Such a value is often referred to as a <em>trait object</em>.
+It uses the same mechanism of storing metadata with a pointer (fat pointer) as the slice type.</p>
+<p>This means that dynamic dispatch only works with some kind of pointer type, like <code>Box&lt;dyn Foo&gt;</code> or <code>&amp;dyn Foo</code>.
+The <em>memory size</em> of the value behind the poiner is unknown at compile time.
+That's OK though, because the only thing you can do with such a value is call methods on it that actually do know its size.</p>
+</div>
+</details>
+<p>Finally, in your clients that need to access a distribution center, you can write:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let center = new_distribution_center();
+center.store();
+center.retrieve();
+<span class="boring">}</span></code></pre></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="shared_lib.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="web_app_http.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="shared_lib.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="web_app_http.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

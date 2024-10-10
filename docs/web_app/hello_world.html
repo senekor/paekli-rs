@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hello World - paekli-rs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item affix "><a href="../setup.html">Project Setup</a></li><li class="chapter-item affix "><li class="part-title">Clients</li><li class="chapter-item "><a href="../cli.html"><strong aria-hidden="true">1.</strong> CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cli/arg_parse.html"><strong aria-hidden="true">1.1.</strong> Argument Parsing</a></li><li class="chapter-item "><a href="../cli/send_receive.html"><strong aria-hidden="true">1.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../cli/content_storage.html"><strong aria-hidden="true">1.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../cli/additional_features.html"><strong aria-hidden="true">1.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../cli/where_next.html"><strong aria-hidden="true">1.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../python_module.html"><strong aria-hidden="true">2.</strong> Python Module</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python_module/hello_world.html"><strong aria-hidden="true">2.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../python_module/send_receive.html"><strong aria-hidden="true">2.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../python_module/content_storage.html"><strong aria-hidden="true">2.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../python_module/additional_features.html"><strong aria-hidden="true">2.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../python_module/where_next.html"><strong aria-hidden="true">2.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item expanded "><a href="../web_app.html"><strong aria-hidden="true">3.</strong> Web App</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../web_app/hello_world.html" class="active"><strong aria-hidden="true">3.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../web_app/gh_pages.html"><strong aria-hidden="true">3.2.</strong> GitHub Pages</a></li><li class="chapter-item "><a href="../web_app/send_receive.html"><strong aria-hidden="true">3.3.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../web_app/content_storage.html"><strong aria-hidden="true">3.4.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../web_app/additional_features.html"><strong aria-hidden="true">3.5.</strong> Additional Features</a></li><li class="chapter-item "><a href="../web_app/where_next.html"><strong aria-hidden="true">3.6.</strong> Where to Go Next</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Making it Pretty</div></li></ol></li><li class="chapter-item "><li class="part-title">Servers</li><li class="chapter-item "><a href="../http.html"><strong aria-hidden="true">4.</strong> HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../http/hello_world.html"><strong aria-hidden="true">4.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../http/send_receive.html"><strong aria-hidden="true">4.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../http/content_storage.html"><strong aria-hidden="true">4.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../http/additional_features.html"><strong aria-hidden="true">4.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../http/where_next.html"><strong aria-hidden="true">4.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../websocket.html"><strong aria-hidden="true">5.</strong> WebSocket</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../websocket/hello_world.html"><strong aria-hidden="true">5.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../websocket/notifications.html"><strong aria-hidden="true">5.2.</strong> Notifications</a></li><li class="chapter-item "><a href="../websocket/individual_recipients.html"><strong aria-hidden="true">5.3.</strong> Individual Recipients</a></li></ol></li><li class="chapter-item "><li class="part-title">Storage Backends</li><li class="chapter-item "><a href="../file_system.html"><strong aria-hidden="true">6.</strong> File System Storage</a></li><li class="chapter-item "><a href="../sql_database.html"><strong aria-hidden="true">7.</strong> SQL Database</a></li><li class="chapter-item "><a href="../http_client.html"><strong aria-hidden="true">8.</strong> HTTP Client</a></li><li class="chapter-item affix "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../shared_lib.html"><strong aria-hidden="true">9.</strong> Shared Library</a></li><li class="chapter-item "><a href="../storage_backend.html"><strong aria-hidden="true">10.</strong> Storage Backend</a></li><li class="chapter-item "><a href="../web_app_http.html"><strong aria-hidden="true">11.</strong> Web App and HTTP</a></li><li class="chapter-item "><a href="../web_app_websocket.html"><strong aria-hidden="true">12.</strong> Web App and WebSocket</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">paekli-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs/edit/main/src/web_app/hello_world.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h1>
+<p>Fair warning: The web app has a bit more setup than the other components.
+Don't worry though, we'll manage just fine together!</p>
+<h2 id="installing-dependencies"><a class="header" href="#installing-dependencies">Installing dependencies</a></h2>
+<p>When you install the Rust toolchain, it only supports compiling to your native platform by default.
+To add support to compile to WebAssembly, let's add the necessary target:</p>
+<pre><code class="language-sh">rustup target add wasm32-unknown-unknown
+</code></pre>
+<p>We're gonna use a <em>bundler</em> called <a href="https://trunkrs.dev/">trunk</a> to help us manage all the boilerplate around a web app:</p>
+<pre><code class="language-sh">cargo install --locked trunk
+</code></pre>
+<p>Let's initialize a new package for the web app:</p>
+<pre><code class="language-sh">cargo new paekli-web
+</code></pre>
+<p>Add a couple libraries we'll need:</p>
+<pre><code class="language-sh">cd paekli-web
+cargo add gloo
+cargo add leptos --features csr
+cargo add console_error_panic_hook
+</code></pre>
+<p>Trunk puts its output into a different directory than cargo, you probably want to git-ignore that:</p>
+<pre><code class="language-sh"># still inside paekli-web/
+echo dist &gt; .gitignore
+</code></pre>
+<h2 id="dummy-indexhtml"><a class="header" href="#dummy-indexhtml">Dummy <code>index.html</code></a></h2>
+<p>A normal, plain website might be nothing more than an HTML file.
+That's exactly how our web app is going to <em>start</em> as: a plain HTML file without any content.
+Its only purpose is to load the wasm code that generates the interactive web app.
+Hopefully that makes sense, but if it doesn't, don't worry.
+I'm just trying to explain why we need the following boilerplate.</p>
+<p>Add an <code>index.html</code> <em>next to your Cargo.toml</em>.
+The location is important.
+Add the following content:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello Rust Workshop!&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>That's already enough to get the (empty) web app off the ground.
+Let's start the development server of our bundler <code>trunk</code>:</p>
+<pre><code class="language-sh">trunk serve
+</code></pre>
+<p>It might take a minute to compile the first time, but then it should display a URL where you can see your web app.
+It's probably <a href="http://localhost:8080">localhost:8080</a>.</p>
+<p>The page will be empty (because of the empty <code>&lt;body&gt;&lt;/body&gt;</code> tag), but the custom title should be visible in the browser tab.</p>
+<h2 id="running-rust-in-the-browser"><a class="header" href="#running-rust-in-the-browser">Running Rust in the browser</a></h2>
+<p>So far, we haven't actually written any Rust that compiles to wasm to run in the browser.
+Let's change that.
+How about this:</p>
+<pre><pre class="playground"><code class="language-rust">use leptos::*;
+
+fn main() {
+    mount_to_body(|| {
+        view! {
+            &lt;h1&gt;Hello WebAssembly!&lt;/h1&gt;
+        }
+    })
+}</code></pre></pre>
+<p>If you add this change to <code>main.rs</code> while you keep <code>trunk serve</code> running, your web app should automatically recompile and <em>reload in the browser</em> once compilation is done.
+Pretty decent development experience!
+Can you see the result in the browser?</p>
+<p>Let's explain a little bit what's going on here.
+Remember the empty <code>&lt;body&gt;&lt;/body&gt;</code> from the <code>index.html</code>?
+This body tag is the container of all the content on a website.
+With the function <code>mount_to_body</code>, we're letting our Rust code take over the body tag and therefore the entire content of the website.
+The argument passed to <code>mount_to_body</code> is a simple function (notice that <code>||</code> is in this case the start of a <em>closure</em> without any arguments).
+The function returns a <code>view!</code> macro with the content <code>&lt;h1&gt;Hello WebAssembly!&lt;/h1&gt;</code>.
+The <code>view!</code> macro allows us to write HTML-like syntax which will be inserted into the website.
+This might look alien to you, but it's very convenient for seasoned web developers and pervasive in the JavaScript world.</p>
+<h2 id="setting-up-decent-error-messages"><a class="header" href="#setting-up-decent-error-messages">Setting up decent error messages</a></h2>
+<p>We're still inexperienced when it comes to web development with Rust, so we might make a mistake or two.
+If our app crashes, it would be nice to get some decent error message.
+Let's add the following at the top of our main function:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>console_error_panic_hook::set_once();
+panic!("I don't know what to do!");
+<span class="boring">}</span></code></pre></pre>
+<p>In the browser, the "Hello WebAssembly" text should be gone.
+This is because the app crashed before it was able to display the text.
+If you open the browser dev tools with <code>F12</code> and click on the "Console" tab, you should see our custom error message and a line number.
+That's good enough for our purposes!</p>
+<p>Remove the <code>panic!</code> statement (but keep the panic hook) and your app should work again.</p>
+<div id="admonition-release-sorry-were-not-quite-there-yet" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-sorry-were-not-quite-there-yet-title">
+<div class="admonition-title">
+<div id="admonition-release-sorry-were-not-quite-there-yet-title">
+<p><del>Release</del> sorry, we're not quite there yet</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-release-sorry-were-not-quite-there-yet"></a>
+</div>
+<div>
+<p>Congratulations!
+You are now a fully-oxidized web developer 🥳</p>
+<p>You might expect me to pester you about cuttting a relaeas at this point.
+But setting up the release of the web app is a little more work, so it deserves its own section.
+It'll be worth it though!
+In contrast to the other components, your users <em>won't even have to install your web app</em>.
+We will be deploying to GitHub Pages, freely accessible to anyone who can click a link!</p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../web_app.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../web_app/gh_pages.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../web_app.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../web_app/gh_pages.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

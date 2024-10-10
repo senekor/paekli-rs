@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Argument Parsing - paekli-rs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item affix "><a href="../setup.html">Project Setup</a></li><li class="chapter-item affix "><li class="part-title">Clients</li><li class="chapter-item expanded "><a href="../cli.html"><strong aria-hidden="true">1.</strong> CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/arg_parse.html" class="active"><strong aria-hidden="true">1.1.</strong> Argument Parsing</a></li><li class="chapter-item "><a href="../cli/send_receive.html"><strong aria-hidden="true">1.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../cli/content_storage.html"><strong aria-hidden="true">1.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../cli/additional_features.html"><strong aria-hidden="true">1.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../cli/where_next.html"><strong aria-hidden="true">1.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../python_module.html"><strong aria-hidden="true">2.</strong> Python Module</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python_module/hello_world.html"><strong aria-hidden="true">2.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../python_module/send_receive.html"><strong aria-hidden="true">2.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../python_module/content_storage.html"><strong aria-hidden="true">2.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../python_module/additional_features.html"><strong aria-hidden="true">2.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../python_module/where_next.html"><strong aria-hidden="true">2.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../web_app.html"><strong aria-hidden="true">3.</strong> Web App</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../web_app/hello_world.html"><strong aria-hidden="true">3.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../web_app/gh_pages.html"><strong aria-hidden="true">3.2.</strong> GitHub Pages</a></li><li class="chapter-item "><a href="../web_app/send_receive.html"><strong aria-hidden="true">3.3.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../web_app/content_storage.html"><strong aria-hidden="true">3.4.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../web_app/additional_features.html"><strong aria-hidden="true">3.5.</strong> Additional Features</a></li><li class="chapter-item "><a href="../web_app/where_next.html"><strong aria-hidden="true">3.6.</strong> Where to Go Next</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Making it Pretty</div></li></ol></li><li class="chapter-item "><li class="part-title">Servers</li><li class="chapter-item "><a href="../http.html"><strong aria-hidden="true">4.</strong> HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../http/hello_world.html"><strong aria-hidden="true">4.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../http/send_receive.html"><strong aria-hidden="true">4.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../http/content_storage.html"><strong aria-hidden="true">4.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../http/additional_features.html"><strong aria-hidden="true">4.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../http/where_next.html"><strong aria-hidden="true">4.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../websocket.html"><strong aria-hidden="true">5.</strong> WebSocket</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../websocket/hello_world.html"><strong aria-hidden="true">5.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../websocket/notifications.html"><strong aria-hidden="true">5.2.</strong> Notifications</a></li><li class="chapter-item "><a href="../websocket/individual_recipients.html"><strong aria-hidden="true">5.3.</strong> Individual Recipients</a></li></ol></li><li class="chapter-item "><li class="part-title">Storage Backends</li><li class="chapter-item "><a href="../file_system.html"><strong aria-hidden="true">6.</strong> File System Storage</a></li><li class="chapter-item "><a href="../sql_database.html"><strong aria-hidden="true">7.</strong> SQL Database</a></li><li class="chapter-item "><a href="../http_client.html"><strong aria-hidden="true">8.</strong> HTTP Client</a></li><li class="chapter-item affix "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../shared_lib.html"><strong aria-hidden="true">9.</strong> Shared Library</a></li><li class="chapter-item "><a href="../storage_backend.html"><strong aria-hidden="true">10.</strong> Storage Backend</a></li><li class="chapter-item "><a href="../web_app_http.html"><strong aria-hidden="true">11.</strong> Web App and HTTP</a></li><li class="chapter-item "><a href="../web_app_websocket.html"><strong aria-hidden="true">12.</strong> Web App and WebSocket</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">paekli-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs/edit/main/src/cli/arg_parse.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="command-line-argument-parsing"><a class="header" href="#command-line-argument-parsing">Command Line Argument Parsing</a></h1>
+<p>The library we'll be using to write our CLI is called <code>clap</code>.
+You can find its documentation as usual on <a href="https://docs.rs/clap">docs.rs/clap</a>.
+There are other libraries to parse CLI-arguments, but <code>clap</code> is the most popular and user-friendly one.
+The alternatives focus on fast compile times, which isn't a top-priority for <code>clap</code>.</p>
+<h2 id="adding-the-dependency"><a class="header" href="#adding-the-dependency">Adding the dependency</a></h2>
+<p>A small stumbling block for Rust's dependency management can be libraries with missing feature flags.
+Helpfully, the output of <code>cargo add</code> shows us a list of included and excluded features.
+I recommend to check this list every time you add a dependency and look for missing features you may want to include as well.
+The coolest feature of <code>clap</code> is also its most compile-time heavy one, so it is gated behind a non-default feature flag called <code>derive</code>.</p>
+<p>Let's add <code>clap</code> to our dependencies:</p>
+<pre><code class="language-sh"># cd paekli-cli
+cargo add clap --features derive
+</code></pre>
+<p>If we forget about <code>--features derive</code>, some of the later code won't compile, and it wouldn't be obvious why.
+We can confirm that it worked by checking that <code>paekli-cli/Cargo.toml</code> now contains the following:</p>
+<pre><code class="language-toml">[dependencies]
+clap = { version = "4.5.1", features = ["derive"] }
+</code></pre>
+<h2 id="a-bare-bones-clap-app"><a class="header" href="#a-bare-bones-clap-app">A bare bones <code>clap</code>-app</a></h2>
+<p>Here is the absolute minimum code to use clap:</p>
+<pre><pre class="playground"><code class="language-rust">use clap::Parser;
+
+#[derive(Parser)]
+struct Cli;
+
+fn main() {
+    let _args = Cli::parse();
+    println!("Paekli LLC is currentli closed 😢");
+}</code></pre></pre>
+<p>What we're doing here is defining our CLI as a <em>data type</em>.
+If you think about it, the structure of a standard CLI can easily be represented as a native Rust type.
+For now, our <code>struct Cli;</code> is empty and therefore doesn't accept any arguments.</p>
+<p>To parse the actual command line arguments into this data structure, we <code>#[derive(Parser)]</code> on it, which is a macro we imported with <code>use clap::Parser;</code>.
+Finally, we simply call <code>Cli::parse();</code> in our main function.</p>
+<p>If we run this program, we should get the same output as before.
+So you'd be forgiven to think that didn't accomplish anything.
+However, <code>clap</code> generates a help page for you, even if you don't specify a single CLI argument.
+You can see it by running:</p>
+<pre><code class="language-sh">cargo run --quiet -- --help
+</code></pre>
+<p>Note how <code>--</code> is used to distinguish between the arguments passed to <code>cargo</code> and the ones passed to your program.
+If we had a pre-compiled binary, we could simply run <code>paekli-cli --help</code>.</p>
+<pre><code>&gt; cargo run --quiet -- --help
+Usage: paekli-cli
+
+Options:
+  -h, --help  Print help
+</code></pre>
+<p>It's great to have a standard help page, as is expected from every CLI tool.
+It will automatically be kept up-to-date with the structure of our <code>Cli</code> data type, courtesy of Rust's powerful macros.</p>
+<p>It is also good practice to let your users check which version of your program their running.
+You wouldn't want to get bug reports for outdated software!
+Change your <code>Cli</code> definition like so, to add a version flag:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Parser)]
+#[clap(version)]
+struct Cli;
+<span class="boring">}</span></code></pre></pre>
+<p>Now observe the output of:</p>
+<pre><code class="language-sh">cargo run --quiet -- --version
+cargo run --quiet -- --help
+</code></pre>
+<p>We should also provide at least a small description of what paekli-cli does to our users.
+<code>clap</code> automatically includes your doc-comments in the output to users, so let's add one to our CLI:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// send and receive joy with ✨ paekli-cli ✨
+#[derive(Parser)]
+#[clap(version)]
+struct Cli;
+<span class="boring">}</span></code></pre></pre>
+<p>Note the tripe-slash <code>///</code>, which distinguished a doc-comment from a regular comment.
+The comment should now show up on the help page.</p>
+<p>Lovely!
+That's a great foundation to build an enjoyable CLI on top of.</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-release"></a>
+</div>
+<div>
+<p>Our users can now get information about the purpose of the app, how to use it and the version they're running.
+That's definitely worthy of a new release!
+Recall the process:</p>
+<pre><code>update Cargo.toml ; commit ; push ; tag v0.1.X ; push --tags
+</code></pre>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../cli.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../cli/send_receive.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../cli.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../cli/send_receive.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

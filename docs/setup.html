@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Project Setup - paekli-rs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/catppuccin.css">
+        <link rel="stylesheet" href="./theme/catppuccin-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item affix "><a href="setup.html" class="active">Project Setup</a></li><li class="chapter-item affix "><li class="part-title">Clients</li><li class="chapter-item "><a href="cli.html"><strong aria-hidden="true">1.</strong> CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cli/arg_parse.html"><strong aria-hidden="true">1.1.</strong> Argument Parsing</a></li><li class="chapter-item "><a href="cli/send_receive.html"><strong aria-hidden="true">1.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="cli/content_storage.html"><strong aria-hidden="true">1.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="cli/additional_features.html"><strong aria-hidden="true">1.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="cli/where_next.html"><strong aria-hidden="true">1.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="python_module.html"><strong aria-hidden="true">2.</strong> Python Module</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python_module/hello_world.html"><strong aria-hidden="true">2.1.</strong> Hello World</a></li><li class="chapter-item "><a href="python_module/send_receive.html"><strong aria-hidden="true">2.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="python_module/content_storage.html"><strong aria-hidden="true">2.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="python_module/additional_features.html"><strong aria-hidden="true">2.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="python_module/where_next.html"><strong aria-hidden="true">2.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="web_app.html"><strong aria-hidden="true">3.</strong> Web App</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web_app/hello_world.html"><strong aria-hidden="true">3.1.</strong> Hello World</a></li><li class="chapter-item "><a href="web_app/gh_pages.html"><strong aria-hidden="true">3.2.</strong> GitHub Pages</a></li><li class="chapter-item "><a href="web_app/send_receive.html"><strong aria-hidden="true">3.3.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="web_app/content_storage.html"><strong aria-hidden="true">3.4.</strong> Content and Storage</a></li><li class="chapter-item "><a href="web_app/additional_features.html"><strong aria-hidden="true">3.5.</strong> Additional Features</a></li><li class="chapter-item "><a href="web_app/where_next.html"><strong aria-hidden="true">3.6.</strong> Where to Go Next</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Making it Pretty</div></li></ol></li><li class="chapter-item "><li class="part-title">Servers</li><li class="chapter-item "><a href="http.html"><strong aria-hidden="true">4.</strong> HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="http/hello_world.html"><strong aria-hidden="true">4.1.</strong> Hello World</a></li><li class="chapter-item "><a href="http/send_receive.html"><strong aria-hidden="true">4.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="http/content_storage.html"><strong aria-hidden="true">4.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="http/additional_features.html"><strong aria-hidden="true">4.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="http/where_next.html"><strong aria-hidden="true">4.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="websocket.html"><strong aria-hidden="true">5.</strong> WebSocket</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="websocket/hello_world.html"><strong aria-hidden="true">5.1.</strong> Hello World</a></li><li class="chapter-item "><a href="websocket/notifications.html"><strong aria-hidden="true">5.2.</strong> Notifications</a></li><li class="chapter-item "><a href="websocket/individual_recipients.html"><strong aria-hidden="true">5.3.</strong> Individual Recipients</a></li></ol></li><li class="chapter-item "><li class="part-title">Storage Backends</li><li class="chapter-item "><a href="file_system.html"><strong aria-hidden="true">6.</strong> File System Storage</a></li><li class="chapter-item "><a href="sql_database.html"><strong aria-hidden="true">7.</strong> SQL Database</a></li><li class="chapter-item "><a href="http_client.html"><strong aria-hidden="true">8.</strong> HTTP Client</a></li><li class="chapter-item affix "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="shared_lib.html"><strong aria-hidden="true">9.</strong> Shared Library</a></li><li class="chapter-item "><a href="storage_backend.html"><strong aria-hidden="true">10.</strong> Storage Backend</a></li><li class="chapter-item "><a href="web_app_http.html"><strong aria-hidden="true">11.</strong> Web App and HTTP</a></li><li class="chapter-item "><a href="web_app_websocket.html"><strong aria-hidden="true">12.</strong> Web App and WebSocket</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">paekli-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs/edit/main/src/setup.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h1>
+<p>Since the purpose of this project is to be production-ready, we won't take any shortcuts.
+The following concepts are central to the project:</p>
+<ul>
+<li>version control</li>
+<li>automatic testing &amp; delivery</li>
+</ul>
+<h2 id="version-control"><a class="header" href="#version-control">Version Control</a></h2>
+<p>For the automation part, we'll be using <a href="https://docs.github.com/en/actions">GitHub Actions</a>.
+This is unfortunately a proprietary automation platform by GitHub, which is owned by Microsoft.
+However, it is provided for free and many developers have experience with it, so it is the most pragmatic choice for now.
+I'm keeping my eyes open for more FOSS-friendly alternatives.</p>
+<p><a href="https://github.com/new?name=paekli-rs">Create a new repository on GitHub</a>.
+It must be called <code>paekli-rs</code>, since some of the automation &amp; tooling relies on that name.
+Making it generic would be overly complex and the error messages are bad, so do yourself a favor and stick to the name <code>paekli-rs</code>.
+Also, don't add your code for this project to a subdirectory of a different repository where you might be storing other Rust exercises already.
+This will cause unnecessary headaches with mismatched paths in scripts.</p>
+<p>You also need to create a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">cargo workspace</a> in your new repo.
+We will be adding multiple crates during the project, a workspace makes it easier to manage them.
+Some of our project automation also relies on its presence.
+Add a file called <code>Cargo.toml</code> at the root of your repository with the following content:</p>
+<pre><code class="language-toml">[workspace]
+resolver = "2"
+members = []
+
+[workspace.package]
+repository = "https://github.com/&lt;YOUR_USERNAME&gt;/paekli-rs"
+</code></pre>
+<p>Fill in your username in the <code>repository</code> url, it's needed for the project automation later.</p>
+<h2 id="cicd"><a class="header" href="#cicd">CI/CD</a></h2>
+<p>In order to facilitate a "continuous integration" workflow, we need to make sure that coding standards are uphelp and tests pass on the main branch.
+GitHub Actions provides this automation.
+Create a new automation workflow by adding a file at <code>.github/workflows/test.yml</code> (from the root of your repository).</p>
+<pre><code class="language-yaml">name: Test
+on: push
+
+jobs:
+  ci:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Ensure standard formatting
+        run: cargo fmt --check
+      - name: Check code quality with clippy
+        run: cargo clippy -- --deny warnings
+      - name: Run tests
+        run: cargo test
+</code></pre>
+<p>This will check that:</p>
+<ol>
+<li>Your code is properly formatted.</li>
+<li>Clippy doesn't have any suggestions for improvement.</li>
+<li>All tests are passing.</li>
+</ol>
+<p>If you would like to know more about the syntax of this file, the capabilities of GitHub Actions and how to write such a workflow yourself, check out the <a href="https://docs.github.com/en/actions">GitHub Actions documentation</a>.</p>
+<p>For the "continuous delivery" part, we need to make sure that any new features we develop can quickly be delivered into the hands of our users.
+There is an awesome project called <code>cargo-dist</code>, which can create a GitHub Actions workflow that automatically compiles your program to be downloaded by users whenever you push a new version tag.
+That's exactly what we need!</p>
+<p>Create a stub for the CLI component so you have an actual Rust package that can be compiled:</p>
+<pre><code class="language-sh">cargo new paekli-cli
+</code></pre>
+<p>This command should automatically add the new package to your cargo workspace, so the <code>members</code> list in the top-level <code>Cargo.toml</code> should contain the string <code>"paekli-cli"</code>.
+It it doesn't, something in your workspace manifest is probably misconfigured.</p>
+<p>Change the code in <code>paekli-cli/src/main.rs</code> to the following:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    panic!("Paekli LLC is currentli closed 😢");
+}
+
+#[test]
+#[should_panic]
+fn paekli_llc_is_closed() {
+    main();
+}</code></pre></pre>
+<p>That's a good enough stub, we even have a test for our continuous integration workflow to run.</p>
+<p>Next, install <code>cargo-dist</code> and initialize it.
+During initialization, you will be prompted about which platforms you want to build for, which installers to generate and maybe more.
+It mostly doesn't matter for the purpose of this project.
+Just make sure you enable at least one installer that's applicable to you so you can easily test the results.
+<code>shell</code> should be enough.</p>
+<pre><code class="language-sh">cargo install cargo-dist
+cargo dist init
+</code></pre>
+<details id="admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository" class="admonition admonish-danger" role="note" aria-labelledby="admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository-title">
+<summary class="admonition-title">
+<div id="admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository-title">
+<p>Github CI support requires you to specify the URL of your repository</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository"></a>
+</summary>
+<div>
+<p>If you're getting that error, there is something wrong with your <code>Cargo.toml</code> files.</p>
+<p>First, make sure your top-level <code>Cargo.toml</code> contains the url to your repository
+You have to replace your GitHub username in the url!</p>
+<pre><code class="language-toml">[workspace.package]
+repository = "https://github.com/&lt;YOUR_USERNAME&gt;/paekli-rs"
+</code></pre>
+<p>Next, make sure the <code>Cargo.toml</code> in the <code>paekli-cli</code> directory contains a reference to the url in the workspace:</p>
+<pre><code class="language-toml">[package]
+# ... other keys like name, version, edition ...
+repository.workspace = true
+</code></pre>
+<p>Continue once you can run <code>cargo dist init</code> without errors.</p>
+</div>
+</details>
+<p>At this point, you should have a generated file at <code>.github/workflows/release.yml</code>.</p>
+<p>To enjoy the fruits of your labor, trigger your first release workflow as such:</p>
+<pre><code class="language-sh"># Commit and push all your current changes.
+git add --all ; git commit ; git push
+# Create and push a version tag.
+# cargo-dist recognizes this and releases all packages with a matching version.
+git tag v0.1.0 ; git push --tags
+</code></pre>
+<p>When you navigate to your repository on GitHub, you should see the release workflow running under the "Actions" tab.
+Once that is complete, go back to the front page of your repo.
+There should be a new release in the sidebar on the right.
+If you click on that, you should see a list of all compiled binaries ready for download as well as a simple shell command for installation, assuming you enabled that during <code>cargo dist init</code>.</p>
+<div id="admonition-where-to-go-next" class="admonition admonish-success" role="note" aria-labelledby="admonition-where-to-go-next-title">
+<div class="admonition-title">
+<div id="admonition-where-to-go-next-title">
+<p>Where to go next</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-where-to-go-next"></a>
+</div>
+<div>
+<p>Congratulations!</p>
+<p>Now that you're ready to do some serious software development, it's time to choose your first component to implement!
+Unless you have a strong desire to do something else, I recommend to <strong>start with the <a href="cli.html">CLI</a></strong>.
+It is the easiest component to implement and its guide is the most detailed.
+The other guides are still self-contained, but they provide fewer explanations of steps that are identical or similar for all components.</p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="cli.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="cli.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

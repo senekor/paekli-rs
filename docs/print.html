@@ -1,0 +1,2753 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>paekli-rs</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/catppuccin.css">
+        <link rel="stylesheet" href="./theme/catppuccin-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item affix "><a href="setup.html">Project Setup</a></li><li class="chapter-item affix "><li class="part-title">Clients</li><li class="chapter-item "><a href="cli.html"><strong aria-hidden="true">1.</strong> CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="cli/arg_parse.html"><strong aria-hidden="true">1.1.</strong> Argument Parsing</a></li><li class="chapter-item "><a href="cli/send_receive.html"><strong aria-hidden="true">1.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="cli/content_storage.html"><strong aria-hidden="true">1.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="cli/additional_features.html"><strong aria-hidden="true">1.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="cli/where_next.html"><strong aria-hidden="true">1.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="python_module.html"><strong aria-hidden="true">2.</strong> Python Module</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="python_module/hello_world.html"><strong aria-hidden="true">2.1.</strong> Hello World</a></li><li class="chapter-item "><a href="python_module/send_receive.html"><strong aria-hidden="true">2.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="python_module/content_storage.html"><strong aria-hidden="true">2.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="python_module/additional_features.html"><strong aria-hidden="true">2.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="python_module/where_next.html"><strong aria-hidden="true">2.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="web_app.html"><strong aria-hidden="true">3.</strong> Web App</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web_app/hello_world.html"><strong aria-hidden="true">3.1.</strong> Hello World</a></li><li class="chapter-item "><a href="web_app/gh_pages.html"><strong aria-hidden="true">3.2.</strong> GitHub Pages</a></li><li class="chapter-item "><a href="web_app/send_receive.html"><strong aria-hidden="true">3.3.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="web_app/content_storage.html"><strong aria-hidden="true">3.4.</strong> Content and Storage</a></li><li class="chapter-item "><a href="web_app/additional_features.html"><strong aria-hidden="true">3.5.</strong> Additional Features</a></li><li class="chapter-item "><a href="web_app/where_next.html"><strong aria-hidden="true">3.6.</strong> Where to Go Next</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Making it Pretty</div></li></ol></li><li class="chapter-item "><li class="part-title">Servers</li><li class="chapter-item "><a href="http.html"><strong aria-hidden="true">4.</strong> HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="http/hello_world.html"><strong aria-hidden="true">4.1.</strong> Hello World</a></li><li class="chapter-item "><a href="http/send_receive.html"><strong aria-hidden="true">4.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="http/content_storage.html"><strong aria-hidden="true">4.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="http/additional_features.html"><strong aria-hidden="true">4.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="http/where_next.html"><strong aria-hidden="true">4.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="websocket.html"><strong aria-hidden="true">5.</strong> WebSocket</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="websocket/hello_world.html"><strong aria-hidden="true">5.1.</strong> Hello World</a></li><li class="chapter-item "><a href="websocket/notifications.html"><strong aria-hidden="true">5.2.</strong> Notifications</a></li><li class="chapter-item "><a href="websocket/individual_recipients.html"><strong aria-hidden="true">5.3.</strong> Individual Recipients</a></li></ol></li><li class="chapter-item "><li class="part-title">Storage Backends</li><li class="chapter-item "><a href="file_system.html"><strong aria-hidden="true">6.</strong> File System Storage</a></li><li class="chapter-item "><a href="sql_database.html"><strong aria-hidden="true">7.</strong> SQL Database</a></li><li class="chapter-item "><a href="http_client.html"><strong aria-hidden="true">8.</strong> HTTP Client</a></li><li class="chapter-item affix "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="shared_lib.html"><strong aria-hidden="true">9.</strong> Shared Library</a></li><li class="chapter-item "><a href="storage_backend.html"><strong aria-hidden="true">10.</strong> Storage Backend</a></li><li class="chapter-item "><a href="web_app_http.html"><strong aria-hidden="true">11.</strong> Web App and HTTP</a></li><li class="chapter-item "><a href="web_app_websocket.html"><strong aria-hidden="true">12.</strong> Web App and WebSocket</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">paekli-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-paekli-rs-"><a class="header" href="#-paekli-rs-">✨ paekli-rs ✨</a></h1>
+<p>This is a guide for an exercise project in Rust.
+It is intended as the next thing to do after reading <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a>.</p>
+<p>The aim of paekli-rs is to bridge the gap between <em>the book</em> and production-ready code, emphasizing among other things:</p>
+<ul>
+<li>library usage</li>
+<li>inter-process communication</li>
+<li>integration in a polyglot environment</li>
+<li>automated testing and delivery (CI/CD)</li>
+<li>having lots of fun! 😃</li>
+</ul>
+<h2 id="the-topic"><a class="header" href="#the-topic">The Topic</a></h2>
+<p>In order to have a little bit of fun, the application will be themed as a simulation of a postal service.
+In practice, that's just a messaging application.
+This topic was chosen because its feature set is very flexible and can adapt to what and how much <strong>you</strong> want to do.</p>
+<p>Our postal service could be sending "packages" around, but that word has another meaning in the software world.
+So, we'll be using the less ambiguous term <strong>paekli</strong> to refer to deliverables in our business domain.</p>
+<h2 id="choose-your-own-components"><a class="header" href="#choose-your-own-components">Choose your own components</a></h2>
+<p>This book is structured around self-contained guides for what we'll call <em>components</em>.
+You can choose to implement almost any combination of them in almost any order.
+In its simplest form, the application can be a single component, e.g. a CLI app, without any integrations with other components.
+If you choose to go the extra mile, the application can grow into a diverse set of interacting clients and servers.</p>
+<p>For example, a python script might call into a Rust library that sends a paekli to an http server which live-updates a wasm-based browser app over websocket!
+Very cool!</p>
+<p>As you can see in the sidebar, the components are loosely categorized into <strong>clients</strong>, <strong>servers</strong> and <strong>storage backends</strong>.</p>
+<ul>
+<li>Clients can be stand-alone and may use servers and storage backends.</li>
+<li>Servers can be stand-alone, but are probably difficult to use without a client.
+They may also use storage backends.</li>
+<li>Storage backends can't be stand-alone, as their only purpose is to be used by clients and servers.</li>
+</ul>
+<div id="admonition-choose-your-own-difficulty" class="admonition admonish-tip" role="note" aria-labelledby="admonition-choose-your-own-difficulty-title">
+<div class="admonition-title">
+<div id="admonition-choose-your-own-difficulty-title">
+<p>Choose your own difficulty</p>
+</div>
+<a class="admonition-anchor-link" href="introduction.html#admonition-choose-your-own-difficulty"></a>
+</div>
+<div>
+<p>The guides are supposed to be at moderate to low difficulty, although there is some variability.
+If you'd like a bigger challenge, you are always welcome to go off the beaten path!
+Are you a web developer and find the HTTP server guide boring?
+Invent a new feature that requires you to use query params and try to make them type-safe.
+You get the idea.
+The more you go off the beaten path, the more difficult it will be to integrate different components, which might be exactly the challenge you're looking for.</p>
+</div>
+</div>
+<h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
+<p>The book assumes that you're using a Unix-like operating system.
+Linux is officially supported, but Mac should work just as well.
+If you're on Windows, you should be fine by using <a href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL</a>.
+However, please do not open issues related to that.</p>
+<p>You also need to be familiar with version control, i.e. <a href="https://git-scm.com/">git</a>.
+If you aren't, paekli-rs is probably not right for you.
+This book assumes you use git, but if you know what you're doing, feel free to use a git-compatible alternative like the excellent <a href="https://github.com/martinvonz/jj">jujutsu</a>.</p>
+<hr />
+<p>If you're ready to get started, <strong>proceed to the <a href="./setup.html">project setup</a></strong>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h1>
+<p>Since the purpose of this project is to be production-ready, we won't take any shortcuts.
+The following concepts are central to the project:</p>
+<ul>
+<li>version control</li>
+<li>automatic testing &amp; delivery</li>
+</ul>
+<h2 id="version-control"><a class="header" href="#version-control">Version Control</a></h2>
+<p>For the automation part, we'll be using <a href="https://docs.github.com/en/actions">GitHub Actions</a>.
+This is unfortunately a proprietary automation platform by GitHub, which is owned by Microsoft.
+However, it is provided for free and many developers have experience with it, so it is the most pragmatic choice for now.
+I'm keeping my eyes open for more FOSS-friendly alternatives.</p>
+<p><a href="https://github.com/new?name=paekli-rs">Create a new repository on GitHub</a>.
+It must be called <code>paekli-rs</code>, since some of the automation &amp; tooling relies on that name.
+Making it generic would be overly complex and the error messages are bad, so do yourself a favor and stick to the name <code>paekli-rs</code>.
+Also, don't add your code for this project to a subdirectory of a different repository where you might be storing other Rust exercises already.
+This will cause unnecessary headaches with mismatched paths in scripts.</p>
+<p>You also need to create a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">cargo workspace</a> in your new repo.
+We will be adding multiple crates during the project, a workspace makes it easier to manage them.
+Some of our project automation also relies on its presence.
+Add a file called <code>Cargo.toml</code> at the root of your repository with the following content:</p>
+<pre><code class="language-toml">[workspace]
+resolver = "2"
+members = []
+
+[workspace.package]
+repository = "https://github.com/&lt;YOUR_USERNAME&gt;/paekli-rs"
+</code></pre>
+<p>Fill in your username in the <code>repository</code> url, it's needed for the project automation later.</p>
+<h2 id="cicd"><a class="header" href="#cicd">CI/CD</a></h2>
+<p>In order to facilitate a "continuous integration" workflow, we need to make sure that coding standards are uphelp and tests pass on the main branch.
+GitHub Actions provides this automation.
+Create a new automation workflow by adding a file at <code>.github/workflows/test.yml</code> (from the root of your repository).</p>
+<pre><code class="language-yaml">name: Test
+on: push
+
+jobs:
+  ci:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Ensure standard formatting
+        run: cargo fmt --check
+      - name: Check code quality with clippy
+        run: cargo clippy -- --deny warnings
+      - name: Run tests
+        run: cargo test
+</code></pre>
+<p>This will check that:</p>
+<ol>
+<li>Your code is properly formatted.</li>
+<li>Clippy doesn't have any suggestions for improvement.</li>
+<li>All tests are passing.</li>
+</ol>
+<p>If you would like to know more about the syntax of this file, the capabilities of GitHub Actions and how to write such a workflow yourself, check out the <a href="https://docs.github.com/en/actions">GitHub Actions documentation</a>.</p>
+<p>For the "continuous delivery" part, we need to make sure that any new features we develop can quickly be delivered into the hands of our users.
+There is an awesome project called <code>cargo-dist</code>, which can create a GitHub Actions workflow that automatically compiles your program to be downloaded by users whenever you push a new version tag.
+That's exactly what we need!</p>
+<p>Create a stub for the CLI component so you have an actual Rust package that can be compiled:</p>
+<pre><code class="language-sh">cargo new paekli-cli
+</code></pre>
+<p>This command should automatically add the new package to your cargo workspace, so the <code>members</code> list in the top-level <code>Cargo.toml</code> should contain the string <code>"paekli-cli"</code>.
+It it doesn't, something in your workspace manifest is probably misconfigured.</p>
+<p>Change the code in <code>paekli-cli/src/main.rs</code> to the following:</p>
+<pre><pre class="playground"><code class="language-rust">fn main() {
+    panic!("Paekli LLC is currentli closed 😢");
+}
+
+#[test]
+#[should_panic]
+fn paekli_llc_is_closed() {
+    main();
+}</code></pre></pre>
+<p>That's a good enough stub, we even have a test for our continuous integration workflow to run.</p>
+<p>Next, install <code>cargo-dist</code> and initialize it.
+During initialization, you will be prompted about which platforms you want to build for, which installers to generate and maybe more.
+It mostly doesn't matter for the purpose of this project.
+Just make sure you enable at least one installer that's applicable to you so you can easily test the results.
+<code>shell</code> should be enough.</p>
+<pre><code class="language-sh">cargo install cargo-dist
+cargo dist init
+</code></pre>
+<details id="admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository" class="admonition admonish-danger" role="note" aria-labelledby="admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository-title">
+<summary class="admonition-title">
+<div id="admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository-title">
+<p>Github CI support requires you to specify the URL of your repository</p>
+</div>
+<a class="admonition-anchor-link" href="setup.html#admonition-github-ci-support-requires-you-to-specify-the-url-of-your-repository"></a>
+</summary>
+<div>
+<p>If you're getting that error, there is something wrong with your <code>Cargo.toml</code> files.</p>
+<p>First, make sure your top-level <code>Cargo.toml</code> contains the url to your repository
+You have to replace your GitHub username in the url!</p>
+<pre><code class="language-toml">[workspace.package]
+repository = "https://github.com/&lt;YOUR_USERNAME&gt;/paekli-rs"
+</code></pre>
+<p>Next, make sure the <code>Cargo.toml</code> in the <code>paekli-cli</code> directory contains a reference to the url in the workspace:</p>
+<pre><code class="language-toml">[package]
+# ... other keys like name, version, edition ...
+repository.workspace = true
+</code></pre>
+<p>Continue once you can run <code>cargo dist init</code> without errors.</p>
+</div>
+</details>
+<p>At this point, you should have a generated file at <code>.github/workflows/release.yml</code>.</p>
+<p>To enjoy the fruits of your labor, trigger your first release workflow as such:</p>
+<pre><code class="language-sh"># Commit and push all your current changes.
+git add --all ; git commit ; git push
+# Create and push a version tag.
+# cargo-dist recognizes this and releases all packages with a matching version.
+git tag v0.1.0 ; git push --tags
+</code></pre>
+<p>When you navigate to your repository on GitHub, you should see the release workflow running under the "Actions" tab.
+Once that is complete, go back to the front page of your repo.
+There should be a new release in the sidebar on the right.
+If you click on that, you should see a list of all compiled binaries ready for download as well as a simple shell command for installation, assuming you enabled that during <code>cargo dist init</code>.</p>
+<div id="admonition-where-to-go-next" class="admonition admonish-success" role="note" aria-labelledby="admonition-where-to-go-next-title">
+<div class="admonition-title">
+<div id="admonition-where-to-go-next-title">
+<p>Where to go next</p>
+</div>
+<a class="admonition-anchor-link" href="setup.html#admonition-where-to-go-next"></a>
+</div>
+<div>
+<p>Congratulations!</p>
+<p>Now that you're ready to do some serious software development, it's time to choose your first component to implement!
+Unless you have a strong desire to do something else, I recommend to <strong>start with the <a href="cli.html">CLI</a></strong>.
+It is the easiest component to implement and its guide is the most detailed.
+The other guides are still self-contained, but they provide fewer explanations of steps that are identical or similar for all components.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cli"><a class="header" href="#cli">CLI</a></h1>
+<p>Ready to write a <code>paekli-cli</code>?
+Here's what the final product might look like:</p>
+<pre><code>&gt; paekli-cli send carrots --to lisa
+Thank you for trusting Paekli LLC!
+We will deliver your paekli in mint condition.
+
+&gt; paekli-cli receive --for jeremiah
+Error: There is no paekli for jeremiah.
+
+&gt; paekli-cli receive --for lisa
+Here is your paekli:
+carrots
+</code></pre>
+<p>You probably already initialized a <code>paekli-cli</code> package during the project setup.
+If you haven't, simply run <code>cargo new paekli-cli</code> to do so.</p>
+<p>Let's get started!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="command-line-argument-parsing"><a class="header" href="#command-line-argument-parsing">Command Line Argument Parsing</a></h1>
+<p>The library we'll be using to write our CLI is called <code>clap</code>.
+You can find its documentation as usual on <a href="https://docs.rs/clap">docs.rs/clap</a>.
+There are other libraries to parse CLI-arguments, but <code>clap</code> is the most popular and user-friendly one.
+The alternatives focus on fast compile times, which isn't a top-priority for <code>clap</code>.</p>
+<h2 id="adding-the-dependency"><a class="header" href="#adding-the-dependency">Adding the dependency</a></h2>
+<p>A small stumbling block for Rust's dependency management can be libraries with missing feature flags.
+Helpfully, the output of <code>cargo add</code> shows us a list of included and excluded features.
+I recommend to check this list every time you add a dependency and look for missing features you may want to include as well.
+The coolest feature of <code>clap</code> is also its most compile-time heavy one, so it is gated behind a non-default feature flag called <code>derive</code>.</p>
+<p>Let's add <code>clap</code> to our dependencies:</p>
+<pre><code class="language-sh"># cd paekli-cli
+cargo add clap --features derive
+</code></pre>
+<p>If we forget about <code>--features derive</code>, some of the later code won't compile, and it wouldn't be obvious why.
+We can confirm that it worked by checking that <code>paekli-cli/Cargo.toml</code> now contains the following:</p>
+<pre><code class="language-toml">[dependencies]
+clap = { version = "4.5.1", features = ["derive"] }
+</code></pre>
+<h2 id="a-bare-bones-clap-app"><a class="header" href="#a-bare-bones-clap-app">A bare bones <code>clap</code>-app</a></h2>
+<p>Here is the absolute minimum code to use clap:</p>
+<pre><pre class="playground"><code class="language-rust">use clap::Parser;
+
+#[derive(Parser)]
+struct Cli;
+
+fn main() {
+    let _args = Cli::parse();
+    println!("Paekli LLC is currentli closed 😢");
+}</code></pre></pre>
+<p>What we're doing here is defining our CLI as a <em>data type</em>.
+If you think about it, the structure of a standard CLI can easily be represented as a native Rust type.
+For now, our <code>struct Cli;</code> is empty and therefore doesn't accept any arguments.</p>
+<p>To parse the actual command line arguments into this data structure, we <code>#[derive(Parser)]</code> on it, which is a macro we imported with <code>use clap::Parser;</code>.
+Finally, we simply call <code>Cli::parse();</code> in our main function.</p>
+<p>If we run this program, we should get the same output as before.
+So you'd be forgiven to think that didn't accomplish anything.
+However, <code>clap</code> generates a help page for you, even if you don't specify a single CLI argument.
+You can see it by running:</p>
+<pre><code class="language-sh">cargo run --quiet -- --help
+</code></pre>
+<p>Note how <code>--</code> is used to distinguish between the arguments passed to <code>cargo</code> and the ones passed to your program.
+If we had a pre-compiled binary, we could simply run <code>paekli-cli --help</code>.</p>
+<pre><code>&gt; cargo run --quiet -- --help
+Usage: paekli-cli
+
+Options:
+  -h, --help  Print help
+</code></pre>
+<p>It's great to have a standard help page, as is expected from every CLI tool.
+It will automatically be kept up-to-date with the structure of our <code>Cli</code> data type, courtesy of Rust's powerful macros.</p>
+<p>It is also good practice to let your users check which version of your program their running.
+You wouldn't want to get bug reports for outdated software!
+Change your <code>Cli</code> definition like so, to add a version flag:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Parser)]
+#[clap(version)]
+struct Cli;
+<span class="boring">}</span></code></pre></pre>
+<p>Now observe the output of:</p>
+<pre><code class="language-sh">cargo run --quiet -- --version
+cargo run --quiet -- --help
+</code></pre>
+<p>We should also provide at least a small description of what paekli-cli does to our users.
+<code>clap</code> automatically includes your doc-comments in the output to users, so let's add one to our CLI:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// send and receive joy with ✨ paekli-cli ✨
+#[derive(Parser)]
+#[clap(version)]
+struct Cli;
+<span class="boring">}</span></code></pre></pre>
+<p>Note the tripe-slash <code>///</code>, which distinguished a doc-comment from a regular comment.
+The comment should now show up on the help page.</p>
+<p>Lovely!
+That's a great foundation to build an enjoyable CLI on top of.</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="cli/arg_parse.html#admonition-release"></a>
+</div>
+<div>
+<p>Our users can now get information about the purpose of the app, how to use it and the version they're running.
+That's definitely worthy of a new release!
+Recall the process:</p>
+<pre><code>update Cargo.toml ; commit ; push ; tag v0.1.X ; push --tags
+</code></pre>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sending-and-receiving-paekli"><a class="header" href="#sending-and-receiving-paekli">Sending and Receiving Paekli</a></h1>
+<p>It's time to build our first feature.
+The most basic service we offer to our customers is <em>sending</em> and <em>receiving</em> paekli.
+How should we model this in the CLI?
+The most natural choice is the <strong>subcommand</strong>, which is often used by programs that offer many different functionalities.
+For example: <code>add</code>, <code>commit</code> and <code>push</code> are subcommands of <code>git</code>.</p>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="cli/send_receive.html#admonition-info"></a>
+</div>
+<div>
+<p>The code snippets in this guide will become less complete as we go along.
+It is your responsibility to make sure the things you copy-paste integrate correctly with the rest of your code.
+This is also because you are encouraged to add, modify and experiment with things according to your whim and curiosity.
+It's <strong>your</strong> project after all! 😃</p>
+</div>
+</div>
+<p>Subcommands represent a choice out of a finite set of alternatives, that's a perfect fit for an <code>enum</code>.
+Let's try it:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Subcommand)]
+enum Command {
+    Send,
+    Receive,
+}
+
+#[derive(Parser)]
+struct Cli {
+    #[command(subcommand)]
+    command: Command,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The enum definition should be intuitive, but you'll notice the <code>#[derive(Subcommand)]</code> annotation.
+In the struct <code>Cli</code>, we have to add the command as a field, again with a new annotation <code>#[command(subcommand)]</code>.</p>
+<p>The compiler error messages for libraries that provide such annotation-based functionality are usually not very helpful, because the compiler cannot know what annotations you <em>should have added</em>.
+For such libraries, it's best to refer to the documentation.
+Because the libraries are aware of the bad error messages, they usually have great documentation and <code>clap</code> is no exception.</p>
+<p>Now we can use the parsed subcommand in our main function:</p>
+<pre><pre class="playground"><code class="language-rust">const SEND_MESSAGE: &amp;str = "\
+Thank you for trusting Paekli LLC!
+We will deliver your paekli in mint condition.
+* throws your paekli directly in the trash *";
+
+const RECEIVE_MESSAGE: &amp;str = "\
+There aren't any paekli for you at the moment.
+* tries to hide paekli in the trash can *";
+
+fn main() {
+    let args = Cli::parse();
+
+    match args.command {
+        Command::Send =&gt; println!("{SEND_MESSAGE}"),
+        Command::Receive =&gt; println!("{RECEIVE_MESSAGE}"),
+    }
+}</code></pre></pre>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="cli/send_receive.html#admonition-release"></a>
+</div>
+<div>
+<p>Phew!
+We've made some great progress.
+Let's cut a new release to let our users enjoy this new feature.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="content-and-storage"><a class="header" href="#content-and-storage">Content and Storage</a></h1>
+<p>At this point, our users can send and receive paekli.
+However, they probably want to send paekli with some content and they want <em>that content to be received</em>.
+Silly users with their unrealistic feature requests!</p>
+<p>But let's try to make them happy.</p>
+<h2 id="sending-paekli-with-content"><a class="header" href="#sending-paekli-with-content">Sending paekli with content</a></h2>
+<p>The content of a paekli will be another CLI argument.
+Since we only expect content when <em>sending</em> a paekli, we will add the argument to that subcommand.
+Specifying the content of a paekli you're receiving doesn't make sense.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Command {
+    Send { content: String },
+    Receive,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>We will also need to adjust the match-expression to ignore the content in our main function:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>Command::Send { content: _ } =&gt; println!("{SEND_MESSAGE}"),
+<span class="boring">}</span></code></pre></pre>
+<p>Now, try to send a paekli without content and see how the error message helps the user figure out how to use the CLI correctly.</p>
+<h2 id="storing-paekli-for-delivery"><a class="header" href="#storing-paekli-for-delivery">Storing paekli for delivery</a></h2>
+<p>Applications are expected to store their data in different locations depending on the operating system.
+We might be tempted to tell our users to just install Linux when they're bugging us about supporting their platform.
+Instead, let's use the <a href="https://docs.rs/directories">directories</a> crate to not have to worry about it at all.</p>
+<p>Here's the code we'll need to add:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let project_dir = directories::ProjectDirs::from("dev", "buenzli", "paekli")
+    .expect("the user's home directory seems to be corrupt");
+let storage_dir = project_dir.data_dir();
+std::fs::create_dir_all(storage_dir).expect("failed to create storage directory");
+
+Command::Send { content } =&gt; {
+    std::fs::write(storage_dir.join("content"), content)
+        .expect("failed to store paekli");
+}
+<span class="boring">}</span></code></pre></pre>
+<p>On Linux, you can confirm that a paekli was sent correctly with:</p>
+<pre><code class="language-sh">cat ~/.local/share/paekli/content
+</code></pre>
+<p>On Mac OS, find the paekli in Application Support:</p>
+<pre><code class="language-sh">cat ~/Library/Application\ Support/dev.buenzli.paekli/content
+</code></pre>
+<h2 id="less-than-terrible-error-handling"><a class="header" href="#less-than-terrible-error-handling">Less than terrible error handling</a></h2>
+<p>We now have a few calls to <code>.expect()</code> in our code.
+This is great for whipping up a quick program that works, but it immediately crashes our program in case of an error.
+There are libraries for more scaleable error handling with great usability.
+The most popular one for applications (as opposed to libraries) is <a href="https://docs.rs/anyhow">anyhow</a>, so let's use that.</p>
+<pre><pre class="playground"><code class="language-rust">fn main() -&gt; anyhow::Result&lt;()&gt; {
+    // --snip --
+
+    Ok(())
+}</code></pre></pre>
+<p><code>anyhow::Result</code> is a different type than <code>Result</code> from the standard library.
+It only takes one type parameter for the <code>Ok</code> case.
+The <code>Err</code> case always holds a value of type <code>anyhow::Error</code>.
+This makes it easy to bubble up errors when they're all the same type.
+Here we are returning <code>Result&lt;()&gt;</code>, because we don't return any value in the success case.
+That means we now need to return <code>Ok(())</code> at the end of main.</p>
+<details id="admonition-returning-result-from-main" class="admonition admonish-note" role="note" aria-labelledby="admonition-returning-result-from-main-title">
+<summary class="admonition-title">
+<div id="admonition-returning-result-from-main-title">
+<p>returning Result from main</p>
+</div>
+<a class="admonition-anchor-link" href="cli/content_storage.html#admonition-returning-result-from-main"></a>
+</summary>
+<div>
+<p>You may not have known that the main function can actually return regular values.
+This is mostly useful for returning <code>Result</code>s, so you can do normal Rust-style error handling in the main function.
+However, <code>main</code> can technically return any type that implements the <a href="https://doc.rust-lang.org/stable/std/process/trait.Termination.html">Termination</a> trait.</p>
+</div>
+</details>
+<p>So, how do we refactor our <code>.expect()</code> calls to return <code>anyhow::Result</code> instead?
+It's simple, first we import the trait <code>anyhow::Context</code>.
+This attaches a new method <code>.context()</code> to any <code>Result</code> or <code>Option</code> to convert them into an <code>anyhow::Result</code>.
+Recall that this pattern is sometimes called an "extension trait".
+Lastly, we append the question mark operator <code>?</code> to the call of <code>.context()</code> in order to <em>return early</em> in case of an error.</p>
+<p>visually:</p>
+<pre><code>                               use anyhow::Context;
+value.expect("error msg")  -&gt;  value.context("error msg")?
+</code></pre>
+<p>The practical difference is not that big yet, but future-you will probably thank us for starting early with good error handling.</p>
+<div id="admonition-preventing-data-loss" class="admonition admonish-question" role="note" aria-labelledby="admonition-preventing-data-loss-title">
+<div class="admonition-title">
+<div id="admonition-preventing-data-loss-title">
+<p>Preventing data loss</p>
+</div>
+<a class="admonition-anchor-link" href="cli/content_storage.html#admonition-preventing-data-loss"></a>
+</div>
+<div>
+<p>Currently, our app overwrites existing paekli with new ones.
+Here's a task you can do on your own:
+Check if the file already exists, and if it does, do not overwrite it and notify the user that our storage is full.
+To create an ad-hoc error using anyhow, you can use the macro <code>anyhow::anyhow!</code>.</p>
+</div>
+</div>
+<h3 id="delivering-paekli"><a class="header" href="#delivering-paekli">Delivering paekli</a></h3>
+<p>I'll leave it up to you to deliver the paekli.
+Simply read from the file system and print the content to stdout.
+Remember to remove the file, otherwise a paekli could be delivered twice!</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="cli/content_storage.html#admonition-release"></a>
+</div>
+<div>
+<p>Contratulations!
+We now have a fully-functioning minimum viable product (MVP).
+The basic functions of sending and receiving work as expected.</p>
+<p>Pat yourself on the back and cut a new release! 🥳</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="additional-features"><a class="header" href="#additional-features">Additional Features</a></h1>
+<p>As we go along building our application, we will quickly want to add more features.
+How to implement them for the CLI will be described in this section.
+You will be mostly on your own, but guidance will be given where new concepts / libraries etc. are required.</p>
+<p>You can choose to skip this section for now and explore the other components and integrations.
+Just remember to come back here if some integration requires you to have these features implemented.
+Jump to the <a href="cli/./where_next.html">next section</a> to explore other components and integrations or keep reading to implement more CLI features.</p>
+<p>Once you're happy with the feature set of the CLI, don't forget to cut a new release!</p>
+<h2 id="expanding-our-storage-space"><a class="header" href="#expanding-our-storage-space">Expanding our storage space</a></h2>
+<p>Currently we can only store one paekli at a time.
+Additional paekli are rejected until the existing one is received.
+Instead of storing the paekli in a single file with a hardcoded name, let's store them in a directory instead.
+The most obvious way to store multiple paekli is to use the time they were sent as their file name.
+For that, you're gonna need a crate for time handling, like <code>time</code> or <code>chrono</code>.
+<code>time</code> is very minimal, but sufficient for our use case.
+I would've let you figure out how to use it yourself, but its documentation is hard to navigate in my opinion.
+Just call <code>time::OffsetDateTime::now_utc().to_string()</code> to get the current time as a string.</p>
+<p>We <em>could</em> just pick a random paekli out of the ones in storage whenever a paekli is received.
+However, let's challenge ourselves by making sure the paekli are received in FIFO order.
+The standard library function <a href="https://doc.rust-lang.org/stable/std/fs/fn.read_dir.html#platform-specific-behavior">read_dir</a> does not guarantee to yield directory entries in a platform-independent order.
+The crate <code>walkdir</code> has a function <a href="https://docs.rs/walkdir/latest/walkdir/struct.WalkDir.html#method.sort_by">sort_by</a>, which could come in handy.
+However, it should also be simple enough to implement this yourself.</p>
+<h2 id="individual-recipients"><a class="header" href="#individual-recipients">Individual recipients</a></h2>
+<p>When people send paekli, they usually have a specific recipient in mind.
+In order to assign each paekli to a specific recipient, we need additional CLI arguments.
+The sender of a paekli needs to say who should receive it and the recipient must identify themselves.</p>
+<p>For the sender, we could just extend the <code>Send</code> subcommand to also accept a recipient, like so:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>Send {
+    content: String,
+    recipient: String,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>This works, and there's nothing terribly wrong with it.
+However, CLI arguments defined this way are expected in a specific order.
+(Namely the order in which they were defined in the struct).
+As the number of arguments grows, it can become hard for users to get the order right.
+To alleviate this, we can introduce <em>flags</em>, which are basically named arguments.
+Because they are named, their order doesn't matter and it's always clear what's going to happen when typing in the command.
+Using <code>clap</code> we can turn an argument into a flag by giving it a <em>short</em> and a <em>long</em> name.
+(Or only one of the two, if we prefer.)</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>Send {
+    content: String,
+    #[arg(short, long)]
+    recipient: String,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The recipient can now be specified with <code>-r NAME</code>, <code>--recipient NAME</code> or <code>--recipient=NAME</code>.
+It seems reasonable to keep the <code>content</code> as a positional argument, as it is the most important part of a paekli.
+However, you can turn that into a flag as well if you like.</p>
+<p>You could also name the recipient flag <code>to</code>, which would enable a usage very close to natural English:</p>
+<pre><code class="language-sh">paekli-cli send "cheddar cheese" --to Elizabeth
+</code></pre>
+<p>Renaming can be accomplished in the macro annotation as well:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>Send {
+    content: String,
+    #[arg(short('t'), long("to"))]
+    recipient: String,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>To complete the feature, you will need to add a recipient argument or flag to the <code>Receive</code> subcommand as well.
+Lastly, you'll need to change how you store and retrieve paekli so you can determine the intended recipient.</p>
+<p>I will leave that up to you!</p>
+<h2 id="express-delivery"><a class="header" href="#express-delivery">Express delivery</a></h2>
+<p>Our paekli are currently always received in FIFO order.
+However, what if some paekli was really important?
+For example, a paekli containing a programmable ergonomic split mechanical keyboard with no less than eight keys on each thumb cluster?
+Surely our users would like to receive such a marvelous paekli before all the other ones.</p>
+<p>This feature will nicely demonstrate a boolean flag.
+To implement one with <code>clap</code>, do the same as with a regular flag, but use a <code>bool</code> as its type instead of <code>String</code>.
+The existence of the flag on the command line represents <code>true</code>.</p>
+<p>The rest is up to you!</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="cli/additional_features.html#admonition-release"></a>
+</div>
+<div>
+<p>Now that our CLI is jam-packed with exciting features, it's time for the next release.</p>
+<p>Future releases likely won't add significant new features, but maybe our CLI will grow to interact with other components!</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="where-to-go-next"><a class="header" href="#where-to-go-next">Where to Go Next</a></h1>
+<p>Most components don't have any requirements, so just pick one from the sidebar that interests you the most.
+The few ones that do have requirements will say so at the beginning.</p>
+<p>Note that for clients to be connected, some kind of server is required.
+However, there is a reference implementation with API documentation hosted at <a href="https://paekli.buenzli.dev">paekli.buenzli.dev</a>.
+Using that, you can connect all your clients without having to write a server yourself.
+Thank you for being gentle to my server! 😊</p>
+<p>If you are not the decisive kind, here's a little inspiration to help pick your next component:</p>
+<ul>
+<li>The <a href="cli/../http.html">HTTP server</a> is fun and quite simple.
+It has a good contrast to the CLI and it's always great to see through all layers of the stack.</li>
+<li>I have a web development background, so I am particularly fond of the <a href="cli/../web_app.html">web app</a>.
+It's portable, easy to deploy and doesn't use a single line of JavaScript 😎</li>
+<li>Another goal that might be worth working towards:
+Once you have a WebSocket-server and a GUI-client, you can make the GUI live-updating! 🤯</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="python-extension-module"><a class="header" href="#python-extension-module">Python Extension Module</a></h1>
+<p>Python is a very popular language and there are many reasons we might want to interop with it.</p>
+<p>For example, many Python libraries are written in more efficient languages like C and C++ under the hood.
+Rust can fulfill that purpose just as well, if not better.
+One such example that has generated some buzz recently is <a href="https://pola.rs/">polars</a>, a high-performance data frame library similar to pandas.</p>
+<p>In addition, business applications are often written in Python at the start of a project for speed of development during the prototyping phase.
+As the project matures, performance and reliability may become bigger concerns.
+Instead of rewriting the whole thing in Rust in one fell swoop, it is more prudent to replace small pieces one step at a time.
+This allows you to keep adding new features and deliver your software continuously during the transition phase.</p>
+<p>Now that we're all hyped up, let's write a little Python library in Rust!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h1>
+<p>The most important project we'll be using for this component is <a href="https://pyo3.rs">PyO3</a>.
+It does most of the heavy lifting for us so Python and Rust can talk to each other.
+That means we have more time to write actual code.
+Sweet!</p>
+<p>Let's start by initializing a new package, sticking closely to PyO3's own guide.</p>
+<pre><code class="language-sh">mkdir paekli-py
+cd paekli-py
+python -m venv .venv
+source .venv/bin/activate
+</code></pre>
+<p>The PyO3 project has a build tool called <code>maturin</code>:</p>
+<pre><code class="language-sh">pip install maturin
+maturin init --bindings pyo3
+</code></pre>
+<p>This will generate a <em>Rust</em> project with the necessary boilerplate to use it as a Python module.
+You might be interested to take a look at <code>Cargo.toml</code>, to see what kind of package configuration is needed.</p>
+<p>Next, take some time to understand the generated <code>src/lib.rs</code>.
+You'll notice the annotations <code>#[pyfunction]</code> and <code>#[pymodule]</code> are used to make Rust code available to Python.
+There are also some Python-specific types like <code>PyResult</code> and <code>PyModule</code>.</p>
+<p>Let's try to call the generated <code>sum_as_string</code> function from Python.
+The following command installs our Rust module into the virtual Python environment:</p>
+<pre><code class="language-sh">maturin develop
+</code></pre>
+<p>Now the module <code>paekli_py</code> should be available to import from Python:</p>
+<pre><code>&gt; python
+&gt;&gt;&gt; import paekli_py
+&gt;&gt;&gt; paekli_py.sum_as_string(123, 678)
+'801'
+</code></pre>
+<div id="admonition-release-" class="admonition admonish-success" role="note" aria-labelledby="admonition-release--title">
+<div class="admonition-title">
+<div id="admonition-release--title">
+<p>Release ?</p>
+</div>
+<a class="admonition-anchor-link" href="python_module/hello_world.html#admonition-release-"></a>
+</div>
+<div>
+<p>Hurray!
+You can now call Rust code from Python 🥳</p>
+<p>For most components, we put effort in a continuous release workflow.
+However, we won't do that for the Python extension module.</p>
+<p>If you simply want to extend your own Python code with Rust, there is no loss.
+If you do want to publish a Python module on PyPI, I encourage you to explore that on your own.</p>
+<p><code>maturin</code> actually generates a GitHub Actions workflow to automatically publish to PyPI.
+It won't be active by default, because it's not at the root of the Git repository.
+You can delete it or leave it, doesn't matter.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sending-and-receiving-paekli-1"><a class="header" href="#sending-and-receiving-paekli-1">Sending and Receiving Paekli</a></h1>
+<p>Let' start implementing the two basic interactions with the system.
+They're just going to be two stubbed-out functions for now.
+Remember to add them explicitly to your module!</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Send a paekli
+#[pyfunction]
+fn send() -&gt; &amp;'static str {
+    SEND_MESSAGE
+}
+#[pymodule]
+fn paekli_py(_py: Python, m: &amp;PyModule) -&gt; PyResult&lt;()&gt; {
+    m.add_function(wrap_pyfunction!(send, m)?)?;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>That was easy!
+You should be able to confirm your changes with something like:</p>
+<pre><code class="language-python">import paekli_py
+
+print(paekli_py.send())
+print(paekli_py.receive())
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="content-and-storage-1"><a class="header" href="#content-and-storage-1">Content and Storage</a></h1>
+<div id="admonition-info" class="admonition admonish-info" role="note" aria-labelledby="admonition-info-title">
+<div class="admonition-title">
+<div id="admonition-info-title">
+<p>Info</p>
+</div>
+<a class="admonition-anchor-link" href="python_module/content_storage.html#admonition-info"></a>
+</div>
+<div>
+<p>This guide assumes you have created the <a href="python_module//storage_backend.html">storage backend abstraction</a>.
+If you haven't, I recommend you do it now.</p>
+</div>
+</div>
+<p>Accepting input from Python is simple enough, you just declare the parameters in the function that you need.
+It's just like writing regular Rust.</p>
+<p>To express that the function might fail but there's no output in the success case, we can use <code>PyResult&lt;()&gt;</code> as the return type.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn send(_content: &amp;str) -&gt; PyResult&lt;()&gt; {
+    Ok(())
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Are you wondering about how it's possible that we're simply writing Rust code, including input parameters and return types, and Python can just call those functions?</p>
+<p>The magic lies with the <code>#[pyfunction]</code> macro, which generates the glue code necessary to convert between Python and Rust values across the FFI boundary.
+You can make your own Rust types able to pass the FFI boundary to Python by implementing the traits <code>FromPyObject</code> (derivable) and <code>IntoPy&lt;PyObject&gt;</code>.
+If you're curious, you can read more about these conversions <a href="https://pyo3.rs/v0.21.0-beta.0/conversions">here</a>.</p>
+<h2 id="storing-paekli"><a class="header" href="#storing-paekli">Storing paekli</a></h2>
+<p>Using our storage backend abstraction, we'll be done with this in no time.
+Remember that you need to add <code>paekli-core</code> as a path dependency to <code>paekli-py</code>.</p>
+<p>You should have a function to get access to a <code>DistributionCenter</code>, e.g. <code>paekli_core::new_distribution_center()</code>.
+If you have more than one storage backend already (or a configurable one), that function probably takes additional arguments.</p>
+<p>Next, you just call <code>.store()</code> or <code>.retrieve()</code> on the distribution center with the arguments received from the Python code.
+Easy-peasy.</p>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="python_module/content_storage.html#admonition-success"></a>
+</div>
+<div>
+<p>That was super fast!
+PyO3 and our storage backend did almost all the work.</p>
+<p>If you have the CLI already, you should be able to send and receive paekli between it and Python (assuming the same storage backend).</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="additional-features-1"><a class="header" href="#additional-features-1">Additional Features</a></h1>
+<p>Now you have the opportunity to bring the Python extension module to feature-parity if you have already implemented the additional features for another component.</p>
+<p>As your Python functions accumulate more parameters, you may want to use optional and keyword arguments, which are idiomatic in Python.
+I have good news for you, there is little work to be done to achieve that.
+From the <a href="https://pyo3.rs/v0.21.0-beta.0/function/signature">PyO3 documentation</a>:</p>
+<blockquote>
+<p>Like Python, by default PyO3 accepts all arguments as either positional or keyword arguments.
+Most arguments are required by default, except for trailing <code>Option&lt;_&gt;</code> arguments, which are implicitly given a default of <code>None</code>.</p>
+</blockquote>
+<h2 id="expanding-our-storage-space-1"><a class="header" href="#expanding-our-storage-space-1">Expanding our storage space</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Multiple paekli can be sent before they are received.</li>
+<li>Paekli are received in the same order as they were sent.</li>
+</ul>
+<h2 id="individual-recipients-1"><a class="header" href="#individual-recipients-1">Individual recipients</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Paekli can be sent to a specific recipient</li>
+<li>Recipients of a paekli can identify themselves and only receive paekli intended for them.</li>
+</ul>
+<h2 id="express-delivery-1"><a class="header" href="#express-delivery-1">Express delivery</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Paekli can optionally be sent with express delivery</li>
+<li>Express paekli are always received before non-express paekli.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="where-to-go-next-1"><a class="header" href="#where-to-go-next-1">Where to Go Next</a></h1>
+<p>The Python extension module doesn't really have any special integrations.
+Just pick the next component you're interested in.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="web-app"><a class="header" href="#web-app">Web App</a></h1>
+<p>Interested in building a web app with Rust, I see?
+I understand you.
+For too long, JavaScript has held the industry hostage with its iron grip on the browser.</p>
+<p>Even if you are not yet traumatized by JavaScript, web apps are just so darn useful.
+They are extremely easy to deploy and arguably the most platform-independent way to make a GUI.</p>
+<p>There is good news for the mental health of web developers around the globe:
+<a href="https://developer.mozilla.org/en-US/docs/WebAssembly">WebAssembly</a> (short: wasm) is a byte code supported by all major browsers since 2017.
+Finally, we have a real alternative to JavaScript!
+Wasm quite low-level and intended as a compilation target.
+Rust has industry-leading support for compiling to wasm, so it is a surprisingly good choice for building web apps.</p>
+<div id="admonition-requirements" class="admonition admonish-note" role="note" aria-labelledby="admonition-requirements-title">
+<div class="admonition-title">
+<div id="admonition-requirements-title">
+<p>Requirements</p>
+</div>
+<a class="admonition-anchor-link" href="web_app.html#admonition-requirements"></a>
+</div>
+<div>
+<p>For building a web app, we need some basic knowledge about HTML.
+This guide will not provide that.
+If you know nothing about HTML, you should still be able to follow along until the MVP, but going beyond that will be frustrating if not impossible.
+Knowledge of some JavaScript UI-framework like React, Angular, Vue etc. are benefitial but not required.
+(The library we'll be using is most similar to Solid.)
+If you know about CSS or Tailwind, feel free to make the app as pretty as you like! ✨</p>
+</div>
+</div>
+<p>Due to its nature, this component is relatively library-heavy.
+The browser is not really the <em>native</em> environment of Rust, so we need a bit of cushioning to get comfortable.
+We're gonna need a UI-rendering library that's made for the web, one that provides wrappers of browser APIs that are only available to JavaScript as well as an additional build tool.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hello-world-1"><a class="header" href="#hello-world-1">Hello World</a></h1>
+<p>Fair warning: The web app has a bit more setup than the other components.
+Don't worry though, we'll manage just fine together!</p>
+<h2 id="installing-dependencies"><a class="header" href="#installing-dependencies">Installing dependencies</a></h2>
+<p>When you install the Rust toolchain, it only supports compiling to your native platform by default.
+To add support to compile to WebAssembly, let's add the necessary target:</p>
+<pre><code class="language-sh">rustup target add wasm32-unknown-unknown
+</code></pre>
+<p>We're gonna use a <em>bundler</em> called <a href="https://trunkrs.dev/">trunk</a> to help us manage all the boilerplate around a web app:</p>
+<pre><code class="language-sh">cargo install --locked trunk
+</code></pre>
+<p>Let's initialize a new package for the web app:</p>
+<pre><code class="language-sh">cargo new paekli-web
+</code></pre>
+<p>Add a couple libraries we'll need:</p>
+<pre><code class="language-sh">cd paekli-web
+cargo add gloo
+cargo add leptos --features csr
+cargo add console_error_panic_hook
+</code></pre>
+<p>Trunk puts its output into a different directory than cargo, you probably want to git-ignore that:</p>
+<pre><code class="language-sh"># still inside paekli-web/
+echo dist &gt; .gitignore
+</code></pre>
+<h2 id="dummy-indexhtml"><a class="header" href="#dummy-indexhtml">Dummy <code>index.html</code></a></h2>
+<p>A normal, plain website might be nothing more than an HTML file.
+That's exactly how our web app is going to <em>start</em> as: a plain HTML file without any content.
+Its only purpose is to load the wasm code that generates the interactive web app.
+Hopefully that makes sense, but if it doesn't, don't worry.
+I'm just trying to explain why we need the following boilerplate.</p>
+<p>Add an <code>index.html</code> <em>next to your Cargo.toml</em>.
+The location is important.
+Add the following content:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello Rust Workshop!&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>That's already enough to get the (empty) web app off the ground.
+Let's start the development server of our bundler <code>trunk</code>:</p>
+<pre><code class="language-sh">trunk serve
+</code></pre>
+<p>It might take a minute to compile the first time, but then it should display a URL where you can see your web app.
+It's probably <a href="http://localhost:8080">localhost:8080</a>.</p>
+<p>The page will be empty (because of the empty <code>&lt;body&gt;&lt;/body&gt;</code> tag), but the custom title should be visible in the browser tab.</p>
+<h2 id="running-rust-in-the-browser"><a class="header" href="#running-rust-in-the-browser">Running Rust in the browser</a></h2>
+<p>So far, we haven't actually written any Rust that compiles to wasm to run in the browser.
+Let's change that.
+How about this:</p>
+<pre><pre class="playground"><code class="language-rust">use leptos::*;
+
+fn main() {
+    mount_to_body(|| {
+        view! {
+            &lt;h1&gt;Hello WebAssembly!&lt;/h1&gt;
+        }
+    })
+}</code></pre></pre>
+<p>If you add this change to <code>main.rs</code> while you keep <code>trunk serve</code> running, your web app should automatically recompile and <em>reload in the browser</em> once compilation is done.
+Pretty decent development experience!
+Can you see the result in the browser?</p>
+<p>Let's explain a little bit what's going on here.
+Remember the empty <code>&lt;body&gt;&lt;/body&gt;</code> from the <code>index.html</code>?
+This body tag is the container of all the content on a website.
+With the function <code>mount_to_body</code>, we're letting our Rust code take over the body tag and therefore the entire content of the website.
+The argument passed to <code>mount_to_body</code> is a simple function (notice that <code>||</code> is in this case the start of a <em>closure</em> without any arguments).
+The function returns a <code>view!</code> macro with the content <code>&lt;h1&gt;Hello WebAssembly!&lt;/h1&gt;</code>.
+The <code>view!</code> macro allows us to write HTML-like syntax which will be inserted into the website.
+This might look alien to you, but it's very convenient for seasoned web developers and pervasive in the JavaScript world.</p>
+<h2 id="setting-up-decent-error-messages"><a class="header" href="#setting-up-decent-error-messages">Setting up decent error messages</a></h2>
+<p>We're still inexperienced when it comes to web development with Rust, so we might make a mistake or two.
+If our app crashes, it would be nice to get some decent error message.
+Let's add the following at the top of our main function:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>console_error_panic_hook::set_once();
+panic!("I don't know what to do!");
+<span class="boring">}</span></code></pre></pre>
+<p>In the browser, the "Hello WebAssembly" text should be gone.
+This is because the app crashed before it was able to display the text.
+If you open the browser dev tools with <code>F12</code> and click on the "Console" tab, you should see our custom error message and a line number.
+That's good enough for our purposes!</p>
+<p>Remove the <code>panic!</code> statement (but keep the panic hook) and your app should work again.</p>
+<div id="admonition-release-sorry-were-not-quite-there-yet" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-sorry-were-not-quite-there-yet-title">
+<div class="admonition-title">
+<div id="admonition-release-sorry-were-not-quite-there-yet-title">
+<p><del>Release</del> sorry, we're not quite there yet</p>
+</div>
+<a class="admonition-anchor-link" href="web_app/hello_world.html#admonition-release-sorry-were-not-quite-there-yet"></a>
+</div>
+<div>
+<p>Congratulations!
+You are now a fully-oxidized web developer 🥳</p>
+<p>You might expect me to pester you about cuttting a relaeas at this point.
+But setting up the release of the web app is a little more work, so it deserves its own section.
+It'll be worth it though!
+In contrast to the other components, your users <em>won't even have to install your web app</em>.
+We will be deploying to GitHub Pages, freely accessible to anyone who can click a link!</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="github-pages"><a class="header" href="#github-pages">GitHub Pages</a></h1>
+<p>GitHub Pages is a free static website hosting service.
+It's very convenient to have a nice website for your GitHub projects.
+However, if your project is precisely a website, GitHub Pages can be used as the actual deployment!</p>
+<p>This section is mostly about how to write a GitHub Action to automate that deployment process.
+It's not too much work, so let's get started.</p>
+<h2 id="a-new-workflow-for-automatic-deployment"><a class="header" href="#a-new-workflow-for-automatic-deployment">A new workflow for automatic deployment</a></h2>
+<p>First, we need a new workflow.
+There should already be a couple in <code>.github/workflows</code>.
+Let's create the file <code>.github/workflows/gh_pages.yml</code>.</p>
+<p>Our workflow should run every time we push to the main branch:</p>
+<pre><code class="language-yml">name: GitHub Pages
+on:
+  push:
+    branches: main
+</code></pre>
+<p>It's also gonna need write-access to our repository, so it can make a commit where the finished website will be stored.
+Don't worry, that commit won't be polluting the main branch.</p>
+<pre><code class="language-yml">permissions:
+  contents: write
+</code></pre>
+<p>We're gonna have a single job to run in the default Ubuntu environment:</p>
+<pre><code class="language-yml">jobs:
+  pages:
+    name: Deploy GitHub Pages
+    runs-on: ubuntu-latest
+</code></pre>
+<p>Now we need to define the steps to run.
+The first step is the same for almost all workflows: <code>uses: actions/checkout</code> to get access to the code of the repository itself.</p>
+<pre><code class="language-yml">    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+</code></pre>
+<p>Next up we'll use <code>Swatinem/rust-cache@v2</code> to cache our build.
+This will speed up future builds quite a bit, because dependencies won't have to download and compile every time.</p>
+<pre><code class="language-yml">      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+</code></pre>
+<p>The rest is basically just bash scripting:</p>
+<pre><code class="language-yml">      - uses: Swatinem/rust-cache@v2
+      - run: |
+          rustup target add wasm32-unknown-unknown
+          cd paekli-web
+          wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.19.0/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
+          ./trunk build --release --public-url /paekli-rs
+          mv dist ../docs
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "bot@invalid.local"
+          git checkout -b gh-pages
+          git add ../docs
+          git commit --message "GitHub Pages Deployment"
+          git push --force --set-upstream origin gh-pages
+</code></pre>
+<p>If you prefer, you can put this script in a regular <code>.sh</code> file in your repository so it can be tested more easily.</p>
+<p>Let's explain a couple things that might not be obvious:</p>
+<ul>
+<li><code>wasm32-unknown-unknown</code> is needed to compile Rust to WebAssembly.</li>
+<li>The <code>wget</code> command downloads a binary of <code>trunk</code> into the current directory.</li>
+<li>The <code>--public-url /rust-exercises</code> is necessary because our website is not located at the root path of the domain.</li>
+<li>We move the <code>dist</code> folder to <code>rust-exercises/docs</code> because that's where GitHub Pages expects our website to be located for deployment.</li>
+<li>The git configuration of username and email is irrelevant, these commits will be overwritten regularly.</li>
+<li>Lastly, we force push the built website to a branch called <code>gh-pages</code>.
+More on that next.</li>
+</ul>
+<h2 id="enabling-github-pages"><a class="header" href="#enabling-github-pages">Enabling GitHub Pages</a></h2>
+<ol>
+<li>go to GitHub</li>
+<li>navigate to your repo</li>
+<li>go to the "Settings" tab</li>
+<li>click on "Pages" in the sidebar</li>
+<li>under "Source", "Deploy from a branch" should already be selected</li>
+<li>under "Branch", change "None" to "gh-actions" and "/ (root)" to "/docs"</li>
+</ol>
+<p>And that should be it!
+With this configuration, GitHub Pages will look inside the <code>/docs</code> directory of your repository on the <code>gh-actions</code> branch for a website to deploy.</p>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="web_app/gh_pages.html#admonition-success"></a>
+</div>
+<div>
+<p>Go to <code>YOUR_GH_USERNAME.github.io/rust-exercises</code> to enjoy the fruit of your labor!</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sending-and-receiving"><a class="header" href="#sending-and-receiving">Sending and Receiving</a></h1>
+<p>Let' start implementing the two basic interactions with the system.</p>
+<p>First we'll need an HTML button the user can click on:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>view! {
+    &lt;button&gt;Send&lt;/button&gt;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>That's great, but it doesn't to anything yet.
+To make the button functional, we'll attach a function to the button, such that the function will be executed when the button is clicked.
+If this looks kinda magical to you, then that's because it is.
+The <code>view!</code> macro is doing <em>a lot</em> of heavy lifting here.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use gloo::dialogs::alert;
+
+view! {
+    &lt;button
+        on:click=|_| alert("paekli was sent!")
+    &gt;
+        Send
+    &lt;/button&gt;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Apart from the formatting, what has changed?
+We gave a new "attribute" to the button tag, although it's not quite valid HTML.
+The <code>on:click</code> "attribute" is the special way to attach event handlers to DOM elements in <code>leptos</code>.
+(In the JavaScript world, React has the almost identical <code>onClick</code>.)
+The value of the special attribute is a function or <em>closure</em>.
+It takes one parameter but ignores it.
+The parameter would've been an click-event object with some metadata about what triggered the button-press.
+The body of the function calls <code>gloo::dialogs::alert</code>, which is a binding to the alert API of the browser.
+It should create a little pop-up window with the given text.</p>
+<p>Check in your browser if this behaves the way you would expect!</p>
+<p>Then, add a second button for receiving paekli.</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="web_app/send_receive.html#admonition-release"></a>
+</div>
+<div>
+<p>The buttons aren't very useful yet, but let's not make our users wait for any new features.
+Cut a new release by pushing these changes to the main branch.</p>
+<p>Remember, for the web app you don't even have to push a version tag to trigger a release.
+The version tag is the trigger for <code>cargo dist</code>, which manages our downloadable binaries.
+The GitHub Pages deployment is triggered by every push to main.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="content-and-storage-2"><a class="header" href="#content-and-storage-2">Content and Storage</a></h1>
+<p>Accepting user input in HTML is simple enough:</p>
+<pre><code class="language-html">&lt;input placeholder="paekli content"&gt;&lt;/input&gt;
+</code></pre>
+<p>You should already be able to use this text field in the browser.
+However, it's not obvious how our Rust code can access the text our user types in.</p>
+<h2 id="storing-values-in-rust"><a class="header" href="#storing-values-in-rust">Storing values in Rust</a></h2>
+<p>There are multiple ways to do this, but we'll go with the simplest route.
+We'll create a variable in our Rust code where the text will be stored and instruct the <code>&lt;input&gt;</code> element to update the value of that variable when the user types in a character.
+A regular <code>let mut</code> variable doesn't quite cut it though, we'll need a special type from the <code>leptos</code> library called a <code>Signal</code>.
+But the principle is exactly the same!</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// reading and writing of the signal are separated into two variables
+let (get_content, set_content) = create_signal(String::default());
+
+view! {
+    &lt;input
+        placeholder="paekli content"
+        prop:value=move || get_content.get()
+        on:input=move |e| set_content.set(event_target_value(&amp;e))
+    &gt;&lt;/input&gt;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Alright, I'll explain this in a second.
+But first, you're probably getting a compiler error at this point.
+It says something like:</p>
+<div id="admonition-compiler-error" class="admonition admonish-failure" role="note" aria-labelledby="admonition-compiler-error-title">
+<div class="admonition-title">
+<div id="admonition-compiler-error-title">
+<p>compiler error</p>
+</div>
+<a class="admonition-anchor-link" href="web_app/content_storage.html#admonition-compiler-error"></a>
+</div>
+<div>
+<p>bla bla <strong>closure may outlive the current function</strong> bla bla <strong>use the <code>move</code> keyword</strong>.</p>
+</div>
+</div>
+<p>Okay, that sounds kinda difficult.
+It's related to Rust's lifetime system.
+The fundamental problem here is that user interfaces are long-lived programs where is becomes harder for the borrow checker to make sure you're not using some value after it isn't valid anymore.
+Luckily, the developers of the <code>leptos</code> library have a perfect solution for this problem and the Rust compiler <em>even tells us the correct thing to do</em>.
+We have to put the <code>move</code> keyword in front of the closure passed to <code>mount_to_body</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mount_to_body(move || {
+    // ...
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The only downside of this solution is that it's not obvious at all what's going on.
+To truly understand it, one needs decent experience with the borrow checker and a good understanding of how the <code>leptos</code> library works internally.
+Needless to say, this is beyond the scope of this guide.
+So for now, I can only tell you to "trust me bro" and <code>move</code> all the closures!</p>
+<p>Alright, I still owe you an explanation of the code snippet above.
+First we create a "signal", <code>leptos</code> special variable type that's separated into a getter and setter function.
+The reason we need a signal instead of a regular variable is because leptos automatically updates all the places in the UI where the signal is used when it changes.
+That's not something we would be able to do with regular variables.
+We control the current content of the input field with the <code>prop:value</code> attribute.
+It's value is a function that returns the current content of the signal.
+That way, the input field and the signal are always in sync.
+We also have a new event handler for the <code>on:input</code> event.
+This function will be executed every time the user changes the content of the input field.
+The function accepts an event <code>e</code> and sets the value of the signal to the <code>event_target_value</code> of <code>e</code>, which is precisely the new content of the input field.
+"Event", "target" and "value" are all terms with specific meaning in the world of browsers and web development, so don't worry about it too much if it seems alien to you.</p>
+<p>You can read more about the nuances of handling user input in the <a href="https://book.leptos.dev/view/05_forms.html">Leptos documentation</a>.</p>
+<p>You might find <code>get_content.get()</code> and <code>set_content.set()</code> a little verbose.
+There is a nicer way to write this, but it requires the nightly compiler for now, so I chose to avoid it.</p>
+<p>Just one last thing, let's display the paekli content in the alert when sending it, to confirm everything works as expected:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>&lt;button
+    on:click=move |_| alert(&amp;format!("paekli with {} was sent!", get_content.get()))
+&gt;
+    Send
+&lt;/button&gt;
+<span class="boring">}</span></code></pre></pre>
+<p>Now enter some text, click send and observe that the correct value is displayed.</p>
+<p>Phew.
+I don't know about you, but I'm exhausted now.
+Feel free to take a break, web development is hard! 😮‍💨</p>
+<h2 id="paekli-storage"><a class="header" href="#paekli-storage">Paekli storage</a></h2>
+<p>We now have a signal to store the input of our users.
+But we should probably clear that when a paekli is sent and commit the content to a different signal.
+Otherwise we cannot distinguish between paekli content that was actually sent and the user just derping around in the text field.</p>
+<p>I think you can manage on own.
+I believe in you!! 💪</p>
+<h2 id="receiving-paekli"><a class="header" href="#receiving-paekli">Receiving paekli</a></h2>
+<p>I'll leave this up to you as well.
+You should be fine with all the things we've seen already.
+Make sure that a paekli cannot be received twice!</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="web_app/content_storage.html#admonition-release"></a>
+</div>
+<div>
+<p>I gotta say, it's not as exiting to tell you to release your software when it's literrally just pushing to the main branch 🥲</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="additional-features-2"><a class="header" href="#additional-features-2">Additional Features</a></h1>
+<p>Now you have the opportunity to bring the web app to feature-parity if you have already implemented the additional features for another component.
+You should be mostly fine on your own with everything we've seen so far.
+You'll need more (complicated) signals to store additional data and more user input.</p>
+<p>However, half the fun of the web app is integrating it with the HTTP server.
+So feel free to implement these additional features as you go along with that integration.</p>
+<h2 id="expanding-our-storage-space-2"><a class="header" href="#expanding-our-storage-space-2">Expanding our storage space</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Multiple paekli can be sent before they are received.</li>
+<li>Paekli are received in the same order as they were sent.</li>
+</ul>
+<h2 id="individual-recipients-2"><a class="header" href="#individual-recipients-2">Individual recipients</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Paekli can be sent to a specific recipient</li>
+<li>Recipients of a paekli can identify themselves and only receive paekli intended for them.</li>
+</ul>
+<h2 id="express-delivery-2"><a class="header" href="#express-delivery-2">Express delivery</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Paekli can optionally be sent with express delivery</li>
+<li>Express paekli are always received before non-express paekli.</li>
+</ul>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="web_app/additional_features.html#admonition-release"></a>
+</div>
+<div>
+<p>Don't forget to cut a release once you've implemented these features!</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="where-to-go-next-2"><a class="header" href="#where-to-go-next-2">Where to Go Next</a></h1>
+<p>The web app is a bit more limited in the set of integrations it supports, because it runs in the browser.
+For example, a web app cannot talk to a Unix socket or SQLite database.</p>
+<p>However, there are fantastic integrations with technologies native to the browser.</p>
+<p>Firstly, we have of course the HTTP server.
+This is the place to start if you want to connect your web app to your other components.</p>
+<p>Secondly, there is WebSocket.
+This technology enables a web app and a server to have an ongoing connection where both sides can initiate messages.
+HTTP already enables client-to-server initiated messages, so the really interesting part is is server-to-client initiated messages via websocket.
+In simple terms: <strong>push notifications</strong>!
+That means with websocket, your web app can instantaneously update its GUI when your server receives a new paekli from a completely unrelated component.</p>
+<p>The way to get there involves a couple steps though.
+You probably want to have an HTTP server already, otherwise stuff just gets more complicated (even though it's possible).
+Then you'll need to implement the websocket server, shared message types in the <a href="web_app/../shared_lib.html">shared library</a> and then integrate an ongoing websocket connection into your web app.
+For the exciting Aha!-moment, you'll also need another component to be integrated with the HTTP server, for example the CLI.</p>
+<p>You get the point, it's a decent chunk of work.
+Don't worry though, I'll be there to help at every step!
+Just be prepared to spend some time on this if you choose to accept the challenge.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="http-server"><a class="header" href="#http-server">HTTP Server</a></h1>
+<p>HTTP servers are lots of fun!
+They are simple and versatile, allowing you to make your application available anywhere with an internet connection.</p>
+<p>This guide does <strong>not</strong> assume any prior knowledge about writing web servers.
+So don't be scared if you've never done this before!
+If you're already a battle-hardened web dev, you can simply skip over the explanations of the basics.</p>
+<p>What we're going to build here is sometimes also referred to as a REST-API.
+We're not gonna be too strict about that term though, we'll just stick to the basic conventions of web development.</p>
+<p>Here's an example of what the product might look like:</p>
+<pre><code>&gt; curl --header 'Content-Type: application/json' \
+       --data '{ "content": "strawberries" }' \
+       https://paekli.buenzli.dev/paekli
+
+&gt; curl --request DELETE https://paekli.buenzli.dev/paekli
+{"content":"strawberries"}
+</code></pre>
+<p>The curl commands are a little verbose, but this is not the primary intended use case.
+The point is that the sender and the recipient could be completely different devices and clients on the network!</p>
+<p>This guide assumes that you already created <a href="cli.html">the CLI component</a>.
+You can totally follow it if you haven't, but there will be fewer explanations of the basic steps.</p>
+<p>Let's get started!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-hello-world-of-http-servers"><a class="header" href="#the-hello-world-of-http-servers">The Hello World of HTTP Servers</a></h1>
+<h2 id="initializing-a-new-package"><a class="header" href="#initializing-a-new-package">Initializing a new package</a></h2>
+<p>Just like for the CLI, we'll work with a new binary crate <code>paekli-http</code>.</p>
+<pre><code class="language-sh">cargo new paekli-http
+</code></pre>
+<h2 id="axum"><a class="header" href="#axum">Axum</a></h2>
+<p>There are many great choices for web-server libraries in Rust.
+<a href="https://blessed.rs/crates#section-networking-subsection-http-foundations">blessed.rs</a> lists a few of them.
+But I'm the one writing this book, so I get to decide.
+<a href="https://docs.rs/axum/latest/axum/">Axum</a> is simple, modular, performant, well-maintained and popular.
+You can't go wrong with it!</p>
+<pre><code class="language-sh"># cd paekli-http
+cargo add axum --features macros
+</code></pre>
+<p>We don't actually need the feature flag <code>macros</code> for any functionality, but it has a handy tool to improve error messages in case we make a mistake.</p>
+<div id="admonition-async" class="admonition admonish-info" role="note" aria-labelledby="admonition-async-title">
+<div class="admonition-title">
+<div id="admonition-async-title">
+<p>async</p>
+</div>
+<a class="admonition-anchor-link" href="http/hello_world.html#admonition-async"></a>
+</div>
+<div>
+<p>Axum - as most other web-server libraries in Rust - makes use of a language feature called "asynchronous IO" or simply <code>async</code>.
+Some other languages have similar features, including C#, JavaScript and Python, so you might be familiar with it.</p>
+<p>We will <em>completely ignore</em> that stuff in this guide, because there's quite a bit to learn about it and it really only matters for performance.</p>
+<p>You will however see some stuff that might seem weird if you don't know about <code>asnyc</code>.
+The guide will point it out as well and remind you not to worry about it.</p>
+<p>If you want to get serious about writing web-servers in Rust, it's definitely a good idea to learn about <code>async</code> on your own.</p>
+</div>
+</div>
+<h2 id="tokio"><a class="header" href="#tokio">Tokio</a></h2>
+<p>Every Rust-program that makes use of <code>async</code> must have a so-called <em>async runtime</em>.
+This will be <a href="https://tokio.rs/">tokio</a> in our case, it's pretty much the "default" one in the ecosystem.
+Tokio has many feature-flags, let's enable all of them to not have to worry about it:</p>
+<pre><code class="language-sh">cargo add tokio --features full
+</code></pre>
+<p>We will let the tokio runtime take over our main function, so let's add this goofy-looking setup:</p>
+<pre><pre class="playground"><code class="language-rust">#[tokio::main]
+async fn main() {
+    println!("Hello, world!");
+}</code></pre></pre>
+<p>Now, if you <code>cargo run</code> your project, it should still print "Hello, world!".</p>
+<h2 id="spinning-up-a-useless-http-server"><a class="header" href="#spinning-up-a-useless-http-server">Spinning up a useless HTTP server</a></h2>
+<p>We're not quite done with the boilerplate yet:</p>
+<pre><pre class="playground"><code class="language-rust">async fn main() {
+    let router = axum::Router::new();
+
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+
+    axum::serve(listener, router).await.unwrap();
+}</code></pre></pre>
+<p>Confused about the <code>.await</code>?
+Don't worry about it, it's <code>async</code> stuff 🤫</p>
+<p>Here we are creating a <code>Router</code> from the <code>axum</code> library.
+The router is responsible for deciding how to handle incoming HTTP requests.
+Right now, it doesn't do anything.</p>
+<p>After that, we create a TCP-listener with the <code>tokio</code> library and bind it to the port <code>3000</code>.</p>
+<p>Lastly, we use the function <code>axum::serve</code> to make our previously created router respond to incoming requests on that TCP-listener.</p>
+<p>If you <code>cargo run</code> this, there won't be any output in the terminal.
+However, you can already send requests and receive responses:</p>
+<pre><code>&gt; curl --verbose 0.0.0.0:3000
+* processing: 0.0.0.0:3000
+*   Trying 0.0.0.0:3000...
+* Connected to 0.0.0.0 (127.0.0.1) port 3000
+&gt; GET / HTTP/1.1
+&gt; Host: 0.0.0.0:3000
+&gt; User-Agent: curl/8.2.1
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 404 Not Found
+&lt; content-length: 0
+&lt; date: Fri, 08 Mar 2024 07:13:00 GMT
+&lt;
+* Connection #0 to host 0.0.0.0 left intact
+</code></pre>
+<p>This is using <code>curl</code> to send an empty HTTP request to our server.
+Among all this HTTP-gobbledygook, the most interesting piece is <code>404 Not Found</code>.
+I'm sure you've already seen this response in the browser!</p>
+<p>So our server is telling us <em>it didn't find the thing we were asking for</em>, which is a reasonable default chosen by the <code>axum</code> library.</p>
+<h2 id="handling-our-first-request"><a class="header" href="#handling-our-first-request">Handling our first request</a></h2>
+<p>Let's write a simple function that will be responsible for handling a request:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn hello_world() -&gt; &amp;'static str {
+    "hello world"
+}
+<span class="boring">}</span></code></pre></pre>
+<p>All HTTP handlers need the <code>async</code> keyword before <code>fn</code>.
+Don't worry about it 🙂</p>
+<p>Now we can tell the <em>router</em> to let some requests be handled by this function:</p>
+<pre><pre class="playground"><code class="language-rust">use axum::routing::get;
+
+async fn main() {
+    let router = axum::Router::new().route("/", get(hello_world));
+}</code></pre></pre>
+<p>The router needs two pieces of information to decide which handler is responsible for an incoming request:</p>
+<ul>
+<li><code>"/"</code> is the so-called <strong>path</strong>.
+It corresponds to the part of a URL after the <em>domain</em>.
+For example, if you go to <a href="https://docs.rs/axum/latest/axum/struct.Router.html">docs.rs/axum/latest/axum/struct.Router.html</a> in your browser, the request you're sending has the path <code>/axum/latest/axum/struct.Router.html</code>.</li>
+<li><code>get(hello_world)</code> tells axum that only requests with the method <code>GET</code> should be handled.
+The <strong>method</strong> is a part of the HTTP protocol and <code>GET</code> is the default one.
+We'll see more methods later on.</li>
+</ul>
+<p>We will learn about bits and pieces of the HTTP protocol as we need them.</p>
+<p>If we take a second look at the output of the <code>curl</code> command from above, we might notice this line:</p>
+<pre><code>&gt; GET / HTTP/1.1
+</code></pre>
+<p>This is saying exactly that <code>curl</code> sent a request with the method <code>GET</code> and the path <code>/</code>.
+That means our request should now be handled!
+Let's try again, (remember to restart the server with <code>cargo run</code>):</p>
+<pre><code>&gt; curl 0.0.0.0:3000
+hello world
+</code></pre>
+<p>Hurray!
+You should also see the greeting when you navigate to <a href="http://0.0.0.0:3000">http://0.0.0.0:3000</a> in the browser.</p>
+<h2 id="shipping-the-first-version"><a class="header" href="#shipping-the-first-version">Shipping the first version</a></h2>
+<p>Let's again make sure we can release our software efficiently.
+Remember that you should use a version number that is higher than the last one you used for any other component.
+Otherwise, our distribution-tool <code>cargo-dist</code> might get confused.</p>
+<p>Assuming the last highest version used was <code>0.1.9</code>:</p>
+<pre><code class="language-toml"># paekli-http/Cargo.toml
+version = "0.1.10"
+</code></pre>
+<p>With those changes: git commit, push, tag and push the tag!</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="http/hello_world.html#admonition-release"></a>
+</div>
+<div>
+<p>You've now shipped a functioning HTTP server ready to download for your users.
+You're awesome! 😎</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sending-and-receiving-paekli-2"><a class="header" href="#sending-and-receiving-paekli-2">Sending and Receiving Paekli</a></h1>
+<p>Our server can now say hello, but we want it to help us send and receive paekli.
+Let's stub out a handler for each type of request.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[axum::debug_handler]
+async fn send_paekli() -&gt; &amp;'static str {
+    "\
+Thank you for trusting Paekli LLC!
+We will deliver your paekli in mint condition.
+* throws your paekli directly in the trash *"
+}
+
+#[axum::debug_handler]
+async fn receive_paekli() -&gt; &amp;'static str {
+    "\
+There aren't any paekli for you at the moment.
+* tries to hide paekli in the trash can *"
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Note the new <code>#[debug_handler]</code> attribute above the handler function.
+This is what we needed <code>--features macros</code> for when we added the <code>axum</code> dependency.
+It is a macro that provides better error messages in case there's something wrong with our handler function.
+I recommend you add it to <strong>every</strong> new handler you're going to write.
+I also recommend not making any mistakes in the first place, but... you know.</p>
+<h2 id="picking-the-right-http-method"><a class="header" href="#picking-the-right-http-method">Picking the right HTTP method</a></h2>
+<p>We have already seen the HTTP method <code>GET</code>, which is the default one.
+It is used to ask a server for some information.
+There are other methods with specific meanings, the most common ones are:</p>
+<ul>
+<li><code>GET</code> for reading data</li>
+<li><code>POST</code> for storing new data</li>
+<li><code>PUT</code> for modifying existing data</li>
+<li><code>DELETE</code> for deleting data</li>
+</ul>
+<p>These four methods cover all the operations that are commonly performed on data.</p>
+<p><code>POST</code> is the method that most closely matches the operation of sending a paekli, because the server will need to store a new piece of data. <code>DELETE</code> seems appropriate for receiving, since the paekli should be deleted on the server after it has been received.</p>
+<p>Recall that the router also needs a <em>path</em> to register a handler, but we won't have to worry about that.
+We just use the empty or "root" path.
+The <em>path</em> is conventionally used to specify a resource.
+Since we only have one resource (paekli), the path doesn't matter.
+Here's how we can register these new handlers with different HTTP methods:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let router = axum::Router::new()
+    .route("/", post(send_paekli))
+    .route("/", delete(receive_paekli));
+<span class="boring">}</span></code></pre></pre>
+<p>Let's try them out:</p>
+<pre><code>&gt; curl --request POST 0.0.0.0:3000
+Thank you for trusting Paekli LLC!
+We will deliver your paekli in mint condition.
+* throws your paekli directly in the trash *
+
+&gt; curl --request DELETE 0.0.0.0:3000
+There aren't any paekli for you at the moment.
+* tries to hide paekli in the trash can *
+</code></pre>
+<p>Great!
+We can now execute different functions based on the incoming request.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="content-and-storage-3"><a class="header" href="#content-and-storage-3">Content and Storage</a></h1>
+<p>The send- and receive-handler are just dummies at this point, let's change that.</p>
+<h2 id="sending-paekli-with-content-1"><a class="header" href="#sending-paekli-with-content-1">Sending paekli with content</a></h2>
+<p>These days, it is common to use JSON to transmit information via HTTP.
+We have already seen how the libraries <code>serde</code> and <code>serde_json</code> make JSON handling a walk in the park.</p>
+<p>The content of a paekli will be another CLI argument.
+Since we only expect content when <em>sending</em> a paekli, we will add the argument to that subcommand.
+Specifying the content of a paekli you're receiving doesn't make sense.
+When adding <code>serde</code>, don't forget the <code>derive</code> feature.</p>
+<p>Let's define the structure of the input we are expecting to our send handler, it's simple enough:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Deserialize)]
+struct SendRequest {
+    content: String,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Now we're about to see the fun part of <code>axum</code>.
+We can simply add a <code>Json&lt;SendRequest&gt;</code> to the parameters of our handler.
+The <code>Json</code> type is from the <code>axum</code> library and instructs it to take the body of an incoming HTTP request, deserialize it into the specified type (<code>SendRequest</code>) and pass it into the handler function.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn send_paekli(Json(request): Json&lt;SendRequest&gt;) {
+    println!("sending: {}", request.content);
+}
+<span class="boring">}</span></code></pre></pre>
+<p>This is very cool and avoids boilerplate, but it's not without its downsides.
+The types and order of parameters and the return type of your handler function have great significance for the behavior of your server.
+That being said, the <code>#[axum::debug_handler]</code> should go a long way in helping with that.</p>
+<p>Let's explore how our changes affected the behavior of our send-handler:</p>
+<pre><code>&gt; curl --request POST 0.0.0.0:3000
+Expected request with `Content-Type: application/json`
+</code></pre>
+<p>If we don't send a body with our request, we will be told that some JSON was expected.
+Not too bad!
+Just by adding a typed parameter to our function, <code>axum</code> generates meaningful error messages for us.
+Let's lie to the server in the request by saying that we're sending JSON, without actually doing it:</p>
+<pre><code>&gt; curl --request POST \
+    --header 'Content-Type: application/json' \
+    0.0.0.0:3000
+Failed to parse the request body as JSON: EOF while parsing a value at line 1 column 0
+</code></pre>
+<p>We're being told the JSON we sent was invalid, that's also reasonable.
+What about valid JSON that doesn't contain the required <code>content: String</code>?</p>
+<pre><code>&gt; curl --request POST \
+    --header 'Content-Type: application/json' \
+    --data '{ "some_other_stuff": 1234 }' \
+    0.0.0.0:3000
+Failed to deserialize the JSON body into the target type: missing field `content` at line 1 column 28
+</code></pre>
+<p>Awesome.
+With very little code, we're getting perfect validation and good errors every step along the way.
+For completeness' sake, here's a correct example:</p>
+<pre><code>❯ curl --request POST \
+    --header 'Content-Type: application/json' \
+    --data '{ "content": "Legos" }' \
+    0.0.0.0:3000
+Thank you for trusting Paekli LLC!
+We will deliver your paekli in mint condition.
+* throws your paekli directly in the trash *
+</code></pre>
+<p>The <code>curl</code> commands are getting quite verbose at this point.
+You might want to keep a file or even a script with a bunch of them.
+The HTTP server component is not primarily intended for direct user interaction, but rather to connect other, local components with each other.
+However, that will be part of the integrations.</p>
+<h2 id="storing-paekli-for-delivery-1"><a class="header" href="#storing-paekli-for-delivery-1">Storing paekli for delivery</a></h2>
+<p>We could do the same as with the CLI and store the paekli in the file system.
+But at that point, we would be duplicating the code interacting with the file system.
+If we made a mistake or changed something in one place but not the other, it could lead to data corruption.
+The solution to this is a shared storage backend, which is a component you can implement later.
+For now, we're intentionally going to implement a <em>terrible</em> way to store our data:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>static PAEKLI_STORAGE: Mutex&lt;Option&lt;String&gt;&gt; = Mutex::new(None);
+<span class="boring">}</span></code></pre></pre>
+<p><em>Global mutable state</em>.
+Are you as disgusted as I am?
+Great, this will give you motivation to implement the shared storage backend component later 😉
+Here is how you can store an incoming paekli:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut guard = PAEKLI_STORE.lock().unwrap();
+*guard = Some(request.content);
+<span class="boring">}</span></code></pre></pre>
+<p>We're not handing the error-case where a paekli exists already for now.</p>
+<h3 id="delivering-paekli-1"><a class="header" href="#delivering-paekli-1">Delivering paekli</a></h3>
+<p>Again, I'll leave the delivery of the paekli up to you.</p>
+<p>If you are interested in doing idiomatic error-handling both in terms of Rust and web standards, here's the type your handler should probably return:</p>
+<p><code>-&gt; Result&lt;Json&lt;ReceiveResponse&gt;, StatusCode&gt;</code></p>
+<p>In the success-case, a JSON-formatted response with whatever information the custom type <code>ReceiveResponse</code> holds.
+In the error-case, an HTTP status code.
+<code>404 Not Found</code> seems like a reasonable choice, in case there is no paekli.</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="http/content_storage.html#admonition-release"></a>
+</div>
+<div>
+<p>That was the MVP! A release is in order.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="additional-features-3"><a class="header" href="#additional-features-3">Additional Features</a></h1>
+<p>Now you have the opportunity to bring the HTTP server to feature-parity if you have already implemented the additional features for the CLI.
+However, note that it will require you to make the already bad storage system even worse.
+So I will softly recommend to you to implement a storage backend first.
+The file system storage backend should be easy to do, because most code can be copied from the CLI.</p>
+<p>If you're not the type to finish what you've started, you can always do something new instead!
+Here's the guide on <a href="http/./where_next.html">where to go next</a>.</p>
+<p>There's one more thing to consider when implementing these additional features for the HTTP server.
+If you implement them in a way that they are <em>required</em>, then that means all you client components will have to implement the feature before being compatible with your HTTP server.
+For example, your server might <em>require</em> that a client provide a recipient when sending a paekli.
+If you want to ensure that other clients can integrate as quickly as possible, even without the full feature set, make sure to keep these features <em>optional</em>.
+In the case of the recipient, your HTTP server could default to some shared inbox where everyone can send and receive paekli without identification.</p>
+<h2 id="expanding-our-storage-space-3"><a class="header" href="#expanding-our-storage-space-3">Expanding our storage space</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Multiple paekli can be sent before they are received.</li>
+<li>Paekli are received in the same order as they were sent.</li>
+</ul>
+<h2 id="individual-recipients-3"><a class="header" href="#individual-recipients-3">Individual recipients</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Paekli can be sent to a specific recipient</li>
+<li>Recipients of a paekli can identify themselves and only receive paekli intended for them.</li>
+</ul>
+<h2 id="express-delivery-3"><a class="header" href="#express-delivery-3">Express delivery</a></h2>
+<p>Requirements:</p>
+<ul>
+<li>Paekli can optionally be sent with express delivery</li>
+<li>Express paekli are always received before non-express paekli.</li>
+</ul>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="http/additional_features.html#admonition-release"></a>
+</div>
+<div>
+<p>Don't forget to cut a release once you've implemented these features!</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="where-to-go-next-3"><a class="header" href="#where-to-go-next-3">Where to Go Next</a></h1>
+<p>Now that you have an HTTP server, you can pretty much do whatever you want!
+All clients can integrate with the HTTP server and thereby become connected.</p>
+<p>The best way to integrate a client with the HTTP server is by implementing the <a href="http/../http_client.html">HTTP client</a> storage backend.
+The only client component that cannot benefit from that is the web app, because it runs in the browser.
+To integrate that one with the HTTP server, see <a href="http/../web_app_http.html">Web App and HTTP</a>.</p>
+<p>The one thing the HTTP server cannot do is live-updating GUIs.
+If you want that, you should implement the WebSocket component.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="websocket-server"><a class="header" href="#websocket-server">WebSocket Server</a></h1>
+<div id="admonition-building-on-the-http-server" class="admonition admonish-warning" role="note" aria-labelledby="admonition-building-on-the-http-server-title">
+<div class="admonition-title">
+<div id="admonition-building-on-the-http-server-title">
+<p>Building on the HTTP server</p>
+</div>
+<a class="admonition-anchor-link" href="websocket.html#admonition-building-on-the-http-server"></a>
+</div>
+<div>
+<p>The WebSocket component can <em>technically</em> be implemented without the HTTP server, but it's not very useful and makes everything more complicated.</p>
+<p>Therefore, this guide assumes you have completed the <a href="http.html">HTTP server</a>.</p>
+</div>
+</div>
+<p>WebSocket is a protocol that allows us to easily send messages from the server to the client.
+This is in contrast to HTTP, where we are limited to requests initiated by the client.
+The most important use case for websockets is a live-updating GUI.
+In our case, the server can let its clients know immediately when a new paekli is available.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-hello-world-of-websocket"><a class="header" href="#the-hello-world-of-websocket">The Hello World of WebSocket</a></h1>
+<p>The websocket stuff will be built on top of the HTTP server, so we don't need a new package this time.
+We're mostly going to work in <code>paekli-http</code>.</p>
+<h2 id="axum-websocket-feature-flag"><a class="header" href="#axum-websocket-feature-flag">Axum WebSocket feature flag</a></h2>
+<p>Axum has built-in support for websockets, but it is gated behind a feature flag.
+Add it with the following command:</p>
+<pre><code class="language-sh">cargo add axum --features ws
+</code></pre>
+<h2 id="opening-a-websocket-connection"><a class="header" href="#opening-a-websocket-connection">Opening a WebSocket connection</a></h2>
+<p>First of all, we'll need a new route where clients can request to open a websocket connection:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>axum::Router::new()
+    // ...
+    .route("/notifications", get(subscribe_to_notifications))
+<span class="boring">}</span></code></pre></pre>
+<p>Next, we actually have to write that handler.
+Don't worry, everything will be explained in a second.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[axum::debug_handler]
+async fn subscribe_to_notifications(ws: WebSocketUpgrade) -&gt; axum::response::Response {
+    ws.on_upgrade(|mut socket| async {
+        socket
+            .send(axum::extract::ws::Message::Text("Hello, world!".into()))
+            .await
+            .unwrap();
+        socket.close().await.unwrap();
+    })
+}
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li><code>WebSocketUpgrade</code> is a type from axum, assuming the feature <code>ws</code> is enabled.
+Axum will only call this handler with requests for websocket connections.</li>
+<li>In the body, we immediately pass a closure to <code>ws.on_upgrade()</code>, which is run once the connection is successfully established.</li>
+<li>Once we have the <code>socket</code> in the closure, we send a single message <code>"Hello, world!"</code> and close it again.</li>
+<li>Don't worry about <code>async</code> and <code>await</code>.</li>
+</ul>
+<p>Websockets can be tricky to debug.
+One option is to use <a href="https://github.com/vi/websocat">websocat</a>:</p>
+<pre><code class="language-sh">websocat ws://127.0.0.1:4200/notifications
+</code></pre>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="websocket/hello_world.html#admonition-success"></a>
+</div>
+<div>
+<p>This should print "Hello, world!" to the terminal.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="notifications"><a class="header" href="#notifications">Notifications</a></h1>
+<p>Let's say we want to send a notifications to all of our subscribers once a new paekli was sent, i.e. it is ready to be received.</p>
+<p>Now we've got a bit of a problem.
+The two handler functions <code>send_paekli</code> and <code>subscribe_to_notifications</code> are completely separate!
+They cannot talk to each other at all.</p>
+<p>Thankfully, <code>axum</code> has a solution for this problem.
+We can pass some "shared state" to all handlers.
+In this case, the state is just going to be a channel through which the handlers can communicate with each other.
+The channel itself is provided by the tokio runtime.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let (notification_sender, _) = tokio::sync::broadcast::channel(16);
+<span class="boring">}</span></code></pre></pre>
+<p>The argument <code>16</code> is the channel capacity, it shouldn't matter for our purpose.
+The second return value is a <em>receiver</em> from that channel, but we don't care about it for now.
+We can always create new receivers by subscribing on the sender again.
+Let's pass this channel as shared state to all handler functions:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>axum::Router::new()
+    // ...
+    .route()
+    .with_state(notification_sender)
+<span class="boring">}</span></code></pre></pre>
+<p>There will likely be some compile error now because a type cannot be inferred.
+This should be fixed shortly.
+Let's use this sender in the <code>send_paekli</code> handler:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn send_paekli(
+    State(sender): State&lt;Sender&lt;()&gt;&gt;,
+    // other params...
+) {
+    // ...
+    sender.send(()).unwrap();
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The necessary imports are <code>axum::extract::State</code> and <code>tokio::sync::broadcast::Sender</code>.
+We specify the type of notification being sent as the empty tuple with <code>Sender&lt;()&gt;</code>.
+This can be changed later, if we actually want to send information with the notification.</p>
+<p>The semantics are simple, the <code>State</code> wrapper around our sender tells <code>axum</code> to pass in the shared state we gave to the router earlier.
+Then we send an empty tuple over the channel to indicate a paekli was sent.</p>
+<p>Now we can listen on this channel in the <code>subscribe_to_notifications</code> handler:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn subscribe_to_notifications(
+    ws: WebSocketUpgrade,
+    State(sender): State&lt;Sender&lt;()&gt;&gt;,
+) -&gt; axum::response::Response {
+    // ...
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Within the function body, you'll have to make three modifications:</p>
+<ul>
+<li>get a new receiver by calling <code>sender.subscribe()</code></li>
+<li>loop over incoming notifications with <code>receiver.recv().await</code> (just send any string over websocket in the loop body)</li>
+<li><code>move</code> the channel into the closure: <code>ws.on_upgrade(|mut socket| async move {</code> (otherwise you'll get a lifetime error)</li>
+</ul>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="websocket/notifications.html#admonition-success"></a>
+</div>
+<div>
+<p>At this point, you should be able to listen on mutliple websocket connections and get a notification every time a paekli is sent.</p>
+</div>
+</div>
+<p>This is already enough in terms of the MVP.
+Feel free to work on an integration next, like <a href="websocket/../web_app_websocket.html">Web App and WebSocket</a>.
+That being said, there is one more section about handling individual recipients.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="individual-recipients-4"><a class="header" href="#individual-recipients-4">Individual Recipients</a></h1>
+<p>We can now send and receive notifications anytime a paekli is sent.
+However, our users probably only want to be notified if there is a paekli for a specific recipient, i.e. themselves.</p>
+<p>Let's broadcast information about the recipient of the paekli in our <code>send_paekli</code> handler.
+We'll need to change the type of our channel from <code>Sender&lt;()&gt;</code> to <code>Sender&lt;String&gt;</code>.
+Then we just... <code>sender.send(recipient)</code> in the body.
+You should already have access to this <code>recipient</code> if you implemented the additional feature of individual recipients for the HTTP server component.
+We receive the notifications in the <code>subscribe_to_notifications</code> handler function, so we'll need to update the <code>Sender</code> type there as well to fix any compilation errors.</p>
+<p>Now we could just pass along the name of the recipient from the internal channel to the websocket.
+That would be simple and serve the purpose.
+But it's a little nicer if the user can specify a recipient up front and only receive those notifications.</p>
+<h2 id="the-recipient-as-path-parameter"><a class="header" href="#the-recipient-as-path-parameter">The recipient as path parameter</a></h2>
+<p>In terms of our API, we'll allow users to subscribe to notifications on different URL <em>paths</em>.
+For example, Alice can subscribe to her notifications at <code>/notifications/alice</code> and Bob can subscribe at <code>/notifications/bob</code>.</p>
+<p>But we don't want to write a new handler function for ever possible recipient... that would be a lot.
+Axum allows us to turn some segments of the path into parameters to the handler function.
+To do that, we need to first declare the route with the new path:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>.route("/notifications/:recipient", get(subscribe_to_notifications))
+<span class="boring">}</span></code></pre></pre>
+<p>Notice the colon before <code>recipient</code>, it means this is a parameter instead of a literal part of the path.
+Next, we can accept the parameter in our handler:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn subscribe_to_notifications(
+    Path(recipient): Path&lt;String&gt;,
+    // ...
+) -&gt; Response {
+<span class="boring">}</span></code></pre></pre>
+<p><code>Path</code> is imported from <code>axum::extract::Path</code>.
+This type tells the <code>axum</code> library to extract the value of <code>recipient</code> from the URL of the request.
+That only works because we declared the parameter previously in the route declaration with <code>"/notifications/:recipient"</code>.</p>
+<details id="admonition-more-than-one-path-parameter" class="admonition admonish-note" role="note" aria-labelledby="admonition-more-than-one-path-parameter-title">
+<summary class="admonition-title">
+<div id="admonition-more-than-one-path-parameter-title">
+<p>More than one path parameter</p>
+</div>
+<a class="admonition-anchor-link" href="websocket/individual_recipients.html#admonition-more-than-one-path-parameter"></a>
+</summary>
+<div>
+<p>We only need one path parameter here, so there's not much that can go wrong.
+But what if we had multiple path parameters?
+For example: <code>"/notifications/:recipient/:sender"</code> to only get notified for paekli from a specific sender?</p>
+<p>That works too, but then we have to accept the parameters as a <em>tuple</em> inside the <code>Path</code> wrapper from <code>axum</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn subscribe_to_notifications(
+    Path((recipient, sender)): Path&lt;(String, String)&gt;,
+    // ...
+) -&gt; Response {
+<span class="boring">}</span></code></pre></pre>
+<p>The names of the parameters <code>recipient</code> and <code>sender</code> don't really matter.
+<code>axum</code> gives us the parameters in a tuple in the order they appear in the URL path.</p>
+</div>
+</details>
+<p>Inside the body of <code>subscribe_to_notifications</code>, we can now send a notification on the websocket only if the recipient matches the one of our URL parameter.
+The code you'll need might look a little something like this:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let Ok(channel_recipient) = receiver.recv().await
+if url_path_recipient == channel_recipient {
+    socket.send(/**/)
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="trying-it-out"><a class="header" href="#trying-it-out">Trying it out</a></h2>
+<p>With all these connections, it's becoming more tricky to test that everything works.
+Here are a couple commands to get you started.
+You might have to adjust some details, especially if you designed your HTTP API a little differently.</p>
+<pre><code class="language-sh"># Terminal 1: run HTTP &amp; WebSocket server
+cd paekli-http
+cargo run
+</code></pre>
+<pre><code class="language-sh"># Terminal 2: listen to notifications for Alice
+websocat ws://127.0.0.1:4200/notifications/alice
+</code></pre>
+<pre><code class="language-sh"># Terminal 3: listen to notifications for Bob
+websocat ws://127.0.0.1:4200/notifications/bob
+</code></pre>
+<pre><code class="language-sh"># Terminal 4: send paekli
+
+# send paekli to Alice
+curl --header 'Content-Type: application/json' --data '{ "content": "shoes", "recipient": "alice" }' localhost:4200/paekli
+
+# send paekli to Bob
+curl --header 'Content-Type: application/json' --data '{ "content": "shoes", "recipient": "alice" }' localhost:4200/paekli
+</code></pre>
+<p>Instead of using <code>curl</code> to send paekli, you can obviously also use any of you client components if you have already integrated them with the HTTP client storage backend.</p>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="websocket/individual_recipients.html#admonition-success"></a>
+</div>
+<div>
+<p>Phew, that was a little tedious!
+Hopefully everything worked out as expected.
+🤞</p>
+</div>
+</div>
+<p>Obviously we don't want to handle websocket connections as manually as we did just now.
+The real fun starts when we integrate that with our GUI clients!
+I recommend you do that next, otherwise all that work was for nothing.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="file-system-storage"><a class="header" href="#file-system-storage">File System Storage</a></h1>
+<p>Many of the available components can use the file system to store paekli.
+In order to avoid code duplication, we'll implement the <code>DistributionCenter</code> trait.
+If you haven't created this trait yet, do the <a href="storage_backend.html">Storage Backend</a> guide first and then come back here.</p>
+<h2 id="shortcut-if-you-have-the-cli"><a class="header" href="#shortcut-if-you-have-the-cli">Shortcut if you have the CLI</a></h2>
+<p>You have likely already implemented storage of paekli in the file system for the CLI.
+In that case you can mostly copy-paste the functionality from there.</p>
+<p>If you didn't implement the CLI, jump ahead to the <a href="file_system.html#storing-paekli-for-delivery">next section</a>.
+The file system related instructions from the CLI guide are duplicated here.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct FileSystemStorage;
+
+impl DistributionCenter for FileSystemStorage {
+    // ... copy-paste code from CLI ...
+}
+<span class="boring">}</span></code></pre></pre>
+<p>When copy-pasting from the CLI, remember to add any libraries the code uses to <code>paekli-core</code> as well, including the required feature flags.
+(check <code>paekli-cli/Cargo.toml</code>)</p>
+<p>Already done?
+Read up on <a href="storage_backend.html#using-the-trait">how to use the storage backend</a> next.</p>
+<h2 id="storing-paekli-1"><a class="header" href="#storing-paekli-1">Storing paekli</a></h2>
+<p>Applications are expected to store their data in different locations depending on the operating system.
+We might be tempted to tell our users to just install Linux when they're bugging us about supporting their platform.
+Instead, let's use the <a href="https://docs.rs/directories">directories</a> crate to not have to worry about it at all.</p>
+<p>Here's a couple lines of code you'll probably need:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let project_dir = directories::ProjectDirs::from("dev", "buenzli", "paekli")
+    .expect("the user's home directory seems to be corrupt");
+
+let storage_dir = project_dir.data_dir();
+
+std::fs::create_dir_all(storage_dir).expect("failed to create storage directory");
+
+std::fs::write(storage_dir.join("content"), content)
+    .expect("failed to store paekli");
+<span class="boring">}</span></code></pre></pre>
+<p>On Linux, a paekli will be stored at the following location:</p>
+<pre><code class="language-sh">~/.local/share/paekli/content
+</code></pre>
+<h2 id="retrieving-paekli"><a class="header" href="#retrieving-paekli">Retrieving paekli</a></h2>
+<p>Retrieving paekli should be easy:</p>
+<ul>
+<li>Read the same file where the paekli is stored.</li>
+<li>Handle the case when there's no paekli.</li>
+<li>Delete any retrieved paekli so they don't get delivered twice.</li>
+</ul>
+<h2 id="error-handling"><a class="header" href="#error-handling">Error handling</a></h2>
+<p>I will leave this up to you.
+The CLI guide includes some additional instructions about using the <code>anyhow</code> crate for error handling.
+Whatever you choose to do, it may impact the function signatures in your <code>DistributionCenter</code> trait.
+That's totally fine, the compiler will help you with any necessary refactoring.</p>
+<div id="admonition-done" class="admonition admonish-success" role="note" aria-labelledby="admonition-done-title">
+<div class="admonition-title">
+<div id="admonition-done-title">
+<p>Done</p>
+</div>
+<a class="admonition-anchor-link" href="file_system.html#admonition-done"></a>
+</div>
+<div>
+<p>Jump over <a href="storage_backend.html#using-the-trait">here</a> to find out how to use the <code>DistributionCenter</code>.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sql-database"><a class="header" href="#sql-database">SQL Database</a></h1>
+<p>For this component, you need the <code>DistributionCenter</code> trait.
+If you don't have it yet, do the <a href="storage_backend.html">Storage Backend</a> guide first and then come back here.</p>
+<p>SQL databases are ubiquitous and the ability to use them is a marketable skill.
+You don't need to know SQL to follow this guide, but the provided code snippets won't be explained either.
+At the start of a new project, we have to ask ourselves which database to pick, like PostgreSQL, MySQL etc.
+We also have to decide if and what library we are going to use to make queries from our general-purpose programming language.</p>
+<p>If we wanted to pull out the big guns, we could go with PostgreSQL and a full-blown ORM like <a href="https://diesel.rs/">diesel</a>.
+But for our purposes, we'll travel a little lighter with SQLite as our database and <a href="https://docs.rs/sqlx/latest/sqlx/">sqlx</a> as our query library.</p>
+<h2 id="connecting-to-the-database"><a class="header" href="#connecting-to-the-database">Connecting to the database</a></h2>
+<p>In <code>paekli-core</code>, create a new storage backend like you've probably done before:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct SqlDatabase;
+
+impl DistributionCenter for SqlDatabase {
+    // ...
+}
+<span class="boring">}</span></code></pre></pre>
+<p><code>sqlx</code> is database agnostic and provides <a href="https://github.com/launchbadge/sqlx?tab=readme-ov-file#sqlx-is-not-an-orm">compile-time checked queries</a> without abstracting the raw power of SQL away from you.
+It is also fundamentally <code>async</code>, a language feature we did not discuss.
+Luckily, <code>async</code> is not necessary to understand the rest of what's going on, so it won't be explained here either.</p>
+<p>Let's add the dependency with the feature flags <code>sqlite</code> and <code>runtime-tokio</code>, which is necessary to run <code>async</code> code.
+We'll need to use the runtime <code>tokio</code> directly as well, let's add it with the full feature set.</p>
+<pre><code class="language-sh">cargo add sqlx --features sqlite,runtime-tokio
+cargo add tokio --features full
+</code></pre>
+<p>In contrast to the file system storage or the HTTP client, the SQL database needs some initialization code.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl SqlDatabase {
+    fn new() -&gt; Self {
+        // ...
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>To determine the location to store our database, we'll use the <code>directories</code> crate.
+You've probably already done this for the CLI.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let project_dir = directories::ProjectDirs::from("dev", "buenzli", "paekli")
+    .expect("the user's home directory seems to be corrupt");
+
+let storage_dir = project_dir.data_dir();
+
+std::fs::create_dir_all(storage_dir).expect("failed to create storage directory");
+
+let db_path = storage_dir.join("db.sqlite");
+if !db_path.exists() {
+    std::fs::File::create(&amp;db_path).expect("failed to create database");
+}
+let db_url = format!("sqlite:{}", db_path.display());
+<span class="boring">}</span></code></pre></pre>
+<p>Next, we need to create a database connection pool.
+The way to do that with <code>sqlx</code> is an <code>async</code> task, so we need a <code>tokio</code> runtime to execute it.
+We'll also need the runtime to execute queries later, so we'll store it in a variable <code>rt</code>.</p>
+<details id="admonition-realistic-async" class="admonition admonish-info" role="note" aria-labelledby="admonition-realistic-async-title">
+<summary class="admonition-title">
+<div id="admonition-realistic-async-title">
+<p>realistic async</p>
+</div>
+<a class="admonition-anchor-link" href="sql_database.html#admonition-realistic-async"></a>
+</summary>
+<div>
+<p>This is not really how you would do <code>async</code> programming in a serious project.
+It's just the simplest way to sweep the <code>async</code> stuff under the rug.
+Don't worry about it, just make a mental note that for a serious <code>async</code> project, we'd do things differently.</p>
+</div>
+</details>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let rt = tokio::runtime::Runtime::new().unwrap();
+let pool_task = SqlitePool::connect(&amp;db_url);
+let pool = rt.block_on(pool_task).unwrap();
+<span class="boring">}</span></code></pre></pre>
+<details id="admonition-a-connection-pool-to-a-sqlite-database-what" class="admonition admonish-question" role="note" aria-labelledby="admonition-a-connection-pool-to-a-sqlite-database-what-title">
+<summary class="admonition-title">
+<div id="admonition-a-connection-pool-to-a-sqlite-database-what-title">
+<p>A connection pool to a SQLite database? What?</p>
+</div>
+<a class="admonition-anchor-link" href="sql_database.html#admonition-a-connection-pool-to-a-sqlite-database-what"></a>
+</summary>
+<div>
+<p>You're right, a connection pool doesn't really make sense in the context of SQLite.
+However, to be database agnostic, <code>sqlx</code> uses the same abstractions for SQLite as for PostgreSQL etc.
+We <em>could</em> create a single connection to SQLite, but then we'd need a mutable reference to it to execute queries.
+Connection pools in <code>sqlx</code> have the additional convenience that queries can be executed on an immutable reference to them.</p>
+</div>
+</details>
+<h2 id="initial-migrations"><a class="header" href="#initial-migrations">Initial migrations</a></h2>
+<p>Now that we have an open database connection, we need to create the schema.</p>
+<p><code>sqlx</code> has a built-in feature for migrations.
+It allows you to store them as scripts in some directory and automatically execute all of them.
+However, since we just need a single table, we'll keep it simple and use a regular query.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let create_table_task = sqlx::query(
+    "
+    CREATE TABLE IF NOT EXISTS paekli (
+        content TEXT
+    )
+    ",
+)
+.execute(&amp;pool);
+rt.block_on(create_table_task).unwrap();
+<span class="boring">}</span></code></pre></pre>
+<h2 id="storing-paekli-2"><a class="header" href="#storing-paekli-2">Storing paekli</a></h2>
+<p>We can finally start implementing the functionality of <code>DistributionCenter</code>.
+Here's the query to insert a paekli into the database.
+This <code>async</code> task needs to be executed on the <code>tokio</code> runtime with <code>.block_on()</code>.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>sqlx::query("INSERT INTO paekli VALUES (?)")
+    .bind(content)
+    .execute(&amp;pool)
+<span class="boring">}</span></code></pre></pre>
+<div id="admonition-prepared-queries" class="admonition admonish-tip" role="note" aria-labelledby="admonition-prepared-queries-title">
+<div class="admonition-title">
+<div id="admonition-prepared-queries-title">
+<p>Prepared queries</p>
+</div>
+<a class="admonition-anchor-link" href="sql_database.html#admonition-prepared-queries"></a>
+</div>
+<div>
+<p>The <code>?</code> in the query string and <code>.bind(content)</code> are executed as a <em>prepared statement</em>.
+Prepared statements have built-in protection against SQL injection (a common security vulnerability).</p>
+<p>You should <strong>NEVER</strong> construct a SQL query from user input with normal string manipulation like the <code>format!()</code> macro.</p>
+</div>
+</div>
+<h2 id="retrieving-paekli-1"><a class="header" href="#retrieving-paekli-1">Retrieving paekli</a></h2>
+<p>A reasonable approach for retrieving paekli is a query like the following.
+(<code>rowid</code> is automatically added to every table by SQLite.)</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let select_task = sqlx::query(
+    "
+    SELECT rowid, content FROM paekli
+    LIMIT 1
+    ",
+)
+.fetch_one(&amp;pool)
+<span class="boring">}</span></code></pre></pre>
+<p>This would work, but the returned values would be an SQL row, not the most convenient format.
+Ideally, we want the result to be filled directly into a nice Rust type.
+We can do that with <code>query_as</code> and a derived <code>FromRow</code> implementation on our own type:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(sqlx::FromRow)]
+struct PaekliRow {
+    rowid: i64,
+    content: String,
+}
+
+let select_task = sqlx::query_as().fetch_one(&amp;pool);
+
+let PaekliRow { rowid, content } = rt.block_on(select_task).unwrap();
+<span class="boring">}</span></code></pre></pre>
+<p>Instead of calling <code>.unwrap()</code>, we should handle the case where no paekli exist.</p>
+<p>Lastly, execute another query to delete the retrieved paekli from the database.
+The SQL query to delete a row with a specific ID is: <code>DELETE FROM paekli WHERE rowid = ?</code>.</p>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="sql_database.html#admonition-success"></a>
+</div>
+<div>
+<p>The implementation of <code>DistributionCenter</code> is complete.
+Now you can extend your constructor function for <code>DistributionCenter</code> and enable your clients to select the new backend.</p>
+<p>To enable all additional features for this storage backend, you might need a little more knowledge about SQL than what we've seen so far... good luck!</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="http-client"><a class="header" href="#http-client">HTTP Client</a></h1>
+<div id="admonition-tip" class="admonition admonish-tip" role="note" aria-labelledby="admonition-tip-title">
+<div class="admonition-title">
+<div id="admonition-tip-title">
+<p>Tip</p>
+</div>
+<a class="admonition-anchor-link" href="http_client.html#admonition-tip"></a>
+</div>
+<div>
+<p>You don't need your own HTTP server for the HTTP client to work!
+There is a reference implementation of the server which your client can talk to.</p>
+</div>
+</div>
+<p>Pretty much all of the available components can use an HTTP server to store paekli.
+In order to avoid code duplication, we'll implement the <code>DistributionCenter</code> trait.
+If you haven't created this trait yet, do the <a href="storage_backend.html">Storage Backend</a> guide first and then come back here.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// somewhere in paekli-core
+struct HttpClient;
+
+impl DistributionCenter for HttpClient {
+    // ...
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="storing-paekli-3"><a class="header" href="#storing-paekli-3">Storing paekli</a></h2>
+<p>The most common library for making HTTP requests is <code>reqwest</code> (nope, that's not a typo 😄).
+Add it to your shared library <code>paekli-core</code> with a couple feature flags:</p>
+<pre><code class="language-sh">cargo add reqwest --features blocking,json
+</code></pre>
+<p>Here's a brief explanation for each feature flag.
+They are appropriately mentioned in the documentation (<a href="https://docs.rs/reqwest">docs.rs/reqwest</a>), so you shouldn't have any issues picking the right ones if you use <code>reqwest</code> on your own.</p>
+<ul>
+<li><code>blocking</code><br />
+<code>reqwest</code> is <code>async</code> by default, which is a language feature that we haven't discussed.
+In order to use the simpler <em>blocking</em> API, we need to enable that flag.</li>
+<li><code>json</code><br />
+This one is intuitive, it enables JSON (de-)serialization via <code>serde_json</code>.</li>
+</ul>
+<p>Now, to create an HTTP request for storing a paekli, we're gonna need to create a <em>client</em> with <code>reqwest</code> and call its <code>post</code> method:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let client = reqwest::blocking::Client::new();
+client
+    .post("https://paekli.buenzli.dev/paekli")
+    .json(todo!())
+    .send()
+    .unwrap();
+<span class="boring">}</span></code></pre></pre>
+<details id="admonition-using-your-own-http-server" class="admonition admonish-tip" role="note" aria-labelledby="admonition-using-your-own-http-server-title">
+<summary class="admonition-title">
+<div id="admonition-using-your-own-http-server-title">
+<p>Using your own HTTP server</p>
+</div>
+<a class="admonition-anchor-link" href="http_client.html#admonition-using-your-own-http-server"></a>
+</summary>
+<div>
+<p>If you want to send the request to your own server, just replace the URL string with something like <code>http://localhost:4200/paekli</code> (make sure to get the right port).
+If you want to get real fancy, try making the URL configurable in the <code>HttpClient</code>!
+That way, users of this storage backend could use it to connect to any HTTP server they like.</p>
+</div>
+</details>
+<p>Notice that I left out the JSON body.
+You have two options here:</p>
+<ol>
+<li>If you're using your own server, you should extract the types like <code>SendRequest</code> and <code>ReceiveResponse</code> into the shared library <code>paekli-core</code> so you can use them in the client as well.
+That way you can ensure that client and server always agree on the structure of the data that's being sent.</li>
+<li>If you're using the reference server, read its API documentation at <a href="https://paekli.buenzli.dev">paekli.buenzli.dev</a> to find out what structure of data it's expecting.</li>
+</ol>
+<p>Either way, you should have some kind of struct which implements <code>serde::Serialize</code> which you can then pass into the <code>.json()</code> call.</p>
+<h2 id="retrieving-paekli-2"><a class="header" href="#retrieving-paekli-2">Retrieving paekli</a></h2>
+<p>To retrieve paekli, we need the <code>delete</code> method instead of <code>post</code>.
+Obviously we also have to send a different request body, depending on what the server expects.</p>
+<p>You may have discarded the response from the <code>store</code> operation, or you may have read it for error handling / reporting purposes.
+Now, for the <code>retrieve</code> operation, we have to read the response to get the paekli content.
+The response is what you get from the <code>.send().unwrap()</code>.
+(you are encouraged to do better error handling than me 🙈)</p>
+<p>Here's how to get the JSON response:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let data: ReceiveResponse = resp.json().unwrap();
+<span class="boring">}</span></code></pre></pre>
+<p>Again, <code>ReceiveResponse</code> just has to be some type that implements <code>serde::Deserialize</code> and actually matches what we expect the server to respond.</p>
+<h2 id="extending-the-constructor-function"><a class="header" href="#extending-the-constructor-function">Extending the constructor function</a></h2>
+<p>The implementation of the <code>DistributionCenter</code> trait should be complete at this point, but we still need a way for <code>paekli-core</code> users to get their hands on an instance of <code>HttpClient</code>.
+You will likely have to add some parameter to the constructor function, so users can select which storage backend they want.
+As the number of backends grows, maybe an <code>enum</code> makes sense?
+If some backends can even be configured further (e.g. server URL), such configuration data can be stored alongside the enum variant.
+I'll leave the details up to you.</p>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="http_client.html#admonition-success"></a>
+</div>
+<div>
+<p>That should be it!</p>
+<p>Now you can extend your clients to make use of the new backend.</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-shared-library"><a class="header" href="#creating-a-shared-library">Creating a Shared Library</a></h1>
+<p>For multiple reasons, our different components may need to share some code.
+Luckily this is very simple.
+Let's start by initializing a new <em>library</em> package:</p>
+<pre><code class="language-sh">cargo new --lib paekli-core
+</code></pre>
+<p>This new library can be used in any of our other packages by adding it as a dependency first.
+Note that we need the <code>--path</code> flag for a local library, as opposed to ones from crates.io.</p>
+<pre><code class="language-sh">cd paekli-cli
+cargo add --path ../paekli-core
+</code></pre>
+<p>Lastly, you can confirm it works by trying to import the generated <code>add</code> function.
+Note how the dash in <code>paekli-core</code> changes to an underscore in Rust code.
+This is automatic, because Rust identifiers cannot contain dashes.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// paekli-cli/src/main.rs
+use paekli_core::add;
+<span class="boring">}</span></code></pre></pre>
+<p>Now you can add some functionality to <code>paekli-core</code> and use it in your other packages.</p>
+<div id="admonition-target-incompatible-dependencies" class="admonition admonish-warning" role="note" aria-labelledby="admonition-target-incompatible-dependencies-title">
+<div class="admonition-title">
+<div id="admonition-target-incompatible-dependencies-title">
+<p>Target-incompatible dependencies</p>
+</div>
+<a class="admonition-anchor-link" href="shared_lib.html#admonition-target-incompatible-dependencies"></a>
+</div>
+<div>
+<p>As you implement more components, your shared library will accumulate its own dependencies.
+Some of these dependencies are not compatible with the web app.
+This can lead to <strong>difficult to understand error messages</strong>.
+Essentially, the web app will fail to compile because a bunch of stuff was "not found".
+This is because it doesn't exist in the browser, where our app will run.
+The next section will explain how to deal with this.
+If you have no intention of implementing the web app, you can safely ignore it.</p>
+</div>
+</div>
+<h2 id="target-specific-code-and-dependencies"><a class="header" href="#target-specific-code-and-dependencies">Target-specific code and dependencies</a></h2>
+<p>Some functionality in <code>paekli-core</code> will only be available for components that run in a normal operating system.
+This is notably not the case for the web app.</p>
+<p>So, we need to be able to include or exclude some functionality of <code>paekli-core</code> based on which platform it's being compiled for.</p>
+<h3 id="compiling-code-only-for-specific-targets"><a class="header" href="#compiling-code-only-for-specific-targets">Compiling code only for specific targets</a></h3>
+<p>Let's assume your library is organized in two modules, <code>wasm_compatible</code> and <code>wasm_incompatible</code>.
+In that case, you can skip compiling the incompatible module for wasm-builds like so:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub mod wasm_compatible;
+
+#[cfg(not(target_family = "wasm"))]
+pub mod wasm_incompatible;
+<span class="boring">}</span></code></pre></pre>
+<p>Depending on how you organize your code, you may have to add multiple of these annotations.</p>
+<p>See also the <a href="https://doc.rust-lang.org/rust-by-example/attribute/cfg.html"><code>cfg</code> page of Rust By Example</a> and the <a href="https://doc.rust-lang.org/reference/conditional-compilation.html">Rust Reference</a>.</p>
+<h3 id="declaring-target-specific-dependencies"><a class="header" href="#declaring-target-specific-dependencies">Declaring target-specific dependencies</a></h3>
+<p>Even if you already excluded your own target-incompatible code as explained above, dependencies declared in <code>Cargo.toml</code> will still (fail to) compile.
+We need to tell cargo to completely exclude these libraries from the build, based on the target platform.</p>
+<p>Take a look at the following example.
+The dependency <code>serde</code> is compiled for every target, while <code>tokio</code> is not compiled for the web app.</p>
+<pre><code class="language-toml"># paekli-core/Cargo.toml
+[dependencies]
+serde = { version = "1.0.197", features = ["derive"] }
+
+[target.'cfg(not(target_family = "wasm"))'.dependencies]
+tokio = { version = "1.36.0", features = ["full"] }
+</code></pre>
+<p>Note how the <code>cfg</code> syntax is identical to the one used in the source code attribute.
+The documentation for this is in <a href="https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#platform-specific-dependencies">the cargo book</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="storage-backend"><a class="header" href="#storage-backend">Storage Backend</a></h1>
+<p>Most of the components use identical methods to store paekli, but the method itself may be configurable.
+For example, both the CLI and the python module might store paekli in the file system, an SQL database or delegate storage to the HTTP server.
+The server itself may use the file system, a database <em>or</em> just keep it in-memory... you get the point.</p>
+<p>This is the perfect place to introduce an abstraction.
+We can program a component to work independently of how paekli are stored.
+Different storage methods can then be swapped out easily.</p>
+<p>If we think about a postal service, we might make the analogy of a distribution center.
+The postal office doesn't need to know how the distribution center works, it only cares about the functionality it provides.</p>
+<p>This is a perfect use case for a <code>trait</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait DistributionCenter {
+    fn store();
+    fn retrieve();
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The fundamental operations <code>store</code> and <code>retrieve</code> are obvious, but I'll let you decide what the parameters and return types should be.
+Don't worry about getting it right immediately, you can always refactor the interface as the need arises.
+Rust's strong type system will help you correctly change all the places where the interface is already used.</p>
+<p>Since this <code>DistributionCenter</code> will be used by most of the components, it needs to go into our <code>paekli-core</code>.
+Read the instructions for <a href="shared_lib.html">creating a shared library</a> if you haven't already.</p>
+<div id="admonition-the-first-implementation" class="admonition admonish-note" role="note" aria-labelledby="admonition-the-first-implementation-title">
+<div class="admonition-title">
+<div id="admonition-the-first-implementation-title">
+<p>The first implementation</p>
+</div>
+<a class="admonition-anchor-link" href="storage_backend.html#admonition-the-first-implementation"></a>
+</div>
+<div>
+<p>Since you probably already implemented file system storage for the CLI component, it makes sense to turn that into your <a href="file_system.html">first implementation of the trait</a>.</p>
+<p>For the next section to make sense, make sure you have at least one implementation.</p>
+</div>
+</div>
+<h2 id="using-the-trait"><a class="header" href="#using-the-trait">Using the trait</a></h2>
+<p>The first time you're reading this, you will only have one storage backend.
+It would be simple to just use that directly.
+To future proof for additional storage backends, let's assume we already have two:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// paekli-core/src/storage.rs
+trait DistributionCenter {}
+
+struct FileSystemStorage;
+impl DistributionCenter for FileSystemStorage {}
+
+struct HttpClient;
+impl DistributionCenter for HttpClient {}
+<span class="boring">}</span></code></pre></pre>
+<p>Let's try to write a simple function for creating a <code>DistributionCenter</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn new_distribution_center(local: bool) -&gt; ? {
+    if local {
+        FileSystemStorage
+    } else {
+        HttpClient
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Hm, this doesn't quite work.
+There is no way for us to write a correct return type for this function, because the two possible values have different types.</p>
+<p>What we need is <em>dynamic dispatch</em>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn new_distribution_center(local: bool) -&gt; Box&lt;dyn DistributionCenter&gt; {
+    if local {
+        Box::new(FileSystemStorage)
+    } else {
+        Box::new(HttpClient)
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<details id="admonition-how-dynamic-dispatch-works" class="admonition admonish-info" role="note" aria-labelledby="admonition-how-dynamic-dispatch-works-title">
+<summary class="admonition-title">
+<div id="admonition-how-dynamic-dispatch-works-title">
+<p>How dynamic dispatch works</p>
+</div>
+<a class="admonition-anchor-link" href="storage_backend.html#admonition-how-dynamic-dispatch-works"></a>
+</summary>
+<div>
+<p>The full explanation of dynamic dispatch can be found in <a href="https://doc.rust-lang.org/book/ch17-02-trait-objects.html">chapter 17 of the Rust book</a>.
+Here's a condensed version:</p>
+<p>The <code>dyn</code> keyword generates a table of function pointers (<strong>vtable</strong>) for each type that implements a certain trait.
+The vtable contains pointers to all methods of the trait and the <code>drop</code> method (destructor).</p>
+<p>A pointer to this vtable is then stored <em>alongside</em> a pointer to the actual value.
+Such a value is often referred to as a <em>trait object</em>.
+It uses the same mechanism of storing metadata with a pointer (fat pointer) as the slice type.</p>
+<p>This means that dynamic dispatch only works with some kind of pointer type, like <code>Box&lt;dyn Foo&gt;</code> or <code>&amp;dyn Foo</code>.
+The <em>memory size</em> of the value behind the poiner is unknown at compile time.
+That's OK though, because the only thing you can do with such a value is call methods on it that actually do know its size.</p>
+</div>
+</details>
+<p>Finally, in your clients that need to access a distribution center, you can write:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let center = new_distribution_center();
+center.store();
+center.retrieve();
+<span class="boring">}</span></code></pre></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="web-app-and-http"><a class="header" href="#web-app-and-http">Web App and HTTP</a></h1>
+<p>The MVP of the web app stores paekli for delivery in a local signal.
+This means the web app cannot send or receive paekli to and from other components.
+Also, the paekli that were sent but not received are lost when the web app reloads.
+(That could be fixed though without any integrations, browsers do allow websites to persist data.)</p>
+<p>These limitations will be fixed by the integration with the HTTP server.</p>
+<h2 id="sharing-request-types"><a class="header" href="#sharing-request-types">Sharing request types</a></h2>
+<p>Our HTTP server expects requests from us to be in specific JSON formats.
+Those formats are derived from our Rust types, so we didn't need to specify them explicitly.</p>
+<p>Therefore, the easiest way to ensure we are always sending and receiving correctly-formatted JSON is to use the type system!</p>
+<ul>
+<li><a href="shared_lib.html">Create a shared library</a> if you haven't already.</li>
+<li>Copy the request types (<code>SendRequest</code>, <code>ReceiveResponse</code> etc.) from <code>paekli-http</code> to <code>paekli-core</code>.
+You're free to organize it into a module or not.
+All these types need to derive <code>Serialize</code> and <code>Deserialize</code>.</li>
+<li>You might have to add some of the dependencies of <code>paekli-http</code> to <code>paekli-core</code>.
+Don't forget to add all the <code>--features</code> you need.</li>
+<li>Run <code>cargo add --path ../paekli-core</code> for the http and web app component to access the shared type.</li>
+</ul>
+<h2 id="sending-paekli"><a class="header" href="#sending-paekli">Sending paekli</a></h2>
+<p>You probably have some signal to store sent paekli at this point.
+We'll get rid of that signal and tell our HTTP server to store it instead.
+We do that with the HTTP request which the server is programmed to accept.</p>
+<p>We already had to add the dependency <code>gloo</code>, which is also going to help us send HTTP requests.
+Let's start by defining the request:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use gloo::net::http::Request;
+
+let request = Request::post("https://paekli.buenzli.dev/paekli")
+    .json(&amp;SendRequest {
+        content: todo!(),
+        recipient: None,
+        express: false,
+    })
+    .unwrap();
+<span class="boring">}</span></code></pre></pre>
+<p>We use <code>Request::post</code> to say we want to send an HTTP request with the method <code>POST</code>.
+We also pass the URL we want to send it to as the argument.
+Notice the path <code>/paekli</code> at the end, it has to match the router configuration of the server.
+You can replace the domain with <code>localhost:3000</code> or whatever port you have, if you want to talk to your own server.
+You can even make the domain configurable in the UI, if you like!
+But I leave that up to you, hard coding is perfectly fine for our purposes.</p>
+<p>Notice the argument to the <code>.json()</code> method.
+It's a reference to our <code>SendRequest</code> type!
+This is possible, because it implements the <code>Serialize</code> trait, which we were able to derive.
+We can be pretty confident the body of that request is exactly as the HTTP server expects it.
+You just need to add the correct <code>content</code>.</p>
+<p>We still have to actually send the request, here's how that goes:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>spawn_local(async {
+    request.send().await.unwrap();
+});
+<span class="boring">}</span></code></pre></pre>
+<details id="admonition-what" class="admonition admonish-question" role="note" aria-labelledby="admonition-what-title">
+<summary class="admonition-title">
+<div id="admonition-what-title">
+<p>What?</p>
+</div>
+<a class="admonition-anchor-link" href="web_app_http.html#admonition-what"></a>
+</summary>
+<div>
+<p>There is quite a bit of unintuitive boilerplate here.
+The reason is that browsers don't (yet) allow WebAssembly to make HTTP requests.
+Rather, wasm has to ask JavaScript to do it instead.
+Luckily, this glue code is generated by our libraries.</p>
+<p>The browser only allows JavaScript to make HTTP requests via a browser API, which is <em>asynchronous</em> for performance reasons.
+So these weird-looking three lines of code construct an asynchronous JavaScript task in WebAssembly and instruct JavaScript to process it via its own runtime.</p>
+<p>Still confused?
+Yeah, me too buddy.</p>
+</div>
+</details>
+<div id="admonition-try-it-out" class="admonition admonish-success" role="note" aria-labelledby="admonition-try-it-out-title">
+<div class="admonition-title">
+<div id="admonition-try-it-out-title">
+<p>Try it out!</p>
+</div>
+<a class="admonition-anchor-link" href="web_app_http.html#admonition-try-it-out"></a>
+</div>
+<div>
+<p>You can test whether or not your send request worked by making a receive request via <code>curl</code>.</p>
+<p>If you're using <a href="https://paekli.buenzli.dev">paekli.buenzli.dev</a>, you can also trigger a receive request in the API docs.</p>
+</div>
+</div>
+<h2 id="receive-paekli"><a class="header" href="#receive-paekli">Receive paekli</a></h2>
+<p>The general idea here is the same as for sending paekli.</p>
+<p>Firstly, you need to consider the correct <code>Request</code> to construct.
+Method, path, body... make sure to get them right.</p>
+<p>Secondly, when you send the request in the <code>async</code> block, you need to actually read the response from the server.
+There is a method <code>.json()</code> on <code>gloo</code>'s <code>Response</code> type for this purpose.
+It is generic, so the compiler might need some kind of hint that you want a <code>ReceiveResponse</code> as we've defined it.</p>
+<p>Also note that it's not trivial to get the response <em>out</em> of the <code>async</code> block.
+You can display an <code>alert</code> from the <code>async</code> block, which I recommend.
+Otherwise, if you'd like a more sophisticated user experience, you can use a <em>signal</em> to store the received paekli.</p>
+<h2 id="additional-features-4"><a class="header" href="#additional-features-4">Additional features</a></h2>
+<p>If you have already implemented the additional features in your web app, make sure they work with this integration as well!</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="web_app_http.html#admonition-release"></a>
+</div>
+<div>
+<p>You've made some amazing progress!
+The result is a <em>full-stack</em> application written entirely in Rust.</p>
+<p>We are left to question the very <em>Existenzberechtigung</em> of JavaScript...</p>
+</div>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="web-app-and-websocket"><a class="header" href="#web-app-and-websocket">Web App and WebSocket</a></h1>
+<p>If you don't have the <a href="websocket.html">WebSocket</a> component yet, you can still integrate with the reference implementation.
+This guide assumes you have the feature for individual recipients implemented, but it should work without it with a few adjustments.</p>
+<p>Let's first think about how we want to handle the websocket connection on the client side.
+When users first open the app, we don't want any websocket connection to be opened.
+Users should then be able to select a recipient (presumably themselves) and open a websocket connection to receive the notifications for that recipient.
+Users should also be able to stop receiving notifications, i.e. close the websocket connection.</p>
+<p>The most idiomatic way to achieve such a life cycle for resources in our UI library <code>leptos</code> is to tie it to the life cycle of a UI component.
+To open a websocket connection, we render the component.
+To close the connection, we stop rendering the component.
+Sounds complicated and abstract for now, but we'll get there one step at a time.</p>
+<h2 id="creating-a-custom-component"><a class="header" href="#creating-a-custom-component">Creating a custom component</a></h2>
+<p>Until now, we only had a <code>main</code> function and all our declarative UI was in a single <code>view!</code> macro call.
+That macro contained standard HTML elements.
+<code>leptos</code> allows us to define our own components and use them as if they were HTML elements:</p>
+<pre><pre class="playground"><code class="language-rust">#[component]
+fn NotificationListener() -&gt; impl IntoView {
+    view! {
+        "Hello from a custom component!"
+    }
+}
+
+fn main() {
+    // ...
+
+    mount_to_body(move || {
+        view! {
+            // ...
+            &lt;NotificationListener/&gt;
+        }
+    })
+}</code></pre></pre>
+<p>If you have <code>trunk serve</code> running, you should now see the text in the custom component in your app.</p>
+<h2 id="rendering-conditionally"><a class="header" href="#rendering-conditionally">Rendering conditionally</a></h2>
+<p>Thinking about our final goal again, we need to be able to render this component conditionally, based on whether a websocket connection should be open or not at any given moment.</p>
+<p>Let's start simple and use a <em>signal</em> to store a boolean.
+A button can then toggle the signal and cause our component to be rendered or not.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let (get_should_render, set_should_render) = create_signal(false);
+let toggle_should_render = move |_| set_should_render.update(|prev| *prev = !*prev);
+view! {
+    &lt;button on:click=toggle_should_render&gt;
+        toggle rendering
+    &lt;/button&gt;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Great, now let's render our custom component only if the boolean signal is <code>true</code>.
+We can totally use <code>if</code> expressions for this, but it actually gets quite ugly to nest such expressions inside a <code>view!</code> macro.
+It's also easy to accidentally make the UI non-reactive that way.
+(Nested expressions have to be <em>wrapped in closures</em> to stay reactive.)
+<code>leptos</code> has a nice <code>Show</code> component to make conditional rendering readable and robust.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>view! {
+    &lt;Show when=move || get_should_render.get()&gt;
+        &lt;NotificationListener/&gt;
+    &lt;/Show&gt;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The text of the custom component should now appear and disappear when you click the button.</p>
+<h2 id="using-a-websocket-connection"><a class="header" href="#using-a-websocket-connection">Using a websocket connection</a></h2>
+<p>Now we want to associate an open websocket connection to our custom component.
+Implementing this completely ourselves would be quite complicated.
+Luckily, the library <code>leptos-use</code> already did it for us!</p>
+<pre><code class="language-sh">cargo add leptos-use
+</code></pre>
+<p>We can simply call the function <code>leptos_use::use_websocket</code> with the URL.
+The return type is <code>UseWebsocketReturn</code>, which is a struct that we can <em>destructure</em> to only accept what we actually need and discard anything else.
+This struct contains a bunch of things to control the websocket connection at a low level, but we only care about being able to read incoming messages.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let url = "ws://localhost:4200/notifications/alice";
+let UseWebsocketReturn { message, .. } = leptos_use::use_websocket(url);
+<span class="boring">}</span></code></pre></pre>
+<p>What we now need to do is <em>create a side effect</em> that triggers every time we receive a notification.
+The concept of a side effect is related to <code>leptos</code>' reactivity system, which we discuss in detail here.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>create_effect(move |_| {
+    if let Some(message) = message.get() {
+        gloo::dialogs::alert(&amp;message);
+    }
+});
+<span class="boring">}</span></code></pre></pre>
+<p>Suffice it to say, the closure passed to <code>create_effect</code> will rerun every time there is a new message coming in over the websocket connection.</p>
+<p>You should now be able to observe that an alert is triggered in the browser if a paekli is sent to alice.</p>
+<h2 id="making-the-recipient-configurable"><a class="header" href="#making-the-recipient-configurable">Making the recipient configurable</a></h2>
+<p>This I will leave mostly up to you, except for one feature of <code>leptos</code> that we haven't seen so far.
+You can pass arguments to custom components, also referred to as "attributes" from the HTML perspective.
+When declaring the component, it looks like a regular parameter.
+When you use the component, it works with the <code>key=value</code> syntax like a normal HTML element.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[component]
+fn NotificationListener(recipient: String) -&gt; impl IntoView {}
+
+view! {
+    &lt;NotificationListener recipient=String::from("alice") /&gt;
+}
+<span class="boring">}</span></code></pre></pre>
+<div id="admonition-success" class="admonition admonish-success" role="note" aria-labelledby="admonition-success-title">
+<div class="admonition-title">
+<div id="admonition-success-title">
+<p>Success</p>
+</div>
+<a class="admonition-anchor-link" href="web_app_websocket.html#admonition-success"></a>
+</div>
+<div>
+<p>That's a live-updating GUI!
+You made it! 🥳</p>
+</div>
+</div>
+<p>Feel free to improve the UX in any way you like.
+What if instead of an alert, you displayed a counter of unreceived paekli?</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

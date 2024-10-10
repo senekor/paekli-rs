@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hello World - paekli-rs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../introduction.html">Introduction</a></li><li class="chapter-item affix "><a href="../setup.html">Project Setup</a></li><li class="chapter-item affix "><li class="part-title">Clients</li><li class="chapter-item "><a href="../cli.html"><strong aria-hidden="true">1.</strong> CLI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../cli/arg_parse.html"><strong aria-hidden="true">1.1.</strong> Argument Parsing</a></li><li class="chapter-item "><a href="../cli/send_receive.html"><strong aria-hidden="true">1.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../cli/content_storage.html"><strong aria-hidden="true">1.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../cli/additional_features.html"><strong aria-hidden="true">1.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../cli/where_next.html"><strong aria-hidden="true">1.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../python_module.html"><strong aria-hidden="true">2.</strong> Python Module</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../python_module/hello_world.html"><strong aria-hidden="true">2.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../python_module/send_receive.html"><strong aria-hidden="true">2.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../python_module/content_storage.html"><strong aria-hidden="true">2.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../python_module/additional_features.html"><strong aria-hidden="true">2.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../python_module/where_next.html"><strong aria-hidden="true">2.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../web_app.html"><strong aria-hidden="true">3.</strong> Web App</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../web_app/hello_world.html"><strong aria-hidden="true">3.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../web_app/gh_pages.html"><strong aria-hidden="true">3.2.</strong> GitHub Pages</a></li><li class="chapter-item "><a href="../web_app/send_receive.html"><strong aria-hidden="true">3.3.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../web_app/content_storage.html"><strong aria-hidden="true">3.4.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../web_app/additional_features.html"><strong aria-hidden="true">3.5.</strong> Additional Features</a></li><li class="chapter-item "><a href="../web_app/where_next.html"><strong aria-hidden="true">3.6.</strong> Where to Go Next</a></li><li class="chapter-item "><div><strong aria-hidden="true">3.7.</strong> Making it Pretty</div></li></ol></li><li class="chapter-item "><li class="part-title">Servers</li><li class="chapter-item expanded "><a href="../http.html"><strong aria-hidden="true">4.</strong> HTTP</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../http/hello_world.html" class="active"><strong aria-hidden="true">4.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../http/send_receive.html"><strong aria-hidden="true">4.2.</strong> Sending and Receiving</a></li><li class="chapter-item "><a href="../http/content_storage.html"><strong aria-hidden="true">4.3.</strong> Content and Storage</a></li><li class="chapter-item "><a href="../http/additional_features.html"><strong aria-hidden="true">4.4.</strong> Additional Features</a></li><li class="chapter-item "><a href="../http/where_next.html"><strong aria-hidden="true">4.5.</strong> Where to Go Next</a></li></ol></li><li class="chapter-item "><a href="../websocket.html"><strong aria-hidden="true">5.</strong> WebSocket</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../websocket/hello_world.html"><strong aria-hidden="true">5.1.</strong> Hello World</a></li><li class="chapter-item "><a href="../websocket/notifications.html"><strong aria-hidden="true">5.2.</strong> Notifications</a></li><li class="chapter-item "><a href="../websocket/individual_recipients.html"><strong aria-hidden="true">5.3.</strong> Individual Recipients</a></li></ol></li><li class="chapter-item "><li class="part-title">Storage Backends</li><li class="chapter-item "><a href="../file_system.html"><strong aria-hidden="true">6.</strong> File System Storage</a></li><li class="chapter-item "><a href="../sql_database.html"><strong aria-hidden="true">7.</strong> SQL Database</a></li><li class="chapter-item "><a href="../http_client.html"><strong aria-hidden="true">8.</strong> HTTP Client</a></li><li class="chapter-item affix "><li class="part-title">Miscellaneous</li><li class="chapter-item "><a href="../shared_lib.html"><strong aria-hidden="true">9.</strong> Shared Library</a></li><li class="chapter-item "><a href="../storage_backend.html"><strong aria-hidden="true">10.</strong> Storage Backend</a></li><li class="chapter-item "><a href="../web_app_http.html"><strong aria-hidden="true">11.</strong> Web App and HTTP</a></li><li class="chapter-item "><a href="../web_app_websocket.html"><strong aria-hidden="true">12.</strong> Web App and WebSocket</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">paekli-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/senekor/paekli-rs/edit/main/src/http/hello_world.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-hello-world-of-http-servers"><a class="header" href="#the-hello-world-of-http-servers">The Hello World of HTTP Servers</a></h1>
+<h2 id="initializing-a-new-package"><a class="header" href="#initializing-a-new-package">Initializing a new package</a></h2>
+<p>Just like for the CLI, we'll work with a new binary crate <code>paekli-http</code>.</p>
+<pre><code class="language-sh">cargo new paekli-http
+</code></pre>
+<h2 id="axum"><a class="header" href="#axum">Axum</a></h2>
+<p>There are many great choices for web-server libraries in Rust.
+<a href="https://blessed.rs/crates#section-networking-subsection-http-foundations">blessed.rs</a> lists a few of them.
+But I'm the one writing this book, so I get to decide.
+<a href="https://docs.rs/axum/latest/axum/">Axum</a> is simple, modular, performant, well-maintained and popular.
+You can't go wrong with it!</p>
+<pre><code class="language-sh"># cd paekli-http
+cargo add axum --features macros
+</code></pre>
+<p>We don't actually need the feature flag <code>macros</code> for any functionality, but it has a handy tool to improve error messages in case we make a mistake.</p>
+<div id="admonition-async" class="admonition admonish-info" role="note" aria-labelledby="admonition-async-title">
+<div class="admonition-title">
+<div id="admonition-async-title">
+<p>async</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-async"></a>
+</div>
+<div>
+<p>Axum - as most other web-server libraries in Rust - makes use of a language feature called "asynchronous IO" or simply <code>async</code>.
+Some other languages have similar features, including C#, JavaScript and Python, so you might be familiar with it.</p>
+<p>We will <em>completely ignore</em> that stuff in this guide, because there's quite a bit to learn about it and it really only matters for performance.</p>
+<p>You will however see some stuff that might seem weird if you don't know about <code>asnyc</code>.
+The guide will point it out as well and remind you not to worry about it.</p>
+<p>If you want to get serious about writing web-servers in Rust, it's definitely a good idea to learn about <code>async</code> on your own.</p>
+</div>
+</div>
+<h2 id="tokio"><a class="header" href="#tokio">Tokio</a></h2>
+<p>Every Rust-program that makes use of <code>async</code> must have a so-called <em>async runtime</em>.
+This will be <a href="https://tokio.rs/">tokio</a> in our case, it's pretty much the "default" one in the ecosystem.
+Tokio has many feature-flags, let's enable all of them to not have to worry about it:</p>
+<pre><code class="language-sh">cargo add tokio --features full
+</code></pre>
+<p>We will let the tokio runtime take over our main function, so let's add this goofy-looking setup:</p>
+<pre><pre class="playground"><code class="language-rust">#[tokio::main]
+async fn main() {
+    println!("Hello, world!");
+}</code></pre></pre>
+<p>Now, if you <code>cargo run</code> your project, it should still print "Hello, world!".</p>
+<h2 id="spinning-up-a-useless-http-server"><a class="header" href="#spinning-up-a-useless-http-server">Spinning up a useless HTTP server</a></h2>
+<p>We're not quite done with the boilerplate yet:</p>
+<pre><pre class="playground"><code class="language-rust">async fn main() {
+    let router = axum::Router::new();
+
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+
+    axum::serve(listener, router).await.unwrap();
+}</code></pre></pre>
+<p>Confused about the <code>.await</code>?
+Don't worry about it, it's <code>async</code> stuff 🤫</p>
+<p>Here we are creating a <code>Router</code> from the <code>axum</code> library.
+The router is responsible for deciding how to handle incoming HTTP requests.
+Right now, it doesn't do anything.</p>
+<p>After that, we create a TCP-listener with the <code>tokio</code> library and bind it to the port <code>3000</code>.</p>
+<p>Lastly, we use the function <code>axum::serve</code> to make our previously created router respond to incoming requests on that TCP-listener.</p>
+<p>If you <code>cargo run</code> this, there won't be any output in the terminal.
+However, you can already send requests and receive responses:</p>
+<pre><code>&gt; curl --verbose 0.0.0.0:3000
+* processing: 0.0.0.0:3000
+*   Trying 0.0.0.0:3000...
+* Connected to 0.0.0.0 (127.0.0.1) port 3000
+&gt; GET / HTTP/1.1
+&gt; Host: 0.0.0.0:3000
+&gt; User-Agent: curl/8.2.1
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 404 Not Found
+&lt; content-length: 0
+&lt; date: Fri, 08 Mar 2024 07:13:00 GMT
+&lt;
+* Connection #0 to host 0.0.0.0 left intact
+</code></pre>
+<p>This is using <code>curl</code> to send an empty HTTP request to our server.
+Among all this HTTP-gobbledygook, the most interesting piece is <code>404 Not Found</code>.
+I'm sure you've already seen this response in the browser!</p>
+<p>So our server is telling us <em>it didn't find the thing we were asking for</em>, which is a reasonable default chosen by the <code>axum</code> library.</p>
+<h2 id="handling-our-first-request"><a class="header" href="#handling-our-first-request">Handling our first request</a></h2>
+<p>Let's write a simple function that will be responsible for handling a request:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>async fn hello_world() -&gt; &amp;'static str {
+    "hello world"
+}
+<span class="boring">}</span></code></pre></pre>
+<p>All HTTP handlers need the <code>async</code> keyword before <code>fn</code>.
+Don't worry about it 🙂</p>
+<p>Now we can tell the <em>router</em> to let some requests be handled by this function:</p>
+<pre><pre class="playground"><code class="language-rust">use axum::routing::get;
+
+async fn main() {
+    let router = axum::Router::new().route("/", get(hello_world));
+}</code></pre></pre>
+<p>The router needs two pieces of information to decide which handler is responsible for an incoming request:</p>
+<ul>
+<li><code>"/"</code> is the so-called <strong>path</strong>.
+It corresponds to the part of a URL after the <em>domain</em>.
+For example, if you go to <a href="https://docs.rs/axum/latest/axum/struct.Router.html">docs.rs/axum/latest/axum/struct.Router.html</a> in your browser, the request you're sending has the path <code>/axum/latest/axum/struct.Router.html</code>.</li>
+<li><code>get(hello_world)</code> tells axum that only requests with the method <code>GET</code> should be handled.
+The <strong>method</strong> is a part of the HTTP protocol and <code>GET</code> is the default one.
+We'll see more methods later on.</li>
+</ul>
+<p>We will learn about bits and pieces of the HTTP protocol as we need them.</p>
+<p>If we take a second look at the output of the <code>curl</code> command from above, we might notice this line:</p>
+<pre><code>&gt; GET / HTTP/1.1
+</code></pre>
+<p>This is saying exactly that <code>curl</code> sent a request with the method <code>GET</code> and the path <code>/</code>.
+That means our request should now be handled!
+Let's try again, (remember to restart the server with <code>cargo run</code>):</p>
+<pre><code>&gt; curl 0.0.0.0:3000
+hello world
+</code></pre>
+<p>Hurray!
+You should also see the greeting when you navigate to <a href="http://0.0.0.0:3000">http://0.0.0.0:3000</a> in the browser.</p>
+<h2 id="shipping-the-first-version"><a class="header" href="#shipping-the-first-version">Shipping the first version</a></h2>
+<p>Let's again make sure we can release our software efficiently.
+Remember that you should use a version number that is higher than the last one you used for any other component.
+Otherwise, our distribution-tool <code>cargo-dist</code> might get confused.</p>
+<p>Assuming the last highest version used was <code>0.1.9</code>:</p>
+<pre><code class="language-toml"># paekli-http/Cargo.toml
+version = "0.1.10"
+</code></pre>
+<p>With those changes: git commit, push, tag and push the tag!</p>
+<div id="admonition-release" class="admonition admonish-success" role="note" aria-labelledby="admonition-release-title">
+<div class="admonition-title">
+<div id="admonition-release-title">
+<p>Release</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-release"></a>
+</div>
+<div>
+<p>You've now shipped a functioning HTTP server ready to download for your users.
+You're awesome! 😎</p>
+</div>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../http.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../http/send_receive.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../http.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../http/send_receive.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
