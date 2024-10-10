@@ -53,6 +53,11 @@ On Linux, you can confirm that a paekli was sent correctly with:
 cat ~/.local/share/paekli/content
 ```
 
+On Mac OS, find the paekli in Application Support:
+```sh
+cat ~/Library/Application\ Support/dev.buenzli.paekli/content
+```
+
 ## Less than terrible error handling
 
 We now have a few calls to `.expect()` in our code.
